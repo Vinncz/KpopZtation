@@ -11,7 +11,7 @@
             </div>
             <div class="Flex Stack">
                 <asp:Label Text="Password" runat="server" />
-                <asp:TextBox ID="TBPassword" runat="server" />
+                <asp:TextBox TextMode="Password" ID="TBPassword" runat="server" />
             </div>
             <div>
                 <asp:CheckBox ID="CBRemember" Text="Remember Me" runat="server" />
