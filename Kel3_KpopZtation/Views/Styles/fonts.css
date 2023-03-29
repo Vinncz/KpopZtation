@@ -1,0 +1,66 @@
+﻿@font-face {
+    font-family: 'Satoshi';
+    src: url(../Fonts/Satoshi/Fonts/WEB/fonts/Satoshi-Variable.woff2);
+}
+
+@font-face {
+    font-family: 'Satoshi Italic';
+    src: url(../Fonts/Satoshi/Fonts/WEB/fonts/Satoshi-VariableItalic.woff2);
+}
+
+:root {
+    --font-mono: ui-monospace, 'JetBrains Mono', Menlo, Monaco, 'Cascadia Mono', 'Segoe UI Mono', 'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro', 'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
+    --font-default: 'Satoshi', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+    font-family: var(--font-default);
+}
+
+.code {
+    font-family: var(--font-mono);
+}
+
+.b {
+    font-weight: 700;
+}
+
+.sb {
+    font-weight: 900;
+}
+
+.semib {
+    font-weight: 600;
+}
+
+.em_75 {
+    font-size: 0.75em;
+}
+
+.em1 {
+    font-size: 1em;
+}
+
+.em1_05 {
+    font-size: 1.05em;
+}
+
+.em1_1 {
+    font-size: 1.10em;
+}
+
+.em1_15 {
+    font-size: 1.15em;
+}
+
+.em1_25 {
+    font-size: 1.25em;
+}
+
+.em1_5 {
+    font-size: 1.5em;
+}
+
+.em2 {
+    font-size: 2em;
+}

@@ -1,0 +1,250 @@
+﻿@import url('borders.css');
+@import url('buttons.css');
+@import url('colors.css');
+@import url('fonts.css');
+@import url('positionings.css');
+@import url('spacings.css');
+
+:root {
+    --pagePadding: 30px;
+    --transitionSpeed: 0.15s;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    color: var(--tColor);
+    letter-spacing: 0.2px;
+    line-height: 150%;
+    transition: var(--transitionSpeed) ease-in-out;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -moz-tap-highlight-color: rgba(0,0,0,0);
+    -o-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+    min-height: 100vh;
+    position: relative;
+    background: var(--html-background);
+    color: var(--tColor);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+main {
+    min-height: 720px;
+}
+
+.hideOverflow {
+    overflow: hidden;
+}
+
+.scrollVOnly {
+    overflow-y: scroll;
+}
+
+.scrollHOnly {
+    overflow-x: scroll;
+}
+
+.pagePadding {
+    padding-left: var(--pagePadding);
+    padding-right: var(--pagePadding);
+}
+
+#pageWrapper {
+    /* Jangan lupa diganti calc(100vw - ??px) nya kalo suatu waktu diubah paddingnya */
+    width: min(1080px, calc(100vw - 2 * var(--pagePadding)));
+}
+
+#navspan {
+    height: 100px;
+    align-items: flex-end;
+}
+
+#navspanButton {
+    background: none;
+    border: none;
+    text-decoration: underline;
+    letter-spacing: 0.2px;
+    vertical-align: baseline;
+    cursor: pointer;
+}
+
+.textColored {
+    fill: var(--tColor);
+}
+
+.flex {
+    display: flex;
+}
+
+.verti {
+    display: flex;
+    flex-direction: column;
+}
+
+.hori {
+    display: flex;
+    flex-direction: row;
+}
+
+.grid {
+    display: grid;
+}
+
+.gridH2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.gridH3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.gridH4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.autoGridH {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.productCard {
+    height: auto;
+}
+
+.productCardImg {
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+}
+
+    .productCardImg img {
+        width: 100%;
+        height: 100%;
+    }
+
+.productCardTitle {
+    white-space: pre-wrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+@media screen and (max-width: 945px) {
+    .autoGridH {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 624px) {
+    .autoGridH {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 388px) {
+    .autoGridH {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.maxH350 {
+    max-height: 350px;
+}
+
+.fullH {
+    height: 100%;
+}
+
+.fullW {
+    width: 100%;
+}
+
+.customMinHeight {
+    min-height: var(--min-height);
+}
+
+.customMinWidth {
+    min-width: var(--min-width);
+}
+
+.customMaxHeight {
+    max-height: var(--max-height);
+}
+
+.customMaxWidth {
+    max-width: var(--max-width);
+}
+
+.customHeight {
+    height: var(--height);
+}
+
+.customWidth {
+    width: var(--width);
+}
+
+.grow1 {
+    display: flex;
+    flex-grow: 1;
+}
+
+.grow2 {
+    display: flex;
+    flex-grow: 2;
+}
+
+.visibleWhenHovered {
+    visibility: hidden;
+    transition: var(--transitionSpeed) ease-in-out;
+}
+
+.visibleWhenHoveredAffectedComponent {
+    transform: translateY(2px);
+    transition: var(--transitionSpeed) ease-in-out;
+}
+
+.visibleWhenHoveredTrigger:hover > .visibleWhenHovered {
+    visibility: visible;
+}
+
+.visibleWhenHoveredTrigger:hover > .visibleWhenHoveredAffectedComponent {
+    transform: translateY(-3px);
+}
+
+@media (prefers-reduced-motion) {
+    * {
+        transition: none;
+    }
+
+    .visibleWhenHovered {
+        transition: none;
+    }
+
+    .visibleWhenHoveredAffectedComponent {
+        transition: none;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    .gridH2 {
+        grid-template-columns: 1fr;
+    }
+}

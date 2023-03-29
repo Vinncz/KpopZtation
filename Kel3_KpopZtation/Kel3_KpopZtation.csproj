@@ -89,9 +89,18 @@
       <DependentUpon>KpopZtation.edmx</DependentUpon>
       <LastGenOutput>KpopZtation.cs</LastGenOutput>
     </Content>
+    <Content Include="Queries\Inserting Into The Database.sql" />
+    <Content Include="Queries\Making The Database.sql" />
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\MasterCss.css" />
+    <Content Include="Views\Styles\borders.css" />
+    <Content Include="Views\Styles\buttons.css" />
+    <Content Include="Views\Styles\colors.css" />
+    <Content Include="Views\Styles\fonts.css" />
+    <Content Include="Views\Styles\Global.css" />
+    <Content Include="Views\Styles\positionings.css" />
+    <Content Include="Views\Styles\spacings.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

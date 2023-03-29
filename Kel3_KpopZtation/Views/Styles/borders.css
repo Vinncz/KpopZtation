@@ -1,0 +1,35 @@
+﻿.boxedEl1 {
+    border: 1px solid var(--border-color);
+}
+
+.boxedEl2 {
+    border: 2px solid var(--border-color);
+}
+
+.boxedEl3 {
+    border: 1px solid var(--border-color);
+}
+
+.boxedEl4 {
+    border: 2px solid var(--border-color);
+}
+
+.borrad5 {
+    border-radius: 5px;
+}
+
+.borrad10 {
+    border-radius: 10px;
+}
+
+.borrad15 {
+    border-radius: 15px;
+}
+
+.nobor {
+    border: hidden;
+}
+
+.custombor {
+    border: var(--borderWidth) solid var(--borderColor);
+}

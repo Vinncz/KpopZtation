@@ -45,7 +45,7 @@ namespace Kel3_KpopZtation.Controllers {
 
                 /* Cek apakah emailnya sudah terasosiasi dengan account */
                 if (CustomerRepo.ExistByEmail(email) == null) {
-                    return (false, "No account is ascosiated with that email! Try registering.");
+                    return (false, "No account is associated with that email! Try registering.");
                 }
             }
 
@@ -57,10 +57,10 @@ namespace Kel3_KpopZtation.Controllers {
             /* 
              * Cek apakah formatnya salah.
              * 
-             * No,this IS NOT a duplicate code. It is simply just a coincidence that 
+             * No,this IS NOT a duplicate code smell. It is simply just a coincidence that 
              * a password has partially the same checks as email's
              */
-            if (string.IsNullOrWhiteSpace(password)) {
+            if (string.IsNullOrEmpty(password)) {
                 return (false, "Password cannot be empty!");
             }
 

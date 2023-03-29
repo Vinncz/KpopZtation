@@ -1,0 +1,40 @@
+﻿.popupEl {
+    transition: all var(--transitionSpeed) ease-in-out;
+}
+
+    .popupEl:hover {
+        transform: translate(-0.4rem, -0.4rem);
+        box-shadow: 0.4rem 0.4rem 0 var(--border-color);
+    }
+
+.ptr:hover {
+    cursor: pointer;
+}
+
+.coloredEl:hover {
+    background: var(--themeColor);
+    color: white
+}
+
+.customBackground {
+    background: var(--background);
+    color: var(--background-text-color);
+}
+
+.customBackgroundHover:hover {
+    background: var(--background-hover);
+    color: var(--background-hover-text-color);
+}
+
+@media (prefers-reduced-motion) {
+    .popupEl {
+        transition: all calc(var(--transitionSpeed) - 0.05s) ease-in-out;
+    }
+
+        .popupEl:hover {
+            box-sizing: unset;
+            transform: none;
+            border: 1px solid var(--soft);
+            box-shadow: none;
+        }
+}
