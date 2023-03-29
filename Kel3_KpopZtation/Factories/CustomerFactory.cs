@@ -17,5 +17,9 @@ namespace Kel3_KpopZtation.Factories {
                 CustomerRole = CustomerRole
             };
         }
+
+        public static Customer MakeCustomerModel () {
+            return new Customer();
+        }
     }
 }

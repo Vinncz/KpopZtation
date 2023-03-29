@@ -4,10 +4,10 @@
     
     <!-- Login Page Centered Div -->
     <div style="--min-height: 85vh;" class="flex r verti centerHori centerVerti fullH fullW padtop30 grow1 customMinHeight" >
-        <div style="--max-width: 660px;" class="pad25 flex verti gap15 fullW boxedEl1 borrad10 customMaxWidth">
+        <div style="--max-width: 390px;" class="pad25 flex verti gap15 fullW boxedEl1 borrad10 customMaxWidth">
             
             <!-- Page Title Section -->
-            <div class='fullW flex r em1_5 martom30 b'> 
+            <div class='fullW flex r em1_5 martom15 b'> 
                 Sign In
             </div>
             

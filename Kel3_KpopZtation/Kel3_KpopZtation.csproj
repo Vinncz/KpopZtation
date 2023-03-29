@@ -93,7 +93,7 @@
     <Content Include="Queries\Making The Database.sql" />
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Login.aspx" />
-    <Content Include="Views\MasterCss.css" />
+    <Content Include="Views\Register.aspx" />
     <Content Include="Views\Styles\borders.css" />
     <Content Include="Views\Styles\buttons.css" />
     <Content Include="Views\Styles\colors.css" />
@@ -104,8 +104,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\FormatValidator.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CookieController.cs" />
+    <Compile Include="Controllers\FormatController.cs" />
+    <Compile Include="Controllers\PageController\LoginPageController.cs" />
     <Compile Include="Factories\CookieFactory.cs" />
     <Compile Include="Factories\CustomerFactory.cs" />
     <Compile Include="Models\Album.cs">
@@ -164,6 +166,13 @@
     </Compile>
     <Compile Include="Views\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,7 @@ namespace Kel3_KpopZtation.Factories
         }
 
         public static HttpCookie MakeCookie (string CookieName, Customer c, int ExpiryDateInDays) {
-            HttpCookie cookie =  new HttpCookie(CookieName) {
+            HttpCookie cookie = new HttpCookie(CookieName) {
                 Expires = DateTime.UtcNow.AddDays(ExpiryDateInDays)
             };
 
@@ -22,6 +22,7 @@ namespace Kel3_KpopZtation.Factories
             cookie.Values["CustomerName"] = c.CustomerName.ToString();
             cookie.Values["CustomerEmail"] = c.CustomerEmail.ToString();
             cookie.Values["CustomerGender"] = c.CustomerGender.ToString();
+            cookie.Values["CustomerRole"] = c.CustomerRole.ToString();
 
             return cookie;
         }

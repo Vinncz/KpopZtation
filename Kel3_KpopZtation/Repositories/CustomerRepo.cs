@@ -4,12 +4,10 @@ using System.Linq;
 using System.Web;
 using Kel3_KpopZtation.Models;
 
-namespace Kel3_KpopZtation.Repositories
-{
-    public class CustomerRepo
-    {
+namespace Kel3_KpopZtation.Repositories {
+    public class CustomerRepo {
         private static KZEntities db = ConnectionMaster.CopyInstance();
-        public static Customer ExistByEmailAndPassword(string email, string password) {
+        public static Customer EmailPasswordMatch (string email, string password) {
             return (from Customer in db.Customers
                     where Customer.CustomerEmail == email && Customer.CustomerPassword == password
                     select Customer).FirstOrDefault();
