@@ -24,11 +24,13 @@ namespace Kel3_KpopZtation.Views {
          * (X) Has a [Remember Me] checkbox.
          * (X) The [Remember Me Cookie] has to own an expiry date.
          */
-
+        private static ElementController ec = new ElementController();
         protected void Page_Load(object sender, EventArgs e) {
             // HttpCookie AuthCookie = Request.Cookies["AuthInfo"];
             AuthController.MakeSessionFromCookie();
             Customer c = (Customer)Session["AuthInfo"];
+
+            ec.PrepareVisibility(Page, c);
 
             /* 
              * Cek apakah terdapat Session atau Cookie yang tersimpan.
@@ -65,7 +67,7 @@ namespace Kel3_KpopZtation.Views {
             /* Everything else goes here. */
 
             /* Set ErrorMessage Section ke invisible utk pertama kali */
-            LBMessage.Visible = false;
+            ec.Invis(LBMessage);
 
             /* Quality of Life Improvement :: AutoFocus */
             TBEmail.Focus();

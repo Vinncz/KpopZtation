@@ -15,30 +15,21 @@ namespace Kel3_KpopZtation.Views
     {
 
         /// <summary>
-        /// AOLBOnlyAdmin control.
+        /// ArtistsRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AOLBOnlyAdmin;
+        protected global::System.Web.UI.WebControls.Repeater ArtistsRepeater;
 
         /// <summary>
-        /// BOLBOnlyBuyer control.
+        /// AOBTAddNewArtist control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BOLBOnlyBuyer;
-
-        /// <summary>
-        /// GOLBOnlyGuest control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GOLBOnlyGuest;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor AOBTAddNewArtist;
     }
 }

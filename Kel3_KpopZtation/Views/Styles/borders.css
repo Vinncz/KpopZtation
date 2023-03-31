@@ -33,3 +33,7 @@
 .custombor {
     border: var(--borderWidth) solid var(--borderColor);
 }
+
+.customBorRad {
+    border-radius: var(--borrad);
+}

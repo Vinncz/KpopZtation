@@ -87,6 +87,15 @@ namespace Kel3_KpopZtation.Views
         protected global::System.Web.UI.WebControls.HyperLink GOBTRegistration;
 
         /// <summary>
+        /// _GUpdateProfile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink _GUpdateProfile;
+
+        /// <summary>
         /// _GBTLogOut control.
         /// </summary>
         /// <remarks>

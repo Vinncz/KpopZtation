@@ -52,7 +52,7 @@ namespace Kel3_KpopZtation.Views {
             AuthController.MakeSessionFromCookie();
             Customer c = (Customer) Session["AuthInfo"];
 
-            /* Apabila client LOGGED IN kedalam accountnya */
+            /* Atur visibility elemen menggunakan default configuration */
             ec.PrepareVisibility(Page, c);
         }
 

@@ -75,6 +75,10 @@ namespace Kel3_KpopZtation.Controllers {
             } 
         }
 
+        public static Customer ExtractCustomer () {
+            return (Customer) HttpContext.Current.Session["AuthInfo"];
+        }
+
         public static (bool isValid, string ErrorMsg) ValidateEmail (string email) {
 
             /* Cek apakah string parameter bisa diproses */

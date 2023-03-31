@@ -91,12 +91,24 @@
     padding-bottom: 15px;
 }
 
+.padtom20 {
+    padding-bottom: 20px;
+}
+
 .padtom25 {
     padding-bottom: 25px;
 }
 
 .padtom30 {
     padding-bottom: 30px;
+}
+
+.padtom40 {
+    padding-bottom: 40px;
+}
+
+.padtom50 {
+    padding-bottom: 50px;
 }
 
 .padleft5 {

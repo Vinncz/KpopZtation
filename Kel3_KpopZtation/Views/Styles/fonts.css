@@ -33,6 +33,14 @@
     font-weight: 600;
 }
 
+.light {
+    font-weight: 300;
+}
+
+.thin {
+    font-weight: 200;
+}
+
 .em_75 {
     font-size: 0.75em;
 }
@@ -63,4 +71,16 @@
 
 .em2 {
     font-size: 2em;
+}
+
+.em3 {
+    font-size: 3em;
+}
+
+.em4 {
+    font-size: 4em;
+}
+
+.em5 {
+    font-size: 5em;
 }

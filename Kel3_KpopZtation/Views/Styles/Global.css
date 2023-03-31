@@ -41,6 +41,10 @@ main {
     min-height: 720px;
 }
 
+.noSelect {
+    user-select: none;
+}
+
 .hideOverflow {
     overflow: hidden;
 }

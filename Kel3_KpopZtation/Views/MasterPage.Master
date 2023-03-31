@@ -9,8 +9,7 @@
 </head>
 <body>
     <link rel="stylesheet" href="Styles/Global.css" />
-    <form id="form1" runat="server" 
-        class="flex verti centerVerti fullH fullW r centerHori martom30">
+    <form id="form1" runat="server" class="flex verti centerVerti fullH fullW r centerHori martom30">
         <div id='navbar' class="flex fullW r pagePadding centerVerti spaceBetweenH padtop15 padtom15 z1"> 
             <div class="flex r centerVerti gap5 marleft-5">
                 <svg width="25" height="25" viewBox="0 0 40 40" class='marri15' fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +24,7 @@
 
                 <span id="logo">
                     <div class='em1_5 b'>
-                        PixelHive™ 
+                        KpopZtation™ 
                     </div>
                 </span>
             </div>
@@ -53,6 +52,10 @@
                 <asp:HyperLink ID="GOBTRegistration" runat="server" href="Register.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
                     Register
+                </asp:HyperLink>
+                <asp:HyperLink ID="_GUpdateProfile" runat="server" href="Profile.aspx" 
+                    CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
+                    Update Profile
                 </asp:HyperLink>
                 <asp:Button ID="_GBTLogOut" Text="Log Out" runat="server" 
                     CssClass="coloredEl pad10 padleft25 nobor padri25 boxedEl1 borrad5" OnClick="BTLogOut_Click"></asp:Button>
