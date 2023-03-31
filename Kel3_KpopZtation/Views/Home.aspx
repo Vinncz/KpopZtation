@@ -3,8 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contents" runat="server">
     Masuk nih boss!!
-    <asp:Label ID="MemberOrAbove" Text="ONLY MEMBER OR ADMIN CAN SEE THIS" runat="server" />
-    <asp:Label ID="AdminOrAbove" Text="ONLY AN ADMIN CAN SEE THIS" runat="server" />
-    <asp:Label ID="MemberOnly" Text="ONLY A MEMBER CAN SEE THIS" runat="server" />
-    <asp:Label ID="GuestOnly" Text="ONLY A GUEST CAN SEE THIS" runat="server" />
+    <asp:Label ID="AOLBOnlyAdmin" Text="ONLY AN ADMIN CAN SEE THIS" runat="server" />
+    <asp:Label ID="BOLBOnlyBuyer" Text="ONLY A MEMBER CAN SEE THIS" runat="server" />
+    <asp:Label ID="GOLBOnlyGuest" Text="ONLY A GUEST CAN SEE THIS" runat="server" />
 </asp:Content>

@@ -7,7 +7,7 @@
         <div style="--max-width: 390px;" class="pad25 flex verti gap15 fullW boxedEl1 borrad10 customMaxWidth">
             
             <!-- Page Title Section -->
-            <div class='fullW flex r em1_5 martom15 b'> 
+            <div class='fullW flex r em1_5 martom15 b centerHori'> 
                 Register A New Account
             </div>
 

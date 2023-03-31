@@ -15,39 +15,30 @@ namespace Kel3_KpopZtation.Views
     {
 
         /// <summary>
-        /// MemberOrAbove control.
+        /// AOLBOnlyAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemberOrAbove;
+        protected global::System.Web.UI.WebControls.Label AOLBOnlyAdmin;
 
         /// <summary>
-        /// AdminOrAbove control.
+        /// BOLBOnlyBuyer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label AdminOrAbove;
+        protected global::System.Web.UI.WebControls.Label BOLBOnlyBuyer;
 
         /// <summary>
-        /// MemberOnly control.
+        /// GOLBOnlyGuest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label MemberOnly;
-
-        /// <summary>
-        /// GuestOnly control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GuestOnly;
+        protected global::System.Web.UI.WebControls.Label GOLBOnlyGuest;
     }
 }

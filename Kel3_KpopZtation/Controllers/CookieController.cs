@@ -11,6 +11,7 @@ namespace Kel3_KpopZtation.Controllers {
 
         /* Global variable to easily set a cookie's lifetime in days */
         private const int CookieLifespan = 7;
+        public const int CookieSetbackValue = -14;
 
         private static HttpCookie MakeAuthCookie () {
             return CookieFactory.MakeCookie("AuthInfo", (Customer) HttpContext.Current.Session["AuthInfo"], CookieLifespan);

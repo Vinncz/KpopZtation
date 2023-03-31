@@ -26,7 +26,9 @@ namespace Kel3_KpopZtation.Views {
          */
 
         protected void Page_Load(object sender, EventArgs e) {
-            HttpCookie AuthCookie = Request.Cookies["AuthInfo"];
+            // HttpCookie AuthCookie = Request.Cookies["AuthInfo"];
+            AuthController.MakeSessionFromCookie();
+            Customer c = (Customer)Session["AuthInfo"];
 
             /* 
              * Cek apakah terdapat Session atau Cookie yang tersimpan.
@@ -37,9 +39,9 @@ namespace Kel3_KpopZtation.Views {
              * 
              * Jika terdapat Cookie AuthInfo
              */
-            if ( AuthCookie != null ) {
+            if ( c != null ) {
                 /* Sync dengan Session */
-                CookieController.SyncCookieWithSession();
+                // CookieController.SyncCookieWithSession();
 
                 /* 
                 * Jika dia minta diforward ke halaman lain setelah login berhasil, gunakan parameter ?FwdTo=... 
@@ -74,7 +76,7 @@ namespace Kel3_KpopZtation.Views {
             string password = TBPassword.Text;
             bool rememberme = CBRemember.Checked;
 
-            (Object Dump, List<string> ErrorMsgs) = AuthController.Authenticate(email, password);
+            (Object Dump, List<string> ErrorMsgs) = AuthController.Authenticate(email, password, rememberme);
 
             if (Dump == null && !ErrorMsgs.Contains("Password cannot be empty!")) ErrorMsgs.Add("Incorrect password.");
             if (ErrorMsgs.Count > 0) {

@@ -17,37 +17,39 @@ namespace Kel3_KpopZtation.Controllers {
          * Access it by doing:
          * (bool isValid, List<string> ErrorMsgs) = ValidateEmailAndPassword (email, password);
          */
-        public static (Customer AssociatedAccount, List<string> ErrorMsgs) Authenticate (string Email, string Password) {
+        public static (Customer AssociatedAccount, List<string> ErrorMsgs) Authenticate (string Email, string Password, bool SetCookie) {
             Customer AssociatedAccount = null;
             List<string> ErrorMsgs = new List<string>();
 
-            var EmailValidationResult = ValidateEmail(Email);
-            ErrorMsgs.Add(EmailValidationResult.ErrorMsg);
+            /* Email validation has been delegated to appropriate method */
+            var EmailValidationResult = ValidateEmail(Email); ErrorMsgs.Add(EmailValidationResult.ErrorMsg);
 
-            var PasswordValidationResult = ValidatePassword(Password);
-            ErrorMsgs.Add(PasswordValidationResult.ErrorMsg);
+            /* Password validation has been delegated to appropriate method */
+            var PasswordValidationResult = ValidatePassword(Password); ErrorMsgs.Add(PasswordValidationResult.ErrorMsg);
 
+            /* Removing empty error msgs */
             RemoveEmptyErrorMsgs(ErrorMsgs);
 
-            bool LoginSuccessful = EmailValidationResult.isValid 
-                                     && PasswordValidationResult.isValid 
-                                     && EmailExistOnDatabase(Email);
+            /* Determining whether the given parameter can be checked further */
+            bool ParameterIsValid = EmailValidationResult.isValid  && PasswordValidationResult.isValid;
+            if ( ParameterIsValid ) {
 
-            if ( LoginSuccessful ) {
+                /* Determining whether there is any account associated with said email and password */
                 AssociatedAccount = CustomerRepo.EmailPasswordMatch(Email, Password);
 
+                /* When there is */
                 if (AssociatedAccount != null) { 
+                    
+                    /* Store client's login info on a Session that self-expire after the connection is terminated */
                     CookieController.AssignSession(AssociatedAccount);
-                    CookieController.AssignAuthCookie();
-                    CookieController.SyncCookieWithSession();
+
+                    /* If client opt to auto login, then assign a cookie to client */
+                    if (SetCookie) CookieController.AssignAuthCookie();
                 }
             }
             
+            /* Return the AssociatedAccount (if any), and the error messages found along the way */
             return (AssociatedAccount, ErrorMsgs);
-        }
-
-        private static void RemoveEmptyErrorMsgs(List<string> ErrorMsgs) {
-            ErrorMsgs.RemoveAll(s => s.Length <= 0);
         }
 
         public static (bool Status, Customer CreatedAccount) Register () {
@@ -55,6 +57,22 @@ namespace Kel3_KpopZtation.Controllers {
             /* Jangan lupa harus dikerjain */
 
             return (false, null);
+        }
+
+        /* 
+         * If there is an Authentication Cookie stored in the client's browser,
+         * then make the session as per Cookie's data dictate. 
+         */
+        public static void MakeSessionFromCookie () {
+            HttpCookie AuthCookie = HttpContext.Current.Request.Cookies["AuthInfo"];
+
+            /* 
+             * Sync data yang disimpan pada Cookie kedalam Session.
+             * Dengan asumsi bahwa segala informasi yang dipegang oleh sebuah Cookie adalah benar. 
+             */
+            if (AuthCookie != null) {
+                HttpContext.Current.Session["AuthInfo"] = CustomerRepo.ExistByID( Convert.ToInt32(AuthCookie.Values["CustomerID"]) );
+            } 
         }
 
         public static (bool isValid, string ErrorMsg) ValidateEmail (string email) {
@@ -97,6 +115,19 @@ namespace Kel3_KpopZtation.Controllers {
                 return true;
             
             return false;
+        }
+
+        private static void RemoveEmptyErrorMsgs(List<string> ErrorMsgs) {
+            ErrorMsgs.RemoveAll(s => s.Length <= 0);
+        }
+    
+        public static void SignOut () {
+            foreach (string SavedCookie in HttpContext.Current.Request.Cookies.AllKeys) {
+                // System.Diagnostics.Debug.WriteLine(SavedCookie);
+                HttpContext.Current.Response.Cookies.Get(SavedCookie).Expires = DateTime.Now.AddDays(CookieController.CookieSetbackValue);
+            }
+
+            HttpContext.Current.Response.Redirect("Login.aspx");
         }
     }
 }
