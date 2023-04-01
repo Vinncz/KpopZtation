@@ -13,19 +13,19 @@
             
             <!-- Email Field -->
             <div class="flex verti gap5">
-                <asp:Label Text="Email" runat="server" />
+                <asp:Label CssClass="noSelect" Text="Email" runat="server" />
                 <asp:TextBox ID="TBEmail" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             
             <!-- Password Field -->
             <div class="flex verti gap5">
-                <asp:Label Text="Password" runat="server" />
+                <asp:Label CssClass="noSelect" Text="Password" runat="server" />
                 <asp:TextBox TextMode="Password" ID="TBPassword"
                     CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             
             <!-- Remember Me Checkbox -->
-            <div class="flex gap10">
+            <div class="noSelect flex gap10">
                 <asp:CheckBox ID="CBRemember" runat="server"
                     Text="Remember Me"/>
             </div>
@@ -37,7 +37,7 @@
 
             <!-- Submit Button -->
             <asp:Button ID="BTSubmit" runat="server" OnClick="BTSubmit_Click" 
-                CssClass="ptr pad10 borrad5 nobor customBackground customBackgroundHover" 
+                CssClass="ptr pad10 borrad5 martop10 nobor customBackground customBackgroundHover" 
                 style="--background: rgb(34 159 51); --background-text-color: white;
                        --borderWidth: 1px; --borderColor: var(--border-color);
                        --background-hover: rgb(17 110 32); --background-hover-text-color: white;" 

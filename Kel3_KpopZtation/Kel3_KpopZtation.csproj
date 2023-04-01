@@ -137,8 +137,10 @@
     <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\PageController\HomePageController.cs" />
     <Compile Include="Controllers\PageController\LoginPageController.cs" />
+    <Compile Include="Controllers\PageController\RegisterPageController.cs" />
     <Compile Include="Factories\CookieFactory.cs" />
     <Compile Include="Factories\CustomerFactory.cs" />
+    <Compile Include="Handlers\CustomerHandler.cs" />
     <Compile Include="Models\Album.cs">
       <DependentUpon>KpopZtation.tt</DependentUpon>
     </Compile>
@@ -222,9 +224,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Handlers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

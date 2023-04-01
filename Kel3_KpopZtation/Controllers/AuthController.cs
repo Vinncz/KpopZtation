@@ -5,6 +5,7 @@ using System.Web;
 using Kel3_KpopZtation.Factories;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Repositories;
+using Kel3_KpopZtation.Handlers;
 
 namespace Kel3_KpopZtation.Controllers {
     public class AuthController {
@@ -23,6 +24,7 @@ namespace Kel3_KpopZtation.Controllers {
 
             /* Email validation has been delegated to appropriate method */
             var EmailValidationResult = ValidateEmail(Email); ErrorMsgs.Add(EmailValidationResult.ErrorMsg);
+            var EmailStatus = EmailExistOnDatabase(Email, ""); ErrorMsgs.Add(EmailStatus.ErrorMsg);
 
             /* Password validation has been delegated to appropriate method */
             var PasswordValidationResult = ValidatePassword(Password); ErrorMsgs.Add(PasswordValidationResult.ErrorMsg);
@@ -31,7 +33,7 @@ namespace Kel3_KpopZtation.Controllers {
             RemoveEmptyErrorMsgs(ErrorMsgs);
 
             /* Determining whether the given parameter can be checked further */
-            bool ParameterIsValid = EmailValidationResult.isValid  && PasswordValidationResult.isValid;
+            bool ParameterIsValid = EmailValidationResult.isValid  && PasswordValidationResult.isValid && EmailStatus.doesExist;
             if ( ParameterIsValid ) {
 
                 /* Determining whether there is any account associated with said email and password */
@@ -52,11 +54,39 @@ namespace Kel3_KpopZtation.Controllers {
             return (AssociatedAccount, ErrorMsgs);
         }
 
-        public static (bool Status, Customer CreatedAccount) Register () {
+        public static (Customer CreatedAccount, List<string> ErrorMsgs) Register (string name, string email, string sex, string address, string password) {
 
-            /* Jangan lupa harus dikerjain */
+            Customer CreatedAccount = null;
+            List<string> ErrorMsgs = new List<string>();
 
-            return (false, null);
+            var NameValidationResult = ValidateName(name); ErrorMsgs.Add(NameValidationResult.ErrorMsg);
+
+            var EmailValidationResult = ValidateEmail(email); ErrorMsgs.Add(EmailValidationResult.ErrorMsg);
+            var EmailExistenceInDB = EmailExistOnDatabase(email, "There are already an account ascosiated with that email! Try logging in.");
+
+            var SexValidationResult = ValidateSex(sex); ErrorMsgs.Add(SexValidationResult.ErrorMsg);
+
+            var AddressValidationResult = ValidateAddress(address); ErrorMsgs.Add(AddressValidationResult.ErrorMsg);
+
+            var PasswordValidationResult = ValidatePassword(password); ErrorMsgs.Add(PasswordValidationResult.ErrorMsg);
+
+            RemoveEmptyErrorMsgs(ErrorMsgs);
+
+            bool ParameterIsValid = NameValidationResult.isValid && EmailValidationResult.isValid && EmailExistenceInDB.doesExist
+                                    && SexValidationResult.isValid && AddressValidationResult.isValid && PasswordValidationResult.isValid;
+            
+            System.Diagnostics.Debug.WriteLine(ParameterIsValid ? "param valid" : "param invalid");
+
+            if (ParameterIsValid) {
+                CreatedAccount = CustomerHandler.MakeCustomer(name, email, address, password, sex, "Buyer");
+                CustomerHandler.InsertCustomer(CreatedAccount);
+
+                if (CreatedAccount != null) {
+                    CookieController.AssignSession(CreatedAccount);
+                }
+            }
+
+            return (CreatedAccount, ErrorMsgs);
         }
 
         /* 
@@ -79,6 +109,21 @@ namespace Kel3_KpopZtation.Controllers {
             return (Customer) HttpContext.Current.Session["AuthInfo"];
         }
 
+        public static (bool isValid, string ErrorMsg) ValidateName (string name) {
+            
+            /* Cek apakah string parameter bisa diproses */
+            if ( FormatController.NullWhitespacesOrEmpty(name) ) {
+                return (false, "Name cannot be empty or all whitespaces!");
+
+            /* Cek apakah panjang string parameter berada diantara 5-50 karakter */
+            } else if ( FormatController.TrimLen(name) < 5 || FormatController.TrimLen(name) > 50 ) {
+                return (false, "That is such a long name! Try using aliases.");
+            
+            }
+
+            return (true, "");
+        }
+
         public static (bool isValid, string ErrorMsg) ValidateEmail (string email) {
 
             /* Cek apakah string parameter bisa diproses */
@@ -87,38 +132,71 @@ namespace Kel3_KpopZtation.Controllers {
 
             /* Cek apakah itu berformat email */
             } else if ( !FormatController.InEmailFormat(email) ) {
-                return (false, "Email is not in a valid format! ");
+                return (false, "Email is not in a correct format!");
 
-            } else if ( !EmailExistOnDatabase(email) ) {
-                return (false, "There is no account associated with that email!");
-            }
+            } 
 
             return (true, "");
         }
 
         public static (bool isValid, string ErrorMsg) ValidatePassword (string password) {
 
-            /* 
-             * Cek apakah string parameter bisa diproses.
-             * 
-             * No, this IS NOT a duplicate code smell. It is simply just a coincidence that 
-             * password has partially the same checks as email's.
-             * 
-             * Furthermore, it is simpler to validate this way in the future, 
-             * say what if we require passwords to have specific format (definitely NOT foreshadowing).
-             */
-            if (string.IsNullOrEmpty(password)) {
+            if ( FormatController.NullWhitespacesOrEmpty(password) ) {
                 return (false, "Password cannot be empty!");
+
+            } else if ( !FormatController.InAlphaNumericFormat(password) ) {
+                return (false, "Password must be an alphanumeric!");
+            }
+            
+            if ( FormatController.TrimLen(password) > 50 ) {
+                return (false, "Password is too long! Try keeping it under 50 characters.");
+            } 
+
+            return (true, "");
+        }
+
+        public static (bool isValid, string ErrorMsg) ValidateSex (string sex) {
+            System.Diagnostics.Debug.WriteLine(sex);
+            /* Cek apakah variabelnya bisa diproses */
+            if (FormatController.NullWhitespacesOrEmpty(sex) || FormatController.TrimLen(sex) < 4) {
+                return (false, "Gender must be picked!");
+
+            /* Cek apakah memenuhi salah satu dari dua kemungkinan */
+            } else if ( !(sex != "Male" || sex != "Female") ) {
+                return (false, "Gender must be either Male or Female!");
             }
 
             return (true, "");
         }
 
-        public static bool EmailExistOnDatabase (string email) {
-            if (CustomerRepo.ExistByEmail(email) != null)
-                return true;
+        public static (bool isValid, string ErrorMsg) ValidateAddress (string address) {
+
+            /* Cek apakah string parameter bisa diproses */
+            if ( FormatController.NullWhitespacesOrEmpty(address) ) {
+                return (false, "Address cannot be empty or all whitespaces!");
+
+            /* Cek apakah itu berakhiran dengan "Street" */
+            } else if ( !FormatController.EndsWith(address, "Street") ) {
+                return (false, "An address must end with \"Street\"!");
+
+            } 
             
-            return false;
+            if ( FormatController.TrimLen(address) > 100 ) {
+                return (false, "Address is too long! Try shortening it to 100 characters max.");
+            }
+
+            return (true, "");
+        }
+
+        public static (bool doesExist, string ErrorMsg) EmailExistOnDatabase (string email, string customErrorMsg) {
+            if (CustomerRepo.ExistByEmail(email) != null)
+                return (true, "");
+
+            /* Jika gamau custom error msg */
+            if (FormatController.NullWhitespacesOrEmpty(customErrorMsg) || FormatController.TrimLen(customErrorMsg) > 0)
+                return (false, "There is no account associated with that email!");
+            else
+                return (false, customErrorMsg);
         }
 
         private static void RemoveEmptyErrorMsgs(List<string> ErrorMsgs) {

@@ -5,8 +5,6 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Kel3_KpopZtation.Controllers;
-using Kel3_KpopZtation.Factories;
-using Kel3_KpopZtation.Controllers.PageController;
 
 namespace Kel3_KpopZtation.Views {
 

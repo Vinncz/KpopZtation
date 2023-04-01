@@ -7,6 +7,11 @@ using Kel3_KpopZtation.Models;
 namespace Kel3_KpopZtation.Repositories {
     public class CustomerRepo {
         private static KZEntities db = ConnectionMaster.CopyInstance();
+        public static void InsertCustomer (Customer c) {
+            db.Customers.Add(c);
+            db.SaveChanges();
+            System.Diagnostics.Debug.WriteLine(db.GetValidationErrors());
+        }
         public static Customer EmailPasswordMatch (string email, string password) {
             return (from Customer in db.Customers
                     where Customer.CustomerEmail == email && Customer.CustomerPassword == password
@@ -25,6 +30,11 @@ namespace Kel3_KpopZtation.Repositories {
         public static List<Customer> Retrieve () {
             return (from Customer in db.Customers
                     select Customer).ToList();
+        }
+        public static int GetLatestCustomerID () {
+            return (from Customer in db.Customers 
+                    orderby Customer.CustomerID descending 
+                    select Customer.CustomerID).FirstOrDefault();
         }
     }
 }

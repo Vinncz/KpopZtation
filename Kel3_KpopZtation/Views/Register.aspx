@@ -13,20 +13,21 @@
 
             <!-- Name Field -->
             <div class="flex verti gap5">
-                <asp:Label Text="Full Name" runat="server" />
+                <asp:Label CssClass="noSelect" Text="Full Name" runat="server" />
                 <asp:TextBox ID="TBName" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             
             <!-- Email Field -->
             <div class="flex verti gap5">
-                <asp:Label Text="Email" runat="server" />
+                <asp:Label CssClass="noSelect" Text="Email" runat="server" />
                 <asp:TextBox ID="TBEmail" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
 
             <!-- Gender Field -->
             <div class="flex verti gap5">
-                <asp:Label Text="Sex" runat="server" />
+                <asp:Label CssClass="noSelect" Text="Sex" runat="server" />
                 <asp:DropDownList ID="DDLGender" CssClass="pad10 borrad5 boxedEl1" runat="server">
+                    <asp:ListItem Selected="True" Value="_">Select Gender</asp:ListItem>
                     <asp:ListItem Text="Male" />
                     <asp:ListItem Text="Female" />
                 </asp:DropDownList>
@@ -34,13 +35,13 @@
 
             <!-- Address Field -->
             <div class="flex verti gap5">
-                <asp:Label Text="Address" runat="server" />
+                <asp:Label CssClass="noSelect" Text="Address" runat="server" />
                 <asp:TextBox ID="TBAddress" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
 
             <!-- Password Field -->
             <div class="flex verti gap5">
-                <asp:Label Text="Password" runat="server" />
+                <asp:Label CssClass="noSelect" Text="Password" runat="server" />
                 <asp:TextBox TextMode="Password" ID="TBPassword"
                     CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
@@ -52,7 +53,7 @@
 
             <!-- Submit Button -->
             <asp:Button ID="BTSubmit" runat="server" OnClick="BTSubmit_Click" 
-                CssClass="ptr pad10 borrad5 nobor customBackground customBackgroundHover" 
+                CssClass="ptr pad10 martop10 borrad5 nobor customBackground customBackgroundHover" 
                 style="--background: rgb(34 159 51); --background-text-color: white;
                        --borderWidth: 1px; --borderColor: var(--border-color);
                        --background-hover: rgb(17 110 32); --background-hover-text-color: white;" 
