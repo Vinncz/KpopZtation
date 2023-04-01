@@ -134,6 +134,7 @@
     <Compile Include="Controllers\CookieController.cs" />
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\FormatController.cs" />
+    <Compile Include="Controllers\NavigationController.cs" />
     <Compile Include="Controllers\PageController\HomePageController.cs" />
     <Compile Include="Controllers\PageController\LoginPageController.cs" />
     <Compile Include="Factories\CookieFactory.cs" />

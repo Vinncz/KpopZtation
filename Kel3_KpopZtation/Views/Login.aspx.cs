@@ -5,9 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Kel3_KpopZtation.Controllers;
-using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Factories;
-using Kel3_KpopZtation.Repositories;
 using Kel3_KpopZtation.Controllers.PageController;
 
 namespace Kel3_KpopZtation.Views {
@@ -25,47 +23,17 @@ namespace Kel3_KpopZtation.Views {
          * (X) The [Remember Me Cookie] has to own an expiry date.
          */
         private static ElementController ec = new ElementController();
+        private static NavigationController nc = new NavigationController();
+
         protected void Page_Load(object sender, EventArgs e) {
-            // HttpCookie AuthCookie = Request.Cookies["AuthInfo"];
+
+            /* BEGIN TEMPLATE */
             AuthController.MakeSessionFromCookie();
-            Customer c = (Customer)Session["AuthInfo"];
-
-            ec.PrepareVisibility(Page, c);
-
-            /* 
-             * Cek apakah terdapat Session atau Cookie yang tersimpan.
-             * Jika YA, gaperlu login. 
-             * 
-             * Basically, dibawah ini adalah function untuk refresh Cookie atau Session.
-             * Setiap kali lu mau sync Session dengan Cookie, href ke Login.aspx/?FwdTo=<Halaman Yang Lu Mau Refresh>
-             * 
-             * Jika terdapat Cookie AuthInfo
-             */
-            if ( c != null ) {
-                /* Sync dengan Session */
-                // CookieController.SyncCookieWithSession();
-
-                /* 
-                * Jika dia minta diforward ke halaman lain setelah login berhasil, gunakan parameter ?FwdTo=... 
-                *      
-                *      Contoh:
-                *      localhost:4039/Views/Login.aspx?FwdTo=Home.apsx
-                * 
-                * Ini akan selalu forward ke Home.aspx sbg default dan fallback.
-                * 
-                * Jangan lupa di halaman parameternya harus CEK DULU apakah cookie
-                * yg dipegang punya permission thdp data yang diakses.
-                */
-                if (Request.QueryString["FwdTo"] != null) {
-                    Response.Redirect("./" + Request.QueryString["FwdTo"]);
-                }
-
-                /* Redirect fallback */
-                Response.Redirect("./Home.aspx");
-            }
+            ec.PrepareVisibility(Page, AuthController.ExtractCustomer());
+            nc.BlockWhenSignedIn(AuthController.ExtractCustomer());
+            /* END TEMPLATE */
 
             /* Everything else goes here. */
-
             /* Set ErrorMessage Section ke invisible utk pertama kali */
             ec.Invis(LBMessage);
 
@@ -87,12 +55,7 @@ namespace Kel3_KpopZtation.Views {
                 LBMessage.Text += ErrorMsgs.Aggregate((current, next) => current + "<br />" + next);
 
             } else if (Dump != null) { 
-                if (Request.QueryString["FwdTo"] != null) {
-                    Response.Redirect("./" + Request.QueryString["FwdTo"]);
-                }
-
-                /* Redirect fallback */
-                Response.Redirect("./Home.aspx");
+                nc.BlockWhenSignedIn(Dump);
             }
         }
     }
