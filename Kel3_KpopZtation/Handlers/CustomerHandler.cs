@@ -19,7 +19,14 @@ namespace Kel3_KpopZtation.Handlers {
             if (id <= 0) 
                 return null;
 
-            return CustomerFactory.MakeCustomer(id, name, email, address, password, sex, role);
+            Customer c = null;
+            try {
+                c = CustomerFactory.MakeCustomer(++id, name, email, address, password, sex.ToString(), role);
+            } catch {
+                c = null;
+            }
+
+            return c;
         }
 
         public static int GetLatestCustomerID () {

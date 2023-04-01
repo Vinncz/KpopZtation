@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contents" runat="server">
-    <div style="--martop: 100px; --martom: 30px;" class="fullW flex r em2 customMargin" > All Artists </div>
+    <div style="--martop: 100px; --martom: 30px;" class="fullW flex r em2 customMargin" > Welcome, <%= CustomerName %>! This page shows All Artists </div>
     <div style="--martom: 150px" class="fullW r autoGridH verti gap25 customMargin">
         <asp:Repeater ID="ArtistsRepeater" runat="server">
             <ItemTemplate>

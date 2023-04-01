@@ -29,10 +29,13 @@ namespace Kel3_KpopZtation.Views {
 
         ElementController ec = new ElementController();
         public static List<Artist> Artists = null;
+        public static string CustomerName = "Guest";
+
         protected void Page_Load(object sender, EventArgs e) {
             AuthController.MakeSessionFromCookie();
-            Customer c = (Customer) Session["AuthInfo"];
+            Customer c = AuthController.ExtractCustomer();
 
+            if (c != null) CustomerName = c.CustomerName;
             ec.PrepareVisibility(Page, c);
 
             Artists = HomePageController.Retrieve();

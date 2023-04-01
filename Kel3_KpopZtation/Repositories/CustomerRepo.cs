@@ -8,9 +8,18 @@ namespace Kel3_KpopZtation.Repositories {
     public class CustomerRepo {
         private static KZEntities db = ConnectionMaster.CopyInstance();
         public static void InsertCustomer (Customer c) {
-            db.Customers.Add(c);
-            db.SaveChanges();
-            System.Diagnostics.Debug.WriteLine(db.GetValidationErrors());
+            try {
+                db.Customers.Add(c);
+                db.SaveChanges();
+            } catch (System.Data.Entity.Validation.DbEntityValidationException ex) {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
         }
         public static Customer EmailPasswordMatch (string email, string password) {
             return (from Customer in db.Customers

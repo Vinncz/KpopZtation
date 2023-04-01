@@ -54,7 +54,8 @@ namespace Kel3_KpopZtation.Controllers {
             return (AssociatedAccount, ErrorMsgs);
         }
 
-        public static (Customer CreatedAccount, List<string> ErrorMsgs) Register (string name, string email, string sex, string address, string password) {
+        public static (Customer CreatedAccount, List<string> ErrorMsgs) Register 
+            (string name, string email, string sex, string address, string password) {
 
             Customer CreatedAccount = null;
             List<string> ErrorMsgs = new List<string>();
@@ -62,7 +63,7 @@ namespace Kel3_KpopZtation.Controllers {
             var NameValidationResult = ValidateName(name); ErrorMsgs.Add(NameValidationResult.ErrorMsg);
 
             var EmailValidationResult = ValidateEmail(email); ErrorMsgs.Add(EmailValidationResult.ErrorMsg);
-            var EmailExistenceInDB = EmailExistOnDatabase(email, "There are already an account ascosiated with that email! Try logging in.");
+            var EmailExistenceInDB = EmailExistOnDatabase(email, "There are already an account ascosiated with that email! Try logging in.");  ErrorMsgs.Add(EmailExistenceInDB.ErrorMsg);
 
             var SexValidationResult = ValidateSex(sex); ErrorMsgs.Add(SexValidationResult.ErrorMsg);
 
@@ -72,13 +73,18 @@ namespace Kel3_KpopZtation.Controllers {
 
             RemoveEmptyErrorMsgs(ErrorMsgs);
 
-            bool ParameterIsValid = NameValidationResult.isValid && EmailValidationResult.isValid && EmailExistenceInDB.doesExist
+            bool ParameterIsValid = NameValidationResult.isValid && EmailValidationResult.isValid && EmailExistenceInDB.doesExist == false
                                     && SexValidationResult.isValid && AddressValidationResult.isValid && PasswordValidationResult.isValid;
             
-            System.Diagnostics.Debug.WriteLine(ParameterIsValid ? "param valid" : "param invalid");
+            System.Diagnostics.Debug.WriteLine(NameValidationResult.isValid ? "name valid" : "name invalid");
+            System.Diagnostics.Debug.WriteLine(EmailValidationResult.isValid ? "email valid" : "email invalid");
+            System.Diagnostics.Debug.WriteLine(EmailExistenceInDB.doesExist ? "email exists" : "email does not exist");
+            System.Diagnostics.Debug.WriteLine(SexValidationResult.isValid ? "Sex valid" : "Sex invalid");
+            System.Diagnostics.Debug.WriteLine(AddressValidationResult.isValid ? "Address valid" : "Address invalid");
+            System.Diagnostics.Debug.WriteLine(PasswordValidationResult.isValid ? "Password valid" : "Password invalid");
 
             if (ParameterIsValid) {
-                CreatedAccount = CustomerHandler.MakeCustomer(name, email, address, password, sex, "Buyer");
+                CreatedAccount = CustomerHandler.MakeCustomer(name, email, sex, address, password, "Buyer");
                 CustomerHandler.InsertCustomer(CreatedAccount);
 
                 if (CreatedAccount != null) {
@@ -166,7 +172,10 @@ namespace Kel3_KpopZtation.Controllers {
                 return (false, "Gender must be either Male or Female!");
             }
 
-            return (true, "");
+            if ( sex != "Male" || sex != "Female" )
+                return (true, "");
+            else
+                return (false, "Something went wrong.");
         }
 
         public static (bool isValid, string ErrorMsg) ValidateAddress (string address) {
@@ -190,10 +199,10 @@ namespace Kel3_KpopZtation.Controllers {
 
         public static (bool doesExist, string ErrorMsg) EmailExistOnDatabase (string email, string customErrorMsg) {
             if (CustomerRepo.ExistByEmail(email) != null)
-                return (true, "");
+                return (true, customErrorMsg);
 
             /* Jika gamau custom error msg */
-            if (FormatController.NullWhitespacesOrEmpty(customErrorMsg) || FormatController.TrimLen(customErrorMsg) > 0)
+            if (FormatController.NullWhitespacesOrEmpty(customErrorMsg) || FormatController.TrimLen(customErrorMsg) <= 0)
                 return (false, "There is no account associated with that email!");
             else
                 return (false, customErrorMsg);
@@ -209,6 +218,7 @@ namespace Kel3_KpopZtation.Controllers {
                 HttpContext.Current.Response.Cookies.Get(SavedCookie).Expires = DateTime.Now.AddDays(CookieController.CookieSetbackValue);
             }
 
+            HttpContext.Current.Session["AuthInfo"] = (Customer) null;
             HttpContext.Current.Response.Redirect("Login.aspx");
         }
     }
