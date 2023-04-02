@@ -116,6 +116,7 @@
     </Content>
     <Content Include="Queries\Inserting Into The Database.sql" />
     <Content Include="Queries\Making The Database.sql" />
+    <Content Include="Views\EditArtist.aspx" />
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Register.aspx" />
@@ -178,6 +179,13 @@
     <Compile Include="Repositories\ArtistRepo.cs" />
     <Compile Include="Repositories\ConnectionMaster.cs" />
     <Compile Include="Repositories\CustomerRepo.cs" />
+    <Compile Include="Views\EditArtist.aspx.cs">
+      <DependentUpon>EditArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\EditArtist.aspx.designer.cs">
+      <DependentUpon>EditArtist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contents" runat="server">
-    <div style="--martop: 100px; --martom: 30px;" class="fullW flex r em2 customMargin" > Welcome, <%= CustomerName %>! This page shows All Artists </div>
+    <div style="--martop: 100px; --martom: 30px;" class="fullW flex r em1_5 customMargin" > Welcome, <%= CustomerName %>! This page shows All Artists </div>
     <div style="--martom: 150px" class="fullW r autoGridH verti gap25 customMargin">
         <asp:Repeater ID="ArtistsRepeater" runat="server">
             <ItemTemplate>
@@ -13,7 +13,7 @@
                     </div>
 
                     <div class="productCardDetails pad15 gap10 flex r verti">
-                        <div class="productCardTitle em1_5 bottomVerti sb"> <%# Eval("ArtistName") %> </div>
+                        <div class="productCardTitle em1_25 bottomVerti sb"> <%# Eval("ArtistName") %> </div>
                         <div class="productCardTitle"> Has <%# ((IEnumerable)Eval("Albums")).Cast<object>().Count() %> Album(s) </div>
                         <div id="AODVList" runat="server" class="flex spaceEvenlyH fullH gap10 noSelect padtop15">
                             

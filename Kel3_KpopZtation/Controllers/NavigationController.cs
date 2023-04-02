@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Kel3_KpopZtation.Models;
 
 namespace Kel3_KpopZtation.Controllers {
     public class NavigationController {
@@ -31,5 +32,11 @@ namespace Kel3_KpopZtation.Controllers {
             }
         }
 
+        public void BlockIfNotAdmin (Customer c, string Destination) {
+            if ( c == null || c.CustomerRole != "Admin" ) {
+                HttpContext.Current.Response.Redirect("Login.aspx?FwdTo=" + Destination);
+
+            }
+        }
     }
 }

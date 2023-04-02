@@ -26,6 +26,10 @@
     border-radius: 15px;
 }
 
+.borradMAX {
+    border-radius: 2048px;
+}
+
 .nobor {
     border: hidden;
 }
