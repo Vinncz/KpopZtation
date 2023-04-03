@@ -30,7 +30,7 @@ namespace Kel3_KpopZtation.Controllers {
             var PasswordValidationResult = ValidatePassword(Password); ErrorMsgs.Add(PasswordValidationResult.ErrorMsg);
 
             /* Removing empty error msgs */
-            RemoveEmptyErrorMsgs(ErrorMsgs);
+            FormatController.RemoveEmptyString(ErrorMsgs);
 
             /* Determining whether the given parameter can be checked further */
             bool ParameterIsValid = EmailValidationResult.isValid  && PasswordValidationResult.isValid && EmailStatus.doesExist;
@@ -71,7 +71,7 @@ namespace Kel3_KpopZtation.Controllers {
 
             var PasswordValidationResult = ValidatePassword(password); ErrorMsgs.Add(PasswordValidationResult.ErrorMsg);
 
-            RemoveEmptyErrorMsgs(ErrorMsgs);
+            FormatController.RemoveEmptyString(ErrorMsgs);
 
             bool ParameterIsValid = NameValidationResult.isValid && EmailValidationResult.isValid && EmailExistenceInDB.doesExist == false
                                     && SexValidationResult.isValid && AddressValidationResult.isValid && PasswordValidationResult.isValid;
@@ -206,10 +206,6 @@ namespace Kel3_KpopZtation.Controllers {
                 return (false, "There is no account associated with that email!");
             else
                 return (false, customErrorMsg);
-        }
-
-        private static void RemoveEmptyErrorMsgs(List<string> ErrorMsgs) {
-            ErrorMsgs.RemoveAll(s => s.Length <= 0);
         }
     
         public static void SignOut () {

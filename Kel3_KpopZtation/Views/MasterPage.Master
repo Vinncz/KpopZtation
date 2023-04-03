@@ -58,7 +58,7 @@
                     Update Profile
                 </asp:HyperLink>
                 <asp:Button ID="_GBTLogOut" Text="Log Out" runat="server" 
-                    CssClass="coloredEl pad10 padleft25 nobor padri25 boxedEl1 borrad5" OnClick="BTLogOut_Click"></asp:Button>
+                    CssClass="ptr pad10 padleft25 nobor padri25 boxedEl1 borrad5 redButton" OnClick="BTLogOut_Click"></asp:Button>
             </div>
         </div>
         <div id='pageWrapper' class="flex verti r gap5">

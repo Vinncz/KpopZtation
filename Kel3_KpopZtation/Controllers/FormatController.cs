@@ -25,6 +25,10 @@ namespace Kel3_KpopZtation.Controllers {
             return ValidFileExtension.Contains(FileExtension);
         }
 
+        public static List<string> GetValidFileExtension () {
+            return ValidFileExtension;
+        }
+
         public static bool InEmailFormat (string email) {
             try {
                 var addr = new System.Net.Mail.MailAddress(email);
@@ -62,6 +66,10 @@ namespace Kel3_KpopZtation.Controllers {
             } catch {
                 return -1;
             }
+        }
+    
+        public static void RemoveEmptyString (List<string> ErrorMsgs) {
+            ErrorMsgs.RemoveAll(s => s.Length <= 0);
         }
     }
 }

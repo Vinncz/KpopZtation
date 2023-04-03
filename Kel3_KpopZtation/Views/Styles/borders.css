@@ -1,4 +1,8 @@
-﻿.boxedEl1 {
+﻿.boxedElSoft1 {
+    border: 1px solid var(--soft);
+}
+
+.boxedEl1 {
     border: 1px solid var(--border-color);
 }
 

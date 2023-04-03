@@ -104,6 +104,8 @@
     <Content Include="Assets\Artists\638059446432559006.jfif" />
     <Content Include="Assets\Artists\638059447901481658.jfif" />
     <Content Include="Assets\Artists\638059450808002463.jfif" />
+    <Content Include="Assets\Icons\warning-blue.svg" />
+    <Content Include="Assets\Icons\warning.svg" />
     <Content Include="Models\KpopZtation.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>KpopZtation.Context.cs</LastGenOutput>
@@ -136,6 +138,7 @@
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\FormatController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
+    <Compile Include="Controllers\PageController\EditArtistController.cs" />
     <Compile Include="Controllers\PageController\HomePageController.cs" />
     <Compile Include="Controllers\PageController\LoginPageController.cs" />
     <Compile Include="Controllers\PageController\RegisterPageController.cs" />

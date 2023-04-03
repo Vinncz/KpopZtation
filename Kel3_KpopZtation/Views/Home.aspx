@@ -21,14 +21,10 @@
                                 runat="server" 
                                 id="AOBTEdit" 
                                 NavigateUrl='<%# Eval("ArtistID", "EditArtist.aspx?id={0}") %>'
-                                CssClass="z2 productCardTitle boxedEl1 borrad5 flex grow1 pad10 centerHori ptr customBackgroundHover"
-                                style="--background-hover: rgb(227 176 67);"> Edit </asp:HyperLink>
+                                CssClass="z2 productCardTitle boxedEl1 borrad5 flex pad10 centerHori ptr greenButton grow1"> Edit </asp:HyperLink>
 
                             <asp:Button
-                                CssClass="z2 productCardTitle grow1 ptr pad10 borrad5 nobor customBackground customBackgroundHover centerHori flex boxedEl1"
-                                style="--background: rgb(159 34 34); --background-text-color: white;
-                                           --borderWidth: 1px; --borderColor: var(--border-color);
-                                           --background-hover: rgb(98 19 19); --background-hover-text-color: white;"
+                                CssClass="z2 productCardTitle ptr pad10 borrad5 centerHori flex redOutlineButton grow1"
                                 runat="server" ID="AOBTDelete" 
                                 Text="Delete" 
                                 CommandName="Delete" 

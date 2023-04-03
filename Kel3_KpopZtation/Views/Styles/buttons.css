@@ -1,10 +1,91 @@
-﻿.popupEl {
+﻿* {
+    --green: rgb(34 159 51);
+    --green-hover: rgb(17 110 32);
+
+    --red: rgb(191 42 56);
+    --red-hover: rgb(102 20 28);
+
+    --orange: rgb(227 176 67);
+    --orange-hover: rgb(189 118 34);
+}
+
+.popupEl {
     transition: all var(--transitionSpeed) ease-in-out;
 }
 
     .popupEl:hover {
         transform: translate(-0.4rem, -0.4rem);
         box-shadow: 0.4rem 0.4rem 0 var(--border-color);
+    }
+
+
+/* Green Button */
+    .greenButton {
+        background: var(--green);
+        border: none;
+        color: white;
+    }
+
+        .greenButton:hover {
+            background: var(--green-hover);
+        }
+
+    .greenOutlineButton {
+        background: none;
+        border: 1px solid var(--green);
+        color: var(--green);
+    }
+
+        .greenOutlineButton:hover {
+            background: var(--green);
+            border: 1px solid var(--green);
+            color: white;
+        }
+
+/* Red Button */
+.redButton {
+    background: var(--red);
+    border: none;
+    color: white;
+}
+
+    .redButton:hover {
+        background: var(--red-hover);
+    }
+
+.redOutlineButton {
+    background: none;
+    border: 1px solid var(--red);
+    color: var(--red);
+}
+
+    .redOutlineButton:hover {
+        background: var(--red);
+        border: 1px solid var(--red);
+        color: white;
+    }
+
+/* Orange Button */
+.orangeButton {
+    background: var(--orange);
+    border: none;
+    color: white;
+}
+
+    .orangeButton:hover {
+        background: var(--orange-hover);
+    }
+
+.orangeOutlineButton {
+    background: none;
+    border: 1px solid var(--orange);
+    color: var(--orange);
+}
+
+    .orangeOutlineButton:hover {
+        background: var(--orange);
+        border: 1px solid var(--orange);
+        color: white;
     }
 
 .ptr:hover {

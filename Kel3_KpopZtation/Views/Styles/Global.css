@@ -45,6 +45,14 @@ main {
     user-select: none;
 }
 
+.warning-red::before {
+    content: url("../../Assets/Icons/warning.svg");
+}
+
+.warning-blue::before {
+    content: url("../../Assets/Icons/warning-blue.svg");
+}
+
 .hideOverflow {
     overflow: hidden;
 }

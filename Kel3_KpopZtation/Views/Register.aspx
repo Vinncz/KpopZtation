@@ -53,7 +53,7 @@
 
             <!-- Submit Button -->
             <asp:Button ID="BTSubmit" runat="server" OnClick="BTSubmit_Click" 
-                CssClass="ptr pad10 martop10 borrad5 nobor customBackground customBackgroundHover" 
+                CssClass="ptr pad10 martop10 borrad5 greenButton" 
                 style="--background: rgb(34 159 51); --background-text-color: white;
                        --borderWidth: 1px; --borderColor: var(--border-color);
                        --background-hover: rgb(17 110 32); --background-hover-text-color: white;" 

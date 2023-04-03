@@ -15,13 +15,13 @@ namespace Kel3_KpopZtation.Views
     {
 
         /// <summary>
-        /// AOTBName control.
+        /// AOTBNewName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox AOTBName;
+        protected global::System.Web.UI.WebControls.TextBox AOTBNewName;
 
         /// <summary>
         /// AOFUProfilePicture control.
@@ -31,6 +31,15 @@ namespace Kel3_KpopZtation.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload AOFUProfilePicture;
+
+        /// <summary>
+        /// LBMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBMessage;
 
         /// <summary>
         /// AOBTSubmit control.
