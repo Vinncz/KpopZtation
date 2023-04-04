@@ -38,11 +38,9 @@ namespace Kel3_KpopZtation.Views {
 
                     AOTBNewName.Text = ArtistName;
                 }
-                
-                ec.Invis(LBMessage);
-
             }
 
+            ec.Invis(LBMessage);
             AOTBNewName.Focus();
         }
 
@@ -74,24 +72,13 @@ namespace Kel3_KpopZtation.Views {
         }
 
         protected void RefreshPage () { 
-            if (IsPostBack) { 
-                Artist a = ArtistController.GetArtistByID(ArtistID.ToString());
-                if ( a != null ) {
-                    ArtistName = a.ArtistName;
-                    ArtistImage = a.ArtistImage;
-                    ArtistHasNAlbums = a.Albums.Count();
+            Artist a = ArtistController.GetArtistByID(ArtistID.ToString());
+            if ( a != null ) {
+                ArtistName = a.ArtistName;
+                ArtistImage = a.ArtistImage;
+                ArtistHasNAlbums = a.Albums.Count();
 
-                    AOTBNewName.Text = ArtistName;
-                }
-            } else { 
-                Artist a = ArtistController.GetArtistByID(ArtistID.ToString());
-                if ( a != null ) {
-                    ArtistName = a.ArtistName;
-                    ArtistImage = a.ArtistImage;
-                    ArtistHasNAlbums = a.Albums.Count();
-
-                    AOTBNewName.Text = ArtistName;
-                }
+                AOTBNewName.Text = ArtistName;
             }
         }
 

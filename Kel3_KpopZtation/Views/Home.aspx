@@ -7,7 +7,7 @@
         <asp:Repeater ID="ArtistsRepeater" runat="server">
             <ItemTemplate>
                 <div style="" class="popupEl r hideOverflow gap25 boxedEl1 borrad5 productCard fullW fullH padtom5">
-                <asp:HyperLink class="abs fullW fullH z1" runat="server" NavigateUrl='<%# Eval("ArtistID", "Artist.aspx?id={0}") %>'></asp:HyperLink>
+                <asp:HyperLink class="abs fullW fullH z1" runat="server" NavigateUrl='<%# Eval("ArtistID", "ViewArtist.aspx?id={0}") %>'></asp:HyperLink>
                     <div class="productCardImg r grid hideOverflow">
                         <img src="../Assets/Artists/<%# Eval("ArtistImage") %>" />
                     </div>

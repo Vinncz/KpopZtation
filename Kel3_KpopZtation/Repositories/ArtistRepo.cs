@@ -13,9 +13,10 @@ namespace Kel3_KpopZtation.Repositories {
         public static void UpdateArtist (int ID, string name, string filename) {
             Artist a = db.Artists.Find(ID);
 
-            if (FormatController.TrimLen(name) > 0  &&  a.ArtistName != name) 
+            if ( !FormatController.NullWhitespacesOrEmpty(name) && FormatController.TrimLen(name) > 0  &&  a.ArtistName != name) 
                 a.ArtistName = name;
-            if (FormatController.TrimLen(filename) > 0 && a.ArtistImage != filename)
+
+            if (!FormatController.NullWhitespacesOrEmpty(name) && FormatController.TrimLen(filename) > 0 && a.ArtistImage != filename )
                 a.ArtistImage = filename;
 
             db.SaveChanges();
