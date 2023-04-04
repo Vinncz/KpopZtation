@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Repositories;
+using Kel3_KpopZtation.Handlers;
 
 namespace Kel3_KpopZtation.Controllers {
     public static class ArtistController {
@@ -26,6 +27,24 @@ namespace Kel3_KpopZtation.Controllers {
 
             if (NameValidationResult.isValid  &&  FileValidationResult.isValid) {
                 ArtistRepo.UpdateArtist(artistID, name, filename);
+                return (true, ErrorMsgs);
+            }
+
+            return (false, ErrorMsgs);
+        }
+
+        public static (bool updatedSuccessfully, List<string> ErrorMsgs) MakeArtist (string name, string filename, int filesize) {
+            List<string> ErrorMsgs = new List<string>();
+
+            var NameValidationResult = ValidateName(name); ErrorMsgs.Add(NameValidationResult.ErrorMsg);
+            var FileValidationResult = ValidateProfilePicture(filename, filesize); ErrorMsgs.Add(FileValidationResult.ErrorMsg);
+
+            FormatController.RemoveEmptyString(ErrorMsgs);
+            System.Diagnostics.Debug.WriteLine(NameValidationResult.isValid ? "Nama artist valid -> " + name : "Namanya jelek -> " + name);
+            System.Diagnostics.Debug.WriteLine(FileValidationResult.isValid ? "File valid -> " + filename : "File jelek -> " + filename);
+
+            if (NameValidationResult.isValid  &&  FileValidationResult.isValid) {
+                ArtistHandler.InsertArtist(ArtistHandler.MakeArtist(name, filename));
                 return (true, ErrorMsgs);
             }
 

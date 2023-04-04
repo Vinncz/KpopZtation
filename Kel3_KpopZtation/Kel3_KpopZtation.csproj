@@ -118,6 +118,7 @@
     </Content>
     <Content Include="Queries\Inserting Into The Database.sql" />
     <Content Include="Queries\Making The Database.sql" />
+    <Content Include="Views\AddArtist.aspx" />
     <Content Include="Views\EditArtist.aspx" />
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Login.aspx" />
@@ -144,8 +145,10 @@
     <Compile Include="Controllers\PageController\LoginPageController.cs" />
     <Compile Include="Controllers\PageController\RegisterPageController.cs" />
     <Compile Include="Controllers\PageController\ViewArtistPageController.cs" />
+    <Compile Include="Factories\ArtistFactory.cs" />
     <Compile Include="Factories\CookieFactory.cs" />
     <Compile Include="Factories\CustomerFactory.cs" />
+    <Compile Include="Handlers\ArtistHandler.cs" />
     <Compile Include="Handlers\CustomerHandler.cs" />
     <Compile Include="Models\Album.cs">
       <DependentUpon>KpopZtation.tt</DependentUpon>
@@ -185,6 +188,13 @@
     <Compile Include="Repositories\ArtistRepo.cs" />
     <Compile Include="Repositories\ConnectionMaster.cs" />
     <Compile Include="Repositories\CustomerRepo.cs" />
+    <Compile Include="Views\AddArtist.aspx.cs">
+      <DependentUpon>AddArtist.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AddArtist.aspx.designer.cs">
+      <DependentUpon>AddArtist.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditArtist.aspx.cs">
       <DependentUpon>EditArtist.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
