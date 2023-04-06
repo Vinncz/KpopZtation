@@ -27,7 +27,8 @@ namespace Kel3_KpopZtation.Views {
             nc.BlockIfNotAdmin(AuthController.ExtractCustomer(), "EditArtist.aspx");
             /* END TEMPLATE */
 
-            ec.Invis(LBMessage);
+            if (!IsPostBack)
+                ec.Invis(LBMessage);
             AOTBNewName.Focus();
         }
 
@@ -50,9 +51,8 @@ namespace Kel3_KpopZtation.Views {
                 if (FormatController.TrimLen(NewArtistImage) > 0)
                     AOFUProfilePicture.SaveAs(Server.MapPath("~/Assets/Artists/" + NewArtistImage));
 
+                Response.Redirect("Home.aspx");
             }
-
-            Response.Redirect("Home.aspx");
         }
 
         protected void BTCancel_Click(object sender, EventArgs e) {

@@ -48,9 +48,9 @@ namespace Kel3_KpopZtation.Views {
         protected void DeleteButton_Command(object sender, CommandEventArgs e) {
 
             if (e.CommandName == "Delete") {
-                int artistID = Convert.ToInt32(e.CommandArgument);
+                int albumID = Convert.ToInt32(e.CommandArgument);
                 // Delete the artist with the specified ID from your data source
-                AlbumRepo.RemoveByID(artistID);
+                AlbumRepo.RemoveByID(albumID);
 
                 // Re-bind the data to the Repeater control
                 Albums = AlbumRepo.Retrieve();

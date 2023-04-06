@@ -20,7 +20,7 @@ namespace Kel3_KpopZtation.Repositories {
             if ( !FormatController.NullWhitespacesOrEmpty(name) && FormatController.TrimLen(name) > 0  &&  a.ArtistName != name) 
                 a.ArtistName = name;
 
-            if (!FormatController.NullWhitespacesOrEmpty(name) && FormatController.TrimLen(filename) > 0 && a.ArtistImage != filename )
+            if (!FormatController.NullWhitespacesOrEmpty(filename) && FormatController.TrimLen(filename) > 0 && a.ArtistImage != filename )
                 a.ArtistImage = filename;
 
             db.SaveChanges();

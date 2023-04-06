@@ -12,7 +12,7 @@
                 <div> This artist has <%= ArtistHasNAlbums %> albums. </div>
             </div>
         </div>
-        <div class="mainLayout autoGridH gap25">
+        <div class="mainLayout gridH3 gap25">
             <asp:Repeater ID="ArtistsRepeater" runat="server">
                 <ItemTemplate>
                     <div style="" class="popupEl r hideOverflow gap25 boxedEl1 borrad5 productCard fullW fullH padtom5">
@@ -22,7 +22,9 @@
                         </div>
 
                         <div class="productCardDetails pad15 gap10 flex r verti">
-                            <div class="productCardTitle em1_25 bottomVerti sb"> <%# Eval("AlbumName") %> </div>
+                            <div class="productCardTitle em1_25 bottomVerti sb"><%# Eval("AlbumName") %> </div>
+                            <div class="productCardTitle"><%# Eval("AlbumPrice") %> </div>
+                            <div class="productCardTitle"><%# Eval("AlbumDescription") %> </div>
                             <div id="AODVList" runat="server" class="flex spaceEvenlyH fullH gap10 noSelect padtop15">
                             
                                 <asp:HyperLink 

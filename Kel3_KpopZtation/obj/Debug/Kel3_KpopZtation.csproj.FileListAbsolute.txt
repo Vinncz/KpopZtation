@@ -119,8 +119,8 @@ C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\bin\Microsoft.CodeDom.P
 C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\bin\EntityFramework.xml
 C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\bin\EntityFramework.SqlServer.xml
 C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\obj\Debug\Kel3_KpopZtation.csproj.AssemblyReference.cache
 C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\obj\Debug\Kel3_KpopZtation.csproj.CoreCompileInputs.cache
 C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\obj\Debug\Kel3_KpopZtation.csproj.CopyComplete
 C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\obj\Debug\Kel3_KpopZtation.dll
 C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\obj\Debug\Kel3_KpopZtation.pdb
+C:\Users\vincz\source\repos\KpopZtation\Kel3_KpopZtation\obj\Debug\Kel3_KpopZtation.csproj.AssemblyReference.cache

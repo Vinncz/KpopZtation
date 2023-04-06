@@ -15,40 +15,50 @@ namespace Kel3_KpopZtation.Controllers {
             return ArtistRepo.ExistByID( Convert.ToInt32(id) );
         }
 
-        public static (bool updatedSuccessfully, List<string> ErrorMsgs) UpdateArtist (int artistID, string name, string filename, int filesize) {
+        public static (bool isValid, List<string> ErrorMsgs) ValidateArtist(string name, string filename, int filesize) {
             List<string> ErrorMsgs = new List<string>();
 
             var NameValidationResult = ValidateName(name); ErrorMsgs.Add(NameValidationResult.ErrorMsg);
             var FileValidationResult = ValidateProfilePicture(filename, filesize); ErrorMsgs.Add(FileValidationResult.ErrorMsg);
 
             FormatController.RemoveEmptyString(ErrorMsgs);
-            System.Diagnostics.Debug.WriteLine(NameValidationResult.isValid ? "Nama artist valid -> " + name : "Namanya jelek -> " + name);
-            System.Diagnostics.Debug.WriteLine(FileValidationResult.isValid ? "File valid -> " + filename : "File jelek -> " + filename);
 
-            if (NameValidationResult.isValid  &&  FileValidationResult.isValid) {
-                ArtistRepo.UpdateArtist(artistID, name, filename);
+            if (NameValidationResult.isValid && FileValidationResult.isValid) {
                 return (true, ErrorMsgs);
             }
 
             return (false, ErrorMsgs);
         }
 
-        public static (bool updatedSuccessfully, List<string> ErrorMsgs) MakeArtist (string name, string filename, int filesize) {
-            List<string> ErrorMsgs = new List<string>();
+        public static (bool updatedSuccessfully, List<string> ErrorMsgs) UpdateArtist(int artistID, string name, string filename, int filesize) {
+            var validationResult = ValidateArtist(name, filename, filesize);
 
-            var NameValidationResult = ValidateName(name); ErrorMsgs.Add(NameValidationResult.ErrorMsg);
-            var FileValidationResult = ValidateProfilePicture(filename, filesize); ErrorMsgs.Add(FileValidationResult.ErrorMsg);
-
-            FormatController.RemoveEmptyString(ErrorMsgs);
-            System.Diagnostics.Debug.WriteLine(NameValidationResult.isValid ? "Nama artist valid -> " + name : "Namanya jelek -> " + name);
-            System.Diagnostics.Debug.WriteLine(FileValidationResult.isValid ? "File valid -> " + filename : "File jelek -> " + filename);
-
-            if (NameValidationResult.isValid  &&  FileValidationResult.isValid) {
-                ArtistHandler.InsertArtist(ArtistHandler.MakeArtist(name, filename));
-                return (true, ErrorMsgs);
+            if (validationResult.isValid) {
+                ArtistRepo.UpdateArtist(artistID, name, filename);
+                return (true, validationResult.ErrorMsgs);
             }
 
-            return (false, ErrorMsgs);
+            return (false, validationResult.ErrorMsgs);
+        }
+
+        public static (bool updatedSuccessfully, List<string> ErrorMsgs) MakeArtist(string name, string filename, int filesize) {
+            var validationResult = ValidateArtist(name, filename, filesize);
+
+            if (validationResult.isValid) {
+                if (FormatController.TrimLen(filename) <= 0 || filesize <= 1024) {
+                    validationResult.ErrorMsgs.Add("Picture must be present.");
+                    System.Diagnostics.Debug.WriteLine(validationResult.ErrorMsgs.Count());
+                    foreach (string s in validationResult.ErrorMsgs)
+                    {
+                        System.Diagnostics.Debug.WriteLine(s);
+                    }
+                    return (false, validationResult.ErrorMsgs);
+                }
+                ArtistHandler.InsertArtist(ArtistHandler.MakeArtist(name, filename));
+                return (true, validationResult.ErrorMsgs);
+            }
+
+            return (false, validationResult.ErrorMsgs);
         }
 
         public static (bool isValid, string ErrorMsg) ValidateName (string name) {
