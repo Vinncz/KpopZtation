@@ -11,8 +11,18 @@ namespace Kel3_KpopZtation.Repositories {
         private static KZEntities db = ConnectionMaster.CopyInstance();
 
         public static void InsertArtist (Artist a) {
-            db.Artists.Add(a);
-            db.SaveChanges();
+            try {
+                db.Artists.Add(a);
+                db.SaveChanges();
+            } catch (System.Data.Entity.Validation.DbEntityValidationException ex) {
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                        System.Diagnostics.Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
+            }
         }
         public static void UpdateArtist (int ID, string name, string filename) {
             Artist a = db.Artists.Find(ID);
@@ -30,9 +40,14 @@ namespace Kel3_KpopZtation.Repositories {
                     where Artist.ArtistID == ID 
                     select Artist).FirstOrDefault();
         }
-        public static Artist ExistByName (string Email) {
+        public static Artist ExistByName (string ArtistName) {
             return (from Artist in db.Artists
-                    where Artist.ArtistName == Email
+                    where Artist.ArtistName == ArtistName
+                    select Artist).FirstOrDefault();
+        }
+        public static Artist ExistByNameButNotThisOne (string ArtistName, int ArtistID) {
+            return (from Artist in db.Artists
+                    where Artist.ArtistName == ArtistName && Artist.ArtistID != ArtistID
                     select Artist).FirstOrDefault();
         }
         public static List<Artist> Retrieve () {

@@ -19,7 +19,7 @@
             </div>
             <div class="flex verti gap5">
                 <asp:Label CssClass="noSelect" Text="Artist's Profile Picture" runat="server" />
-                <asp:FileUpload id="AOFUProfilePicture" runat="server"></asp:FileUpload>
+                <asp:FileUpload id="AOFUProfilePicture" CssClass="fullW fullH boxedEl1 pad10 borrad5" runat="server"></asp:FileUpload>
             </div>
             <asp:Label id="LBMessage" Text="" 
                 CssClass="pad25 borrad5" 

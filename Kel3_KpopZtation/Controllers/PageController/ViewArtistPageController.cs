@@ -8,8 +8,8 @@ using Kel3_KpopZtation.Models;
 namespace Kel3_KpopZtation.Controllers.PageController {
     public class ViewArtistPageController {
 
-        public static List<Album> Retrieve (int ArtistID) {
-            return AlbumRepo.RetrieveAssociated(ArtistID);
+        public static List<Album> AssociatedAlbum (int ArtistID) {
+            return AlbumRepo.AssociatedAlbum(ArtistID);
         } 
 
     }

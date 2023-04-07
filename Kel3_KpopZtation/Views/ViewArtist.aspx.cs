@@ -31,18 +31,15 @@ namespace Kel3_KpopZtation.Views {
             if (ArtistID <= 0) 
                 Response.Redirect("Home.aspx");
 
-            if ( !IsPostBack ) {
-                Artist a = ArtistController.GetArtistByID( ArtistID.ToString() );
-                if ( a != null ) {
-                    ArtistName = a.ArtistName;
-                    ArtistImage = a.ArtistImage;
-                    ArtistHasNAlbums = a.Albums.Count();
-                }
-
-                Albums = ViewArtistPageController.Retrieve(ArtistID);
-                ArtistsRepeater.DataSource = Albums;
-                ArtistsRepeater.DataBind();
+            Artist a = ArtistController.GetArtistByID( ArtistID.ToString() );
+            if ( a != null ) {
+                ArtistName = a.ArtistName;
+                ArtistImage = a.ArtistImage;
+                ArtistHasNAlbums = a.Albums.Count();
             }
+
+            Refresh();
+            AOBTAddNewArtist.HRef = "AddAlbum.aspx?artist_id=" + a.ArtistID;
         }
 
         protected void DeleteButton_Command(object sender, CommandEventArgs e) {
@@ -53,10 +50,14 @@ namespace Kel3_KpopZtation.Views {
                 AlbumRepo.RemoveByID(albumID);
 
                 // Re-bind the data to the Repeater control
-                Albums = AlbumRepo.Retrieve();
-                ArtistsRepeater.DataSource = Albums;
-                ArtistsRepeater.DataBind();
+                Refresh();
             }
+        }
+
+        private void Refresh () {
+            Albums = ViewArtistPageController.AssociatedAlbum(ArtistID);
+            ArtistsRepeater.DataSource = Albums;
+            ArtistsRepeater.DataBind();
         }
     }
 }

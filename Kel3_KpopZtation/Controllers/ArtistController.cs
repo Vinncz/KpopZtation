@@ -15,7 +15,7 @@ namespace Kel3_KpopZtation.Controllers {
             return ArtistRepo.ExistByID( Convert.ToInt32(id) );
         }
 
-        public static (bool isValid, List<string> ErrorMsgs) ValidateArtist(string name, string filename, int filesize) {
+        public static (bool isValid, List<string> ErrorMsgs) ValidateArtist (string name, string filename, int filesize) {
             List<string> ErrorMsgs = new List<string>();
 
             var NameValidationResult = ValidateName(name); ErrorMsgs.Add(NameValidationResult.ErrorMsg);
@@ -34,6 +34,12 @@ namespace Kel3_KpopZtation.Controllers {
             var validationResult = ValidateArtist(name, filename, filesize);
 
             if (validationResult.isValid) {
+                bool duplicateName = ArtistRepo.ExistByNameButNotThisOne(name, artistID) != null;
+                if (duplicateName) {
+                    validationResult.ErrorMsgs.Add("There are already an artist with the same name as this one.");
+                    return (false, validationResult.ErrorMsgs);
+                }
+
                 ArtistRepo.UpdateArtist(artistID, name, filename);
                 return (true, validationResult.ErrorMsgs);
             }
@@ -41,19 +47,21 @@ namespace Kel3_KpopZtation.Controllers {
             return (false, validationResult.ErrorMsgs);
         }
 
-        public static (bool updatedSuccessfully, List<string> ErrorMsgs) MakeArtist(string name, string filename, int filesize) {
+        public static (bool CreatedSuccessfully, List<string> ErrorMsgs) MakeArtist (string name, string filename, int filesize) {
             var validationResult = ValidateArtist(name, filename, filesize);
 
             if (validationResult.isValid) {
                 if (FormatController.TrimLen(filename) <= 0 || filesize <= 1024) {
                     validationResult.ErrorMsgs.Add("Picture must be present.");
-                    System.Diagnostics.Debug.WriteLine(validationResult.ErrorMsgs.Count());
-                    foreach (string s in validationResult.ErrorMsgs)
-                    {
-                        System.Diagnostics.Debug.WriteLine(s);
-                    }
                     return (false, validationResult.ErrorMsgs);
                 }
+
+                bool duplicateName = ArtistRepo.ExistByName(name) != null;
+                if (duplicateName) {
+                    validationResult.ErrorMsgs.Add("There are already an artist with the same name as this one.");
+                    return (false, validationResult.ErrorMsgs);
+                }
+
                 ArtistHandler.InsertArtist(ArtistHandler.MakeArtist(name, filename));
                 return (true, validationResult.ErrorMsgs);
             }

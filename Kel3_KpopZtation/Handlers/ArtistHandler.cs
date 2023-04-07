@@ -13,17 +13,12 @@ namespace Kel3_KpopZtation.Handlers {
         }
 
         public static Artist MakeArtist (string name, string filename) {
-            int id = GetLatestArtistID();
-
-            if (id <= 0) 
-                return null;
+            int ArtistID = GetLatestArtistID() + 1;
 
             Artist a = null;
             try {
-                a = ArtistFactory.MakeArtist(++id, name, filename);
-            } catch {
-                a = null;
-            }
+                a = ArtistFactory.MakeArtist(ArtistID, name, filename);
+            } catch {}
 
             return a;
         }
