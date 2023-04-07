@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Controllers;
+using Kel3_KpopZtation.Handlers;
 
 namespace Kel3_KpopZtation.Repositories {
     public static class ArtistRepo {
@@ -58,6 +59,7 @@ namespace Kel3_KpopZtation.Repositories {
         }
         public static void RemoveByID (int id) {
             Artist a = ExistByID(id);
+            AlbumHandler.DeleteAssociatedAlbum(id);
             db.Artists.Remove(a);
             db.SaveChanges();
         }
