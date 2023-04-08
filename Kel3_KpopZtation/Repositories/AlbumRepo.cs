@@ -28,7 +28,7 @@ namespace Kel3_KpopZtation.Repositories {
         public static List<Album> AssociatedAlbum (int ArtistID) {
             return (from Album in db.Albums where Album.ArtistID == ArtistID select Album).ToList();
         }
-        public static Album ExsistByID (int AlbumID) {
+        public static Album ExistByID (int AlbumID) {
             return (from Album in db.Albums where Album.AlbumID == AlbumID select Album).FirstOrDefault();
         }
         public static int GetLatestID () {
@@ -40,14 +40,14 @@ namespace Kel3_KpopZtation.Repositories {
             save();
         }
         public static void RemoveByArtistID (int ArtistID) {
-            List<Album> Albums = (from Album in db.Albums where Album.ArtistID == ArtistID select Album).ToList();
+            List<Album> Albums = AssociatedAlbum(ArtistID);
             foreach (Album a in Albums) {
                 db.Albums.Remove(a);
             }
 
             save();
         }
-        private static void save () {
+        public static void save () {
             db.SaveChanges();
         }
     }

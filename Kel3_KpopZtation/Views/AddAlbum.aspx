@@ -22,11 +22,11 @@
             </div>
             <div class="grid verti gap5">
                 <asp:Label CssClass="noSelect" Text="Album Price" runat="server" />
-                <asp:TextBox type="number" ID="AOTBAlbumPrice" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                <asp:TextBox min="100000" type="number" ID="AOTBAlbumPrice" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             <div class="grid verti gap5">
                 <asp:Label CssClass="noSelect" Text="Album Stock" runat="server" />
-                <asp:TextBox type="number" ID="AOTBAlbumStock" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                <asp:TextBox min="1" type="number" ID="AOTBAlbumStock" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             <div class="flex verti gap5">
                 <asp:Label CssClass="noSelect" Text="Album Cover" runat="server" />

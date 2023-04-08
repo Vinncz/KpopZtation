@@ -10,6 +10,9 @@ using Kel3_KpopZtation.Repositories;
 namespace Kel3_KpopZtation.Controllers {
     public static class AlbumController {
 
+        public static Album ExistByID (int AlbumID) {
+            return AlbumRepo.ExistByID(AlbumID);
+        }
         public static (bool CreatedSuccessfully, List<string> ErrorMsgs) MakeAlbum (int ArtistID, string AlbumName, string AlbumDescription, string AlbumPrice, string AlbumStock, string AlbumCoverName, int AlbumCoverSize) {
 
             var validationResult = ValidateAlbum (AlbumName, AlbumDescription, AlbumPrice, AlbumStock, AlbumCoverName, AlbumCoverSize);
@@ -26,7 +29,21 @@ namespace Kel3_KpopZtation.Controllers {
 
             return (false, validationResult.ErrorMsgs);
         }
+        public static (bool updatedSuccessfully, List<string> ErrorMsgs) UpdateAlbum (int AlbumID, string NewAlbumName, string NewAlbumDescription, string NewAlbumPrice, string NewAlbumStock, string NewAlbumCoverName, int NewAlbumCoverSize) {
 
+            var validationResult = ValidateAlbum(NewAlbumName, NewAlbumDescription, NewAlbumPrice, NewAlbumStock, NewAlbumCoverName, NewAlbumCoverSize);
+            bool emptyImage = false;
+            if (FormatController.NullWhitespacesOrEmpty(NewAlbumCoverName) || FormatController.TrimLen(NewAlbumCoverName) <= 0 ) {
+                emptyImage = true;
+            }
+
+            if (validationResult.isValid) {
+                AlbumHandler.EditAlbum(AlbumID, NewAlbumName, NewAlbumDescription, int.Parse(NewAlbumPrice), int.Parse(NewAlbumStock), NewAlbumCoverName, emptyImage);
+                return (true, validationResult.ErrorMsgs);
+            }
+
+            return (false, validationResult.ErrorMsgs);
+        }
         public static (bool isValid, List<string> ErrorMsgs) ValidateAlbum (string AlbumName, string AlbumDescription, string AlbumPrice, string AlbumStock, string AlbumCoverName, int AlbumCoverSize) {
             List<string> ErrorMsgs = new List<string>();
 
@@ -49,43 +66,30 @@ namespace Kel3_KpopZtation.Controllers {
 
             return (false, ErrorMsgs);
         }
-
-        /*
-        public static (bool updatedSuccessfully, List<string> ErrorMsgs) UpdateAlbum (int artistID, string name, string filename, int filesize) {
-            var validationResult = ValidateAlbum(name, filename, filesize);
-
-            if (validationResult.isValid) {
-                ArtistRepo.UpdateArtist(artistID, name, filename);
-                return (true, validationResult.ErrorMsgs);
-            }
-
-            return (false, validationResult.ErrorMsgs);
-        }
-        */
-
         public static (bool isValid, string ErrorMsg) ValidateName (string name) {
             
             /* Cek apakah string parameter bisa diproses */
             if ( FormatController.NullWhitespacesOrEmpty(name) ) {
                 return (false, "Name cannot be empty or all whitespaces!");
 
+            } 
+            
             /* Cek apakah panjang string parameter berada diantara 5-50 karakter */
-            } else if ( FormatController.TrimLen(name) > 50 ) {
+            if ( FormatController.TrimLen(name) > 50 ) {
                 return (false, "That is such a long name! Try using aliases.");
             
             }
 
             return (true, "");
         }
-
         public static (bool isValid, string ErrorMsg) ValidateDescription (string description) {
             
-            /* Cek apakah string parameter bisa diproses */
             if ( FormatController.NullWhitespacesOrEmpty(description) ) {
                 return (false, "Description cannot be empty or all whitespaces!");
 
-            /* Cek apakah panjang string parameter berada diantara 5-50 karakter */
-            } else if ( FormatController.TrimLen(description) > 255 ) {
+            } 
+            
+            if ( FormatController.TrimLen(description) >= 255 ) {
                 return (false, "That is such a long description! Try to keep it minimal under 255 characters.");
             
             }
@@ -127,7 +131,9 @@ namespace Kel3_KpopZtation.Controllers {
             if ( FormatController.NullWhitespacesOrEmpty(filename) ) {
                 return (true, "");
 
-            } else if ( !FormatController.HasValidFileExtension(Path.GetExtension(filename.ToLower())) ) {
+            } 
+            
+            if ( !FormatController.HasValidFileExtension(Path.GetExtension(filename.ToLower())) ) {
                 List<string> ListofValidFileExtension = FormatController.GetValidFileExtension();
                 string ValidFileExtension = string.Join(", ", ListofValidFileExtension.Take(ListofValidFileExtension.Count - 1)) + " and " + ListofValidFileExtension.Last();
                 
