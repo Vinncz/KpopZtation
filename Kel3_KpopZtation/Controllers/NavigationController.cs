@@ -38,5 +38,12 @@ namespace Kel3_KpopZtation.Controllers {
 
             }
         }
+
+        public void BlockIfNotBuyer (Customer c, string Destination) {
+            if ( c == null || c.CustomerRole != "Buyer" ) {
+                HttpContext.Current.Response.Redirect("Login.aspx?FwdTo=" + Destination);
+
+            }
+        }
     }
 }
