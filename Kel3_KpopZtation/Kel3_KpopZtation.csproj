@@ -132,6 +132,7 @@
     <Content Include="Views\Styles\Global.css" />
     <Content Include="Views\Styles\positionings.css" />
     <Content Include="Views\Styles\spacings.css" />
+    <Content Include="Views\ViewAlbum.aspx" />
     <Content Include="Views\ViewArtist.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -139,6 +140,7 @@
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\ArtistController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CookieController.cs" />
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\FormatController.cs" />
@@ -248,6 +250,13 @@
     </Compile>
     <Compile Include="Views\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewAlbum.aspx.cs">
+      <DependentUpon>ViewAlbum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ViewAlbum.aspx.designer.cs">
+      <DependentUpon>ViewAlbum.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewArtist.aspx.cs">
       <DependentUpon>ViewArtist.aspx</DependentUpon>

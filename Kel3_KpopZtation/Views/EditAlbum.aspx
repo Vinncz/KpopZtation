@@ -6,7 +6,7 @@
     
     <div style="--martom: 150px" class="grid sidebarLayout fullW r gap30 customMargin">
         <div class="sidebar flex verti gap25">
-            <img class="borrad5" src="../Assets/Albums/<%= AlbumImage %>" />
+            <img class="borrad5 boxedEl1" src="../Assets/Albums/<%= AlbumImage %>" />
             <div class="flex verti gap5 centerHori">
                 <div class="em1_5 semib"> <%= AlbumName %> </div>
             </div>
@@ -14,15 +14,15 @@
         <div class="mainLayout flex verti gap25">
             <div class="grid verti gap5">
                 <asp:Label CssClass="noSelect" Text="Album Name" runat="server" />
-                <asp:TextBox ID="AOTBAlbumName" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                <asp:TextBox MaxLength="50" ID="AOTBAlbumName" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             <div class="grid verti gap5">
                 <asp:Label CssClass="noSelect" Text="Album Description" runat="server" />
-                <asp:TextBox ID="AOTBAlbumDescription" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                <asp:TextBox MaxLength="255" ID="AOTBAlbumDescription" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             <div class="grid verti gap5">
                 <asp:Label CssClass="noSelect" Text="Album Price" runat="server" />
-                <asp:TextBox min="100000" type="number" ID="AOTBAlbumPrice" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                <asp:TextBox min="100000" max="1000000" type="number" ID="AOTBAlbumPrice" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             <div class="grid verti gap5">
                 <asp:Label CssClass="noSelect" Text="Album Stock" runat="server" />

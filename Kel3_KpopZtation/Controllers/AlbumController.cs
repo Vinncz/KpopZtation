@@ -10,6 +10,30 @@ using Kel3_KpopZtation.Repositories;
 namespace Kel3_KpopZtation.Controllers {
     public static class AlbumController {
 
+        public static (bool SufficientStock, string ErrorMsgs) CheckStock (int AlbumID, string RequestedAmount) {
+            if ( FormatController.NullWhitespacesOrEmpty(RequestedAmount) || FormatController.TrimLen(RequestedAmount) <= 0 ) {
+                return (false, "Invalid amount!");
+
+            }
+
+            int IntRequestedAmount = Convert.ToInt32(RequestedAmount);
+            if (IntRequestedAmount < 1) {
+                return (false, "You cannot add negative value to your cart.");
+            
+            }
+            
+            Album a = AlbumHandler.ExistByID(AlbumID);
+            if (a == null)
+                return (false, "There are no such album!");
+
+            if (a.AlbumStock < IntRequestedAmount) {
+                return (false, "Available stock is less than what you've requested.");
+
+            } else {
+                return (true, "");
+
+            }
+        }
         public static Album ExistByID (int AlbumID) {
             return AlbumRepo.ExistByID(AlbumID);
         }

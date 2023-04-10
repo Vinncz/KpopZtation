@@ -9,7 +9,9 @@ using Kel3_KpopZtation.Models;
 
 namespace Kel3_KpopZtation.Handlers {
     public class AlbumHandler {
-
+        public static Album ExistByID (int AlbumID) {
+            return AlbumRepo.ExistByID(AlbumID);
+        }
         public static void InsertAlbum (Album a) {
             AlbumRepo.InsertAlbum(a);
         }
@@ -32,13 +34,13 @@ namespace Kel3_KpopZtation.Handlers {
                 a.AlbumName = NewAlbumName;
 
             if (a.AlbumDescription != NewAlbumDescription)
-                a.AlbumName = NewAlbumDescription;
+                a.AlbumDescription = NewAlbumDescription;
 
             if (a.AlbumPrice != NewAlbumPrice)
                 a.AlbumPrice = NewAlbumPrice;
 
             if (a.AlbumStock != NewAlbumStock)
-                a.AlbumPrice = NewAlbumStock;
+                a.AlbumStock = NewAlbumStock;
 
             if (ImageIsEmpty == false)
                 if (a.AlbumImage != NewAlbumCoverName)

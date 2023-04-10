@@ -15,7 +15,7 @@
         <div class="mainLayout flex verti gap25">
             <div class="grid verti gap5">
                 <asp:Label CssClass="noSelect" Text="Artist Full Name" runat="server" />
-                <asp:TextBox ID="AOTBNewName" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                <asp:TextBox MaxLength="50" ID="AOTBNewName" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
             <div class="flex verti gap5">
                 <asp:Label CssClass="noSelect" Text="Artist's Profile Picture" runat="server" />
