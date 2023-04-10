@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/MasterPage.Master" AutoEventWireup="true" CodeBehind="ViewArtist.aspx.cs" Inherits="Kel3_KpopZtation.Views.ViewArtist" EnableEventValidation="false" %>
+<%@ Import Namespace="Kel3_KpopZtation.Controllers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contents" runat="server">
@@ -23,7 +24,7 @@
 
                         <div class="productCardDetails pad15 gap10 flex r verti">
                             <div class="productCardTitle em1_25 bottomVerti sb"><%# Eval("AlbumName") %> </div>
-                            <div class="productCardTitle"><%# Eval("AlbumPrice") %> </div>
+                            <div class="productCardTitle">Rp <%# FormatController.FormatToCurrency(Eval("AlbumPrice").ToString()) %>,- </div>
                             <div class="productCardTitle"><%# Eval("AlbumDescription") %> </div>
                             <div id="AODVList" runat="server" class="flex spaceEvenlyH fullH gap10 noSelect padtop15">
                             

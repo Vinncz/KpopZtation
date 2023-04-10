@@ -15,15 +15,6 @@ namespace Kel3_KpopZtation.Views
     {
 
         /// <summary>
-        /// __LBAlbumName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label @__LBAlbumName;
-
-        /// <summary>
         /// __LBAlbumDescription control.
         /// </summary>
         /// <remarks>

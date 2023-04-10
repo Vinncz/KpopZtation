@@ -8,29 +8,30 @@
         <div class="sidebar flex verti gap25">
             <img class="borrad5 boxedEl1" src="../Assets/Albums/<%= AlbumImage %>" />
             <div class="flex verti gap5 centerHori">
-                <div class="em1_5 semib"> <%= AlbumName %> </div>
+                <div class="em1_3 sb"> <%= AlbumName %> </div>
+                <div class="em1_05"> <%= ArtistName %> </div>
             </div>
         </div>
-        <div class="mainLayout flex verti gap25">
-            <div class="grid verti gap5">
-                <asp:Label CssClass="noSelect" Text="Album Name" runat="server" />
-                <asp:Label ID="__LBAlbumName" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+        <div class="mainLayout flex verti gap30">
+            <div class="grid verti gap10">
+                <asp:Label CssClass="noSelect semib em1_15" Text="Album Description" runat="server" />
+                <asp:Label ID="__LBAlbumDescription" CssClass="lineHeight1_5 letterSpacing0_2" runat="server" />
             </div>
-            <div class="grid verti gap5">
-                <asp:Label CssClass="noSelect" Text="Album Description" runat="server" />
-                <asp:Label ID="__LBAlbumDescription" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+            <div class="grid verti ">
+                <asp:Label CssClass="noSelect semib em1_15" Text="Album Price" runat="server" />
+                <asp:Label ID="__LBAlbumPrice" CssClass="em2 sb" runat="server" />
             </div>
-            <div class="grid verti gap5">
-                <asp:Label CssClass="noSelect" Text="Album Price" runat="server" />
-                <asp:Label ID="__LBAlbumPrice" CssClass="pad10 borrad5 boxedEl1" runat="server" />
-            </div>
-            <div class="grid verti gap5">
-                <asp:Label CssClass="noSelect" Text="Album Stock" runat="server" />
+            <div class="grid verti gap10">
+                <asp:Label CssClass="noSelect" Text="Available Stock" runat="server" />
                 <asp:Label ID="__LBAlbumStock" CssClass="pad10 borrad5 boxedEl1" runat="server" />
             </div>
-            <div class="grid verti gap5" ID="BOTBAddedAmountDiv" runat="server">
+            <div class="grid verti gap10" ID="BOTBAddedAmountDiv" runat="server">
                 <asp:Label CssClass="noSelect" ID="BOLBAddedAmountLabel" Text="Add to Cart" runat="server" />
-                <asp:TextBox type="number" ID="BOTBAddedAmount" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                <div class="flex hori gap10">
+                    <button id="decrementButton" type="button" class="padleft15 padri15 padtom5 greyOutlineButton borrad5 ptr sb em1_5"> - </button>
+                    <asp:TextBox min="1" type="number" ID="BOTBAddedAmount" CssClass="pad10 borrad5 boxedEl1" runat="server" />
+                    <button id="incrementButton" type="button" class="padleft15 padri15 greyOutlineButton borrad5 ptr sb em1_5"> + </button>
+                </div>
             </div>
             <asp:Label id="LBMessage" Text="" 
                 CssClass="pad25 borrad5" 
@@ -40,4 +41,5 @@
                             Text="Add to Cart" />
         </div>
     </div>
+    <script src="Scripts/incrementdecrementbuttons.js"></script>
 </asp:Content>

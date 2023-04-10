@@ -47,7 +47,7 @@ namespace Kel3_KpopZtation.Views {
             string NewAlbumName = AOTBAlbumName.Text;
             string NewAlbumDesc = AOTBAlbumDescription.Text;
             string NewAlbumPrice = AOTBAlbumPrice.Text;
-            string NewAlbumStock = AOTBAlbumPrice.Text;
+            string NewAlbumStock = AOTBAlbumStock.Text;
             string NewAlbumCover = AOFUAlbumCover.FileName;
             int NewAlbumCoverSize = AOFUAlbumCover.PostedFile.ContentLength;
 

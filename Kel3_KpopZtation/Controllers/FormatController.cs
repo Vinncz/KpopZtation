@@ -71,5 +71,26 @@ namespace Kel3_KpopZtation.Controllers {
         public static void RemoveEmptyString (List<string> ErrorMsgs) {
             ErrorMsgs.RemoveAll(s => s.Length <= 0);
         }
+
+        public static string FormatToCurrency (string input) {
+            char[] charArray = input.ToCharArray();
+            Array.Reverse(charArray);
+            string reversedString = new string(charArray);
+
+            string formattedMoney = "";
+            for (int i = 0; i < reversedString.Length; i++) {
+                
+                if (i % 3 == 0 && i != 0) {
+                    formattedMoney += ".";
+                }
+                formattedMoney += reversedString[i];
+            }
+
+            char[] formattedCharArray = formattedMoney.ToCharArray();
+            Array.Reverse(formattedCharArray);
+            string finalFormattedMoney = new string(formattedCharArray);
+
+            return finalFormattedMoney;
+        }
     }
 }

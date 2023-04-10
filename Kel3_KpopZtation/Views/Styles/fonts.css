@@ -65,6 +65,10 @@
     font-size: 1.25em;
 }
 
+.em1_3 {
+    font-size: 1.3em;
+}
+
 .em1_5 {
     font-size: 1.5em;
 }
@@ -83,4 +87,12 @@
 
 .em5 {
     font-size: 5em;
+}
+
+.lineHeight1_5 {
+    line-height: 150%;
+}
+
+.letterSpacing0_2 {
+    letter-spacing: 0.2px;
 }

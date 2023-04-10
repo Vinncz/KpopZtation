@@ -7,6 +7,9 @@
 
     --orange: rgb(227 176 67);
     --orange-hover: rgb(189 118 34);
+
+    --grey: rgb(93 94 116);
+    --grey-hover: rgb(54 55 73);
 }
 
 .popupEl {
@@ -85,6 +88,29 @@
     .orangeOutlineButton:hover {
         background: var(--orange);
         border: 1px solid var(--orange);
+        color: white;
+    }
+
+/* Grey Button */
+.greyButton {
+    background: var(--grey);
+    border: none;
+    color: white;
+}
+
+    .greyButton:hover {
+        background: var(--grey-hover);
+    }
+
+.greyOutlineButton {
+    background: none;
+    border: 1px solid var(--grey);
+    color: var(--grey);
+}
+
+    .greyOutlineButton:hover {
+        background: var(--grey);
+        border: 1px solid var(--grey);
         color: white;
     }
 

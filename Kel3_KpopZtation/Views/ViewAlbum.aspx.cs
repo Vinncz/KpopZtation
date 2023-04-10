@@ -14,11 +14,12 @@ namespace Kel3_KpopZtation.Views {
         private static NavigationController nc = new NavigationController();
 
         public int ArtistID = 0;
+        public string ArtistName = "Unknown";
         public int AlbumID = 0;
         public string AlbumImage = "Placeholder.png";
         public string AlbumName = "Album Name";
         public string AlbumDescription = "Album Description";
-        public int AlbumPrice = 0;
+        public string AlbumPrice = "Rp 0,-";
         public int AlbumStock = 0;
         private Album a = null;
 
@@ -68,13 +69,13 @@ namespace Kel3_KpopZtation.Views {
                 AlbumName = a.AlbumName;
                 AlbumImage = a.AlbumImage;
                 AlbumDescription = a.AlbumDescription;
-                AlbumPrice = a.AlbumPrice;
+                AlbumPrice = "Rp " + FormatController.FormatToCurrency(a.AlbumPrice.ToString()) + ",-";
                 AlbumStock = a.AlbumStock;
                 AlbumID = a.AlbumID;
 
                 ArtistID = a.ArtistID;
+                ArtistName = a.Artist.ArtistName;
 
-                __LBAlbumName.Text = AlbumName;
                 __LBAlbumDescription.Text = AlbumDescription;
                 __LBAlbumPrice.Text = AlbumPrice.ToString();
                 __LBAlbumStock.Text = AlbumStock.ToString();

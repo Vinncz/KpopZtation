@@ -125,6 +125,7 @@
     <Content Include="Views\Home.aspx" />
     <Content Include="Views\Login.aspx" />
     <Content Include="Views\Register.aspx" />
+    <Content Include="Views\Scripts\incrementdecrementbuttons.js" />
     <Content Include="Views\Styles\borders.css" />
     <Content Include="Views\Styles\buttons.css" />
     <Content Include="Views\Styles\colors.css" />
