@@ -4,6 +4,7 @@
 @import url('fonts.css');
 @import url('positionings.css');
 @import url('spacings.css');
+@import url('sizes.css');
 
 :root {
     --pagePadding: 30px;
@@ -150,13 +151,13 @@ main {
 
     @media screen and (max-width: 768px) {
         .sidebar {
-            width: 208px;
+            width: 168px;
         }
     }
 
     @media screen and (max-width: 636px) {
         .sidebar {
-            width: 176px;
+            width: 132px;
         }
     }
 
@@ -231,8 +232,6 @@ main {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
     }
-
-
 }
 
 .maxH350 {
@@ -317,4 +316,17 @@ main {
     .gridH2 {
         grid-template-columns: 1fr;
     }
+}
+
+.twothirds {
+    display: grid;
+    grid-template-areas: "two two one"
+}
+
+.twothirds .two {
+    grid-area: two;
+}
+
+.twothirds .one {
+    grid-area: one;
 }

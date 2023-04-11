@@ -120,6 +120,7 @@
     <Content Include="Queries\Making The Database.sql" />
     <Content Include="Views\AddAlbum.aspx" />
     <Content Include="Views\AddArtist.aspx" />
+    <Content Include="Views\Cart.aspx" />
     <Content Include="Views\EditAlbum.aspx" />
     <Content Include="Views\EditArtist.aspx" />
     <Content Include="Views\Home.aspx" />
@@ -132,6 +133,7 @@
     <Content Include="Views\Styles\fonts.css" />
     <Content Include="Views\Styles\Global.css" />
     <Content Include="Views\Styles\positionings.css" />
+    <Content Include="Views\Styles\sizes.css" />
     <Content Include="Views\Styles\spacings.css" />
     <Content Include="Views\ViewAlbum.aspx" />
     <Content Include="Views\ViewArtist.aspx" />
@@ -194,6 +196,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlbumRepo.cs" />
     <Compile Include="Repositories\ArtistRepo.cs" />
+    <Compile Include="Repositories\CartRepo.cs" />
     <Compile Include="Repositories\ConnectionMaster.cs" />
     <Compile Include="Repositories\CustomerRepo.cs" />
     <Compile Include="Views\AddAlbum.aspx.cs">
@@ -209,6 +212,13 @@
     </Compile>
     <Compile Include="Views\AddArtist.aspx.designer.cs">
       <DependentUpon>AddArtist.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Cart.aspx.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Cart.aspx.designer.cs">
+      <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\EditAlbum.aspx.cs">
       <DependentUpon>EditAlbum.aspx</DependentUpon>

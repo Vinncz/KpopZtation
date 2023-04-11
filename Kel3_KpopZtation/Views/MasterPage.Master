@@ -35,15 +35,15 @@
                 </asp:HyperLink>
                 <asp:HyperLink ID="BOBTCart" runat="server" href="Cart.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
-                    Cart
+                    My Cart
                 </asp:HyperLink>
                 <asp:HyperLink ID="BOBTTransaction" runat="server" href="Transaction.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
-                    Transactions
+                    Transaction History
                 </asp:HyperLink>
                 <asp:HyperLink ID="AOBTTransactionReport" runat="server" href="Report.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
-                    Transact Report
+                    Transaction Report
                 </asp:HyperLink>
                 <asp:HyperLink ID="GOBTLogIn" runat="server" href="Login.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">

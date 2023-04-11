@@ -28,9 +28,9 @@
             <div class="grid verti gap10" ID="BOTBAddedAmountDiv" runat="server">
                 <asp:Label CssClass="noSelect" ID="BOLBAddedAmountLabel" Text="Add to Cart" runat="server" />
                 <div class="flex hori gap10">
-                    <button id="decrementButton" type="button" class="padleft15 padri15 padtom5 greyOutlineButton borrad5 ptr sb em1_5"> - </button>
+                    <button id="decrementButton" type="button" class="noSelect padleft15 padri15 padtom5 greyOutlineButton borrad5 ptr sb em1_5"> - </button>
                     <asp:TextBox min="1" type="number" ID="BOTBAddedAmount" CssClass="pad10 borrad5 boxedEl1" runat="server" />
-                    <button id="incrementButton" type="button" class="padleft15 padri15 greyOutlineButton borrad5 ptr sb em1_5"> + </button>
+                    <button id="incrementButton" type="button" class="noSelect padleft15 padri15 greyOutlineButton borrad5 ptr sb em1_5"> + </button>
                 </div>
             </div>
             <asp:Label id="LBMessage" Text="" 
