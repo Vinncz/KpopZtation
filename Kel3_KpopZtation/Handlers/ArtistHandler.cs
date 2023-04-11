@@ -11,7 +11,6 @@ namespace Kel3_KpopZtation.Handlers {
         public static void InsertArtist (Artist c) {
             ArtistRepo.InsertArtist(c);
         }
-
         public static Artist MakeArtist (string name, string filename) {
             int ArtistID = GetLatestArtistID() + 1;
 
@@ -22,7 +21,6 @@ namespace Kel3_KpopZtation.Handlers {
 
             return a;
         }
-
         public static int GetLatestArtistID () {
             return ArtistRepo.GetLatestID();
         }

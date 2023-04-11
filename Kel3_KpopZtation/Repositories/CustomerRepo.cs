@@ -6,7 +6,7 @@ using Kel3_KpopZtation.Models;
 
 namespace Kel3_KpopZtation.Repositories {
     public class CustomerRepo {
-        private static KZEntities db = ConnectionMaster.CopyInstance();
+        private static KZDBEntities db = ConnectionMaster.CopyInstance();
         public static void InsertCustomer (Customer c) {
             try {
                 db.Customers.Add(c);

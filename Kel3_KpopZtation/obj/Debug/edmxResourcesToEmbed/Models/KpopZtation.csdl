@@ -52,7 +52,6 @@
     <Key>
       <PropertyRef Name="CustomerID" />
       <PropertyRef Name="AlbumID" />
-      <PropertyRef Name="Quantity" />
     </Key>
     <Property Name="CustomerID" Type="Int32" Nullable="false" />
     <Property Name="AlbumID" Type="Int32" Nullable="false" />

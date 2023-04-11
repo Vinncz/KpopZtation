@@ -8,8 +8,8 @@ namespace Kel3_KpopZtation.Repositories
 {
     public class ConnectionMaster
     {
-        private static KZEntities db = new KZEntities();
-        public static KZEntities CopyInstance () {
+        private static KZDBEntities db = new KZDBEntities();
+        public static KZDBEntities CopyInstance () {
             return db;
         }
     }

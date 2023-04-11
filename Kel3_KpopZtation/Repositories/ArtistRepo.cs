@@ -9,7 +9,7 @@ using Kel3_KpopZtation.Handlers;
 namespace Kel3_KpopZtation.Repositories {
     public static class ArtistRepo {
 
-        private static KZEntities db = ConnectionMaster.CopyInstance();
+        private static KZDBEntities db = ConnectionMaster.CopyInstance();
 
         public static void InsertArtist (Artist a) {
             try {

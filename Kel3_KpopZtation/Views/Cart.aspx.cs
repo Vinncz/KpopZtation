@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Kel3_KpopZtation.Repositories;
+using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Controllers;
 
 namespace Kel3_KpopZtation.Views {
@@ -39,11 +40,15 @@ namespace Kel3_KpopZtation.Views {
 
             if (e.CommandName == "Delete") {
                 int ArgAlbumID = Convert.ToInt32(e.CommandArgument);
-                // Delete the album with the specified ID from your data source
-                CartRepo.RemoveFromCart(AuthController.ExtractCustomer(), ArgAlbumID);
+
+                Customer c = AuthController.ExtractCustomer();
+                if (c == null) return;
+
+                CartRepo.RemoveFromCart(c.CustomerID , ArgAlbumID);
 
                 // Re-bind the data to the Repeater control
                 BindData();
+                Recount();
             }
         }
 
@@ -54,6 +59,8 @@ namespace Kel3_KpopZtation.Views {
         }
 
         private void Recount () {
+            TotalPrice = 0;
+            ItemCount = 0;
             foreach (var item in CartContent) {
                 TotalPrice += item.Quantity * item.Album.AlbumPrice;
                 ItemCount += item.Quantity;

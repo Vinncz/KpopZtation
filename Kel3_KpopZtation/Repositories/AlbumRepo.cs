@@ -7,7 +7,7 @@ using Kel3_KpopZtation.Models;
 namespace Kel3_KpopZtation.Repositories {
     public static class AlbumRepo {
 
-        private static KZEntities db = ConnectionMaster.CopyInstance();
+        private static KZDBEntities db = ConnectionMaster.CopyInstance();
         public static void InsertAlbum (Album a) {
             try {
                 db.Albums.Add(a);

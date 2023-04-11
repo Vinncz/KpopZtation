@@ -12,7 +12,6 @@ namespace Kel3_KpopZtation.Handlers {
         public static void InsertCustomer (Customer c) {
             CustomerRepo.InsertCustomer(c);
         }
-
         public static Customer MakeCustomer (string name, string email, string sex, string address, string password, string role) {
             int id = GetLatestCustomerID();
 
@@ -28,7 +27,6 @@ namespace Kel3_KpopZtation.Handlers {
 
             return c;
         }
-
         public static int GetLatestCustomerID () {
             return CustomerRepo.GetLatestCustomerID();
         }

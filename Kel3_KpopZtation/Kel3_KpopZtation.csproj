@@ -106,15 +106,15 @@
     <Content Include="Assets\Artists\638059450808002463.jfif" />
     <Content Include="Assets\Icons\warning-blue.svg" />
     <Content Include="Assets\Icons\warning.svg" />
-    <Content Include="Models\KpopZtation.Context.tt">
+    <Content Include="Models\KZ.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>KpopZtation.Context.cs</LastGenOutput>
-      <DependentUpon>KpopZtation.edmx</DependentUpon>
+      <DependentUpon>KZ.edmx</DependentUpon>
+      <LastGenOutput>KZ.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\KpopZtation.tt">
+    <Content Include="Models\KZ.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>KpopZtation.edmx</DependentUpon>
-      <LastGenOutput>KpopZtation.cs</LastGenOutput>
+      <DependentUpon>KZ.edmx</DependentUpon>
+      <LastGenOutput>KZ.cs</LastGenOutput>
     </Content>
     <Content Include="Queries\Inserting Into The Database.sql" />
     <Content Include="Queries\Making The Database.sql" />
@@ -155,43 +155,45 @@
     <Compile Include="Controllers\PageController\ViewArtistPageController.cs" />
     <Compile Include="Factories\AlbumFactory.cs" />
     <Compile Include="Factories\ArtistFactory.cs" />
+    <Compile Include="Factories\CartFactory.cs" />
     <Compile Include="Factories\CookieFactory.cs" />
     <Compile Include="Factories\CustomerFactory.cs" />
     <Compile Include="Handlers\AlbumHandler.cs" />
     <Compile Include="Handlers\ArtistHandler.cs" />
+    <Compile Include="Handlers\CartHandler.cs" />
     <Compile Include="Handlers\CustomerHandler.cs" />
     <Compile Include="Models\Album.cs">
-      <DependentUpon>KpopZtation.tt</DependentUpon>
+      <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Artist.cs">
-      <DependentUpon>KpopZtation.tt</DependentUpon>
+      <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs">
-      <DependentUpon>KpopZtation.tt</DependentUpon>
+      <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>KpopZtation.tt</DependentUpon>
+      <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KpopZtation.Context.cs">
+    <Compile Include="Models\KZ.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KpopZtation.Context.tt</DependentUpon>
+      <DependentUpon>KZ.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KpopZtation.cs">
+    <Compile Include="Models\KZ.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KpopZtation.tt</DependentUpon>
+      <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\KpopZtation.Designer.cs">
+    <Compile Include="Models\KZ.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>KpopZtation.edmx</DependentUpon>
+      <DependentUpon>KZ.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\TransactionDetail.cs">
-      <DependentUpon>KpopZtation.tt</DependentUpon>
+      <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TransactionHeader.cs">
-      <DependentUpon>KpopZtation.tt</DependentUpon>
+      <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AlbumRepo.cs" />
@@ -278,12 +280,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Models\KpopZtation.edmx">
+    <EntityDeploy Include="Models\KZ.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>KpopZtation.Designer.cs</LastGenOutput>
+      <LastGenOutput>KZ.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\KpopZtation.edmx.diagram">
-      <DependentUpon>KpopZtation.edmx</DependentUpon>
+    <Content Include="Models\KZ.edmx.diagram">
+      <DependentUpon>KZ.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\MasterPage.Master" />
