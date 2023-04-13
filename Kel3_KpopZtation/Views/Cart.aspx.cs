@@ -28,8 +28,10 @@ namespace Kel3_KpopZtation.Views {
             Reset();
             BindData();
 
+            ec.Invis(LBMessage, BOLBEmptyMsgField);
+
             if (CartContent == null || CartContent.Count() <= 0) {
-                ec.Vis();
+                //ec.Vis(BODVEmptyCart);
 
             } else {
                 Recount();
@@ -44,7 +46,7 @@ namespace Kel3_KpopZtation.Views {
                 Customer c = AuthController.ExtractCustomer();
                 if (c == null) return;
 
-                CartRepo.RemoveFromCart(c.CustomerID , ArgAlbumID);
+                CartController.RemoveItemFromCart(c.CustomerID , ArgAlbumID);
 
                 // Re-bind the data to the Repeater control
                 BindData();
@@ -71,6 +73,22 @@ namespace Kel3_KpopZtation.Views {
             CartContent = new List<Models.Cart>();
             TotalPrice = 0;
             ItemCount = 0;
-        } 
+        }
+
+        protected void BOBTCheckOut_Click(object sender, EventArgs e) {
+            Customer c = AuthController.ExtractCustomer();
+            if (c == null) Response.Redirect("Home.aspx");
+            
+            bool CheckedOutSuccessfully = CartController.CheckOut(c.CustomerID);
+
+            ec.Vis(LBMessage);
+            if (CheckedOutSuccessfully) {
+                LBMessage.Text = "Successfully checked out!";
+                Reset();
+                BindData();
+            } else {
+                LBMessage.Text = "Failed to check out!";
+            }
+        }
     }
 }

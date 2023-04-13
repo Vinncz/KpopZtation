@@ -55,7 +55,7 @@ namespace Kel3_KpopZtation.Views {
                 LBMessage.Text += ErrorMsg;
 
             } else {
-                CartController.AddToCart(AuthController.ExtractCustomer(), AlbumID, Convert.ToInt32(AddedAmount));
+                CartController.AddOrUpdateCart(AuthController.ExtractCustomer(), AlbumID, Convert.ToInt32(AddedAmount));
                 LBMessage.Text = "Added " + AddedAmount + " albums to your cart!";
 
             }

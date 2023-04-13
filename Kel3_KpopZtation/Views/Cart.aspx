@@ -7,6 +7,7 @@
     <div style="--martop: 100px; --martom: 30px;" class="fullW flex r em2 customMargin" > My Cart </div>
 
     <div class="twothirds gap25 martom30">
+        <asp:Label ID="BOLBEmptyMsgField" CssClass="two flex verti centerHori centerVerti boxedEl1 fullW fullH borrad5 pad25" runat="server" Text="Your cart is empty! Mind picking up an album or two?" />
         <div class="two flex verti gap15">
             <asp:Repeater ID="BOREItemsInCart" runat="server">
                 <ItemTemplate>
@@ -34,7 +35,7 @@
                 </ItemTemplate>
             </asp:Repeater>
         </div>
-        <div class="one boxedEl1 pad25 borrad5 customMaxHeight flex verti gap10" style="--max-height: 250px;">
+        <div class="one boxedEl1 pad25 borrad5 customMaxHeight flex verti gap10" style="--max-height: 320px;">
             <div class="b em1_5"> Cart Summary </div>
 
             <div class="flex fullW spaceBetweenH centerVerti martop15">
@@ -45,8 +46,10 @@
                 <div class=""> Total Items </div>
                 <div class="em1_25 b"> <% Response.Write(ItemCount); %> </div>
             </div>
-
-            <asp:Button Text="Check Out" ID="BOBTCheckOut" CssClass="greenButton pad10 borrad5 martopMAX ptr martop10" runat="server" />
+            <asp:Label id="LBMessage" Text="" 
+                CssClass="pad25 borrad5" 
+                Style="color: #662135; background: #ffbfd1; line-height: 150%;" runat="server" />
+            <asp:Button Text="Check Out" ID="BOBTCheckOut" CssClass="greenButton pad10 borrad5 martopMAX ptr martop10" runat="server" OnClick="BOBTCheckOut_Click" />
         </div>
     </div>
 </asp:Content>

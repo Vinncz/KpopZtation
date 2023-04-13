@@ -15,6 +15,15 @@ namespace Kel3_KpopZtation.Views
     {
 
         /// <summary>
+        /// BOLBEmptyMsgField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label BOLBEmptyMsgField;
+
+        /// <summary>
         /// BOREItemsInCart control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,15 @@ namespace Kel3_KpopZtation.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater BOREItemsInCart;
+
+        /// <summary>
+        /// LBMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LBMessage;
 
         /// <summary>
         /// BOBTCheckOut control.

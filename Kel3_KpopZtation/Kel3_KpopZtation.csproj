@@ -162,6 +162,7 @@
     <Compile Include="Handlers\ArtistHandler.cs" />
     <Compile Include="Handlers\CartHandler.cs" />
     <Compile Include="Handlers\CustomerHandler.cs" />
+    <Compile Include="Handlers\TransactionHandler.cs" />
     <Compile Include="Models\Album.cs">
       <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
@@ -201,6 +202,7 @@
     <Compile Include="Repositories\CartRepo.cs" />
     <Compile Include="Repositories\ConnectionMaster.cs" />
     <Compile Include="Repositories\CustomerRepo.cs" />
+    <Compile Include="Repositories\TransactionRepo.cs" />
     <Compile Include="Views\AddAlbum.aspx.cs">
       <DependentUpon>AddAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
