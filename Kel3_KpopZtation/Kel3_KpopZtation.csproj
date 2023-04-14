@@ -135,6 +135,7 @@
     <Content Include="Views\Styles\positionings.css" />
     <Content Include="Views\Styles\sizes.css" />
     <Content Include="Views\Styles\spacings.css" />
+    <Content Include="Views\TransactionHistory.aspx" />
     <Content Include="Views\ViewAlbum.aspx" />
     <Content Include="Views\ViewArtist.aspx" />
     <Content Include="Web.config" />
@@ -265,6 +266,13 @@
     </Compile>
     <Compile Include="Views\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TransactionHistory.aspx.cs">
+      <DependentUpon>TransactionHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TransactionHistory.aspx.designer.cs">
+      <DependentUpon>TransactionHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewAlbum.aspx.cs">
       <DependentUpon>ViewAlbum.aspx</DependentUpon>

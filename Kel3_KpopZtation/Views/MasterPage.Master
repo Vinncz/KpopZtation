@@ -37,7 +37,7 @@
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
                     My Cart
                 </asp:HyperLink>
-                <asp:HyperLink ID="BOBTTransaction" runat="server" href="Transaction.aspx" 
+                <asp:HyperLink ID="BOBTTransaction" runat="server" href="TransactionHistory.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
                     Transaction History
                 </asp:HyperLink>

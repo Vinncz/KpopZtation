@@ -39,6 +39,7 @@ namespace Kel3_KpopZtation.Repositories {
         public static TransactionHeader HeaderExistByID (int TransactionID) {
             return (from TransactionHeader in db.TransactionHeaders 
                     where TransactionHeader.TransactionID == TransactionID 
+                    orderby TransactionHeader.TransactionDate descending
                     select TransactionHeader).FirstOrDefault();
         }
 
@@ -48,7 +49,21 @@ namespace Kel3_KpopZtation.Repositories {
         public static TransactionDetail DetailExistByID (int TransactionID) {
             return (from TransactionDetail in db.TransactionDetails
                     where TransactionDetail.TransactionID == TransactionID 
+                    orderby TransactionDetail.Quantity ascending
                     select TransactionDetail).FirstOrDefault();
+        }
+
+        public static List<TransactionHeader> GetHeaderByCustomerID (int CustomerID) {
+            return (from TransactionHeader in db.TransactionHeaders
+                    where TransactionHeader.CustomerID == CustomerID
+                    orderby TransactionHeader.TransactionDate descending
+                    select TransactionHeader).ToList();
+        }
+        public static List<TransactionDetail> GetDetailByTransactionID (int TransactionID) {
+            return (from TransactionDetail in db.TransactionDetails
+                    where TransactionDetail.TransactionID == TransactionID
+                    orderby TransactionDetail.Quantity ascending
+                    select TransactionDetail).ToList();
         }
         //Update
 
