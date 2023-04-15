@@ -53,7 +53,7 @@
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
                     Register
                 </asp:HyperLink>
-                <asp:HyperLink ID="_GUpdateProfile" runat="server" href="Profile.aspx" 
+                <asp:HyperLink ID="_GUpdateProfile" runat="server" href="UpdateProfile.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
                     Update Profile
                 </asp:HyperLink>
