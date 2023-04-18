@@ -35,6 +35,10 @@ or
 ```csharp
 nc.BlockWhenSignedIn(AuthController.ExtractCustomer());
 ```
+or
+```csharp
+nc.BlockIfNotBuyer(AuthController.ExtractCustomer());
+```
 
 ㅤ
 
@@ -48,9 +52,9 @@ _Access Modifier:_
 ㅤ
 
 _Element Identifier:_
-|  							|	Textboxㅤ			|	Labelㅤ				|	Buttonㅤ			|	File Uploadㅤ		|	Any Elementㅤ	|
-|	---------------	|	-----------------	|	-----------------	|	-----------------	|	-----------------	|	-----------------	|
-|	Prefix				|	`TB`					| 	`LB`					|	`BT`					|	`FU`					|	`__`						|
+|  							|	Textboxㅤ			|	Labelㅤ				|	Buttonㅤ			|	File Uploadㅤ		|	Repeaterㅤ	|	Divㅤ	|	Any Elementㅤ	|
+|	---------------	|	-----------------	|	-----------------	|	-----------------	|	-----------------	|	-----------------	|	-----------------	|	-----------------	|
+|	Prefix				|	`TB`					| 	`LB`					|	`BT`					|	`FU`					|	`RE`						|	`DV`						|	`__`						|
 
 ㅤ
 
