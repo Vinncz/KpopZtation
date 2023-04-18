@@ -32,6 +32,12 @@ namespace Kel3_KpopZtation.Controllers {
             }
         }
 
+        public void BlockWhenNotSignedIn (object o) {
+            if ( o == null ) {
+                HttpContext.Current.Response.Redirect("Home.aspx");
+            }
+        }
+
         public void BlockIfNotAdmin (Customer c, string Destination) {
             if ( c == null || c.CustomerRole != "Admin" ) {
                 HttpContext.Current.Response.Redirect("Login.aspx?FwdTo=" + Destination);
