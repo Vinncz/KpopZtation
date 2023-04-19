@@ -147,6 +147,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CookieController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\ElementController.cs" />
     <Compile Include="Controllers\FormatController.cs" />
     <Compile Include="Controllers\NavigationController.cs" />
