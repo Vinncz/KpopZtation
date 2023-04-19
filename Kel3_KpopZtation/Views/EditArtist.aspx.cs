@@ -51,8 +51,9 @@ namespace Kel3_KpopZtation.Views {
             string NewArtistName = AOTBNewName.Text;
             string NewArtistImage = AOFUProfilePicture.FileName;
             int NewArtistImageSize = AOFUProfilePicture.PostedFile.ContentLength;
+            List<string> ErrorMsgs = new List<string>();
 
-            (bool updatedSuccessfully, List<string> ErrorMsgs) = ArtistController.UpdateArtist(ArtistID, NewArtistName, NewArtistImage, NewArtistImageSize);
+            bool updatedSuccessfully = ArtistController.UpdateArtist(ArtistID, NewArtistName, NewArtistImage, NewArtistImageSize, ErrorMsgs);
 
             ec.Vis(LBMessage);
             if ( updatedSuccessfully == false || ErrorMsgs.Count > 0 ) {

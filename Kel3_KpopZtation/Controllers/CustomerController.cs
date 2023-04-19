@@ -2,9 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Kel3_KpopZtation.Models;
+using Kel3_KpopZtation.Repositories;
 
 namespace Kel3_KpopZtation.Controllers {
     public class CustomerController {
+        public static Customer Find (int CustomerID) {
+            return CustomerRepo.Find(CustomerID);
+        }
+        public static (bool UpdatedSuccessfully, List<string> ErrorMsgs) Update (int CustomerID, string Name, string Email, string Sex, string Address, string Password) {
+            List<string> ErrorMsgs = new List<string>();
+
+            bool ValidArgument = ValidateName(Name, ErrorMsgs) && ValidateEmail(Email, ErrorMsgs)
+                                 && ValidatePassword(Password, ErrorMsgs) && ValidateSex(Sex, ErrorMsgs) && ValidateAddress(Address, ErrorMsgs);
+
+            FormatController.RemoveEmptyString(ErrorMsgs);
+
+            if (ValidArgument)
+                return (CustomerRepo.Update(CustomerID, Name, Email, Sex, Address, Password), ErrorMsgs);
+            else
+                return (false, ErrorMsgs);
+        }
+
         public static bool ValidateName (string Name, List<string> ErrorMsgs) {
 
             string ErrorMsg = "";

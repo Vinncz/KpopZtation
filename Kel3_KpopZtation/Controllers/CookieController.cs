@@ -52,7 +52,7 @@ namespace Kel3_KpopZtation.Controllers {
                 } else if ( HttpContext.Current.Session["AuthInfo"] == null && HttpContext.Current.Request.Cookies["AuthInfo"] != null ) {
                     int CustomerID = Convert.ToInt32(HttpContext.Current.Request.Cookies["AuthInfo"].Values["CustomerID"]);
 
-                    HttpContext.Current.Session["AuthInfo"] = CustomerRepo.ExistByID(CustomerID);
+                    HttpContext.Current.Session["AuthInfo"] = CustomerRepo.Find(CustomerID);
 
                 }
 

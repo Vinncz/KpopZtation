@@ -11,96 +11,110 @@ using Kel3_KpopZtation.Handlers;
 namespace Kel3_KpopZtation.Controllers {
     public static class ArtistController {
 
+        /* 
+         * THIS FILE CONTAINS [ DUPLICATE CODE ] SMELL -- WHICH SHOULD BE REMOVED AS QUICKLY AS POSSIBLE
+         * @MakeArtist
+         */
+
         public static Artist GetArtistByID (string id) {
             return ArtistRepo.ExistByID( Convert.ToInt32(id) );
         }
+        public static bool MakeArtist (string name, string filename, int filesize, List<string> ErrorMsgs) {
+            bool validationResult = ValidateArtist(name, filename, filesize, ErrorMsgs);
 
-        public static (bool isValid, List<string> ErrorMsgs) ValidateArtist (string name, string filename, int filesize) {
-            List<string> ErrorMsgs = new List<string>();
-
-            var NameValidationResult = ValidateName(name); ErrorMsgs.Add(NameValidationResult.ErrorMsg);
-            var FileValidationResult = ValidateProfilePicture(filename, filesize); ErrorMsgs.Add(FileValidationResult.ErrorMsg);
-
-            FormatController.RemoveEmptyString(ErrorMsgs);
-
-            if (NameValidationResult.isValid && FileValidationResult.isValid) {
-                return (true, ErrorMsgs);
-            }
-
-            return (false, ErrorMsgs);
-        }
-
-        public static (bool updatedSuccessfully, List<string> ErrorMsgs) UpdateArtist(int artistID, string name, string filename, int filesize) {
-            var validationResult = ValidateArtist(name, filename, filesize);
-
-            if (validationResult.isValid) {
-                bool duplicateName = ArtistRepo.ExistByNameButNotThisOne(name, artistID) != null;
-                if (duplicateName) {
-                    validationResult.ErrorMsgs.Add("There are already an artist with the same name as this one.");
-                    return (false, validationResult.ErrorMsgs);
-                }
-
-                ArtistRepo.UpdateArtist(artistID, name, filename);
-                return (true, validationResult.ErrorMsgs);
-            }
-
-            return (false, validationResult.ErrorMsgs);
-        }
-
-        public static (bool CreatedSuccessfully, List<string> ErrorMsgs) MakeArtist (string name, string filename, int filesize) {
-            var validationResult = ValidateArtist(name, filename, filesize);
-
-            if (validationResult.isValid) {
+            if (validationResult) {
                 if (FormatController.TrimLen(filename) <= 0 || filesize <= 1024) {
-                    validationResult.ErrorMsgs.Add("Picture must be present.");
-                    return (false, validationResult.ErrorMsgs);
+                    ErrorMsgs.Add("Picture must be present.");
+                    return false;
                 }
 
                 bool duplicateName = ArtistRepo.ExistByName(name) != null;
                 if (duplicateName) {
-                    validationResult.ErrorMsgs.Add("There are already an artist with the same name as this one.");
-                    return (false, validationResult.ErrorMsgs);
+                    ErrorMsgs.Add("There are already an artist with the same name as this one.");
+                    FormatController.RemoveEmptyString(ErrorMsgs);
+
+                    return false;
                 }
 
                 ArtistHandler.InsertArtist(ArtistHandler.MakeArtist(name, filename));
-                return (true, validationResult.ErrorMsgs);
+                return true;
             }
 
-            return (false, validationResult.ErrorMsgs);
+            return false;
         }
+        public static bool UpdateArtist (int artistID, string name, string filename, int filesize, List<string> ErrorMsgs) {
+            bool validationResult = ValidateArtist(name, filename, filesize, ErrorMsgs);
 
-        public static (bool isValid, string ErrorMsg) ValidateName (string name) {
-            
-            /* Cek apakah string parameter bisa diproses */
+            if (validationResult) {
+                bool duplicateName = ArtistRepo.ExistByNameButNotThisOne(name, artistID) != null;
+
+                if (duplicateName) {
+                    ErrorMsgs.Add("There are already an artist with the same name as this one.");
+                    FormatController.RemoveEmptyString(ErrorMsgs);
+
+                    return false;
+                }
+
+                ArtistRepo.UpdateArtist(artistID, name, filename);
+                return true;
+            }
+
+            return false;
+        }
+        public static void DeleteArtist (int ArtistID) {
+            ArtistRepo.RemoveByID(ArtistID);
+        }
+        public static bool ValidateArtist (string name, string filename, int filesize, List<string> ErrorMsgs) {
+            bool NameValidationResult = ValidateName(name, ErrorMsgs);
+            bool FileValidationResult = ValidateProfilePicture(filename, filesize, ErrorMsgs);
+
+            FormatController.RemoveEmptyString(ErrorMsgs);
+
+            if (NameValidationResult && FileValidationResult) {
+                return true;
+            }
+
+            return false;
+        }
+        public static bool ValidateName (string name, List<string> ErrorMsgs) {
+
+            string ErrorMsg = "";
             if ( FormatController.NullWhitespacesOrEmpty(name) ) {
-                return (false, "Name cannot be empty or all whitespaces!");
+                ErrorMsg = "Name cannot be empty or all whitespaces!";
 
-            /* Cek apakah panjang string parameter berada diantara 5-50 karakter */
             } else if ( FormatController.TrimLen(name) > 50 ) {
-                return (false, "That is such a long name! Try using aliases.");
+                ErrorMsg = "That is such a long name! Try using aliases.";
             
             }
 
-            return (true, "");
+            return CheckErrorMsg(ErrorMsg, ErrorMsgs);
         }
+        public static bool ValidateProfilePicture (string filename, int filesize, List<string> ErrorMsgs) {
 
-        public static (bool isValid, string ErrorMsg) ValidateProfilePicture (string filename, int filesize) {
-
+            string ErrorMsg = "";
             if ( FormatController.NullWhitespacesOrEmpty(filename) ) {
-                return (true, "");
+                ErrorMsg = "";
 
             } else if ( !FormatController.HasValidFileExtension(Path.GetExtension(filename.ToLower())) ) {
                 List<string> ListofValidFileExtension = FormatController.GetValidFileExtension();
                 string ValidFileExtension = string.Join(", ", ListofValidFileExtension.Take(ListofValidFileExtension.Count - 1)) + " and " + ListofValidFileExtension.Last();
                 
-                return (false, "The only allowed file extension is limited to " + ValidFileExtension);
+                ErrorMsg = "The only allowed file extension is limited to " + ValidFileExtension;
             }
 
             if ( filesize > 2000000) {
-                return (false, "The file is too big! Consider compressing it.");
+                ErrorMsg = "The file is too big! Consider compressing it.";
             }
 
-            return (true, "");
+            return CheckErrorMsg(ErrorMsg, ErrorMsgs);
         }
+        private static bool CheckErrorMsg (string ErrorMsg, List<string> ErrorMsgs) {
+            if ( FormatController.TrimLen(ErrorMsg) > 0 ) {
+                ErrorMsgs.Add(ErrorMsg);
+                return false;
+            }
+
+            return true;
+        } 
     }
 }

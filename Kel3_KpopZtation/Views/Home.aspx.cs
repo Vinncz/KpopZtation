@@ -7,7 +7,6 @@ using System.Web.UI.WebControls;
 using Kel3_KpopZtation.Controllers;
 using Kel3_KpopZtation.Controllers.PageController;
 using Kel3_KpopZtation.Models;
-using Kel3_KpopZtation.Repositories;
 
 namespace Kel3_KpopZtation.Views {
     public partial class Home : System.Web.UI.Page {
@@ -17,7 +16,7 @@ namespace Kel3_KpopZtation.Views {
          * Home Page Criteria - Page 7
          * 
          * (X) Able to show every registered artists.
-         * ( ) Able to redirect users to Artist Detail Page when a certain action is done.
+         * (X) Able to redirect users to Artist Detail Page when a certain action is done.
          * (X) Have Custom Visibility Button:
          *     (X) Insert Button, redirect Admin to Insert Artist Page,
          *         & Invisible to non-Admin
@@ -38,28 +37,22 @@ namespace Kel3_KpopZtation.Views {
             if (c != null) CustomerName = c.CustomerName;
             ec.PrepareVisibility(Page, c);
 
-            Artists = HomePageController.Retrieve();
-            ArtistsRepeater.DataSource = Artists;
-            ArtistsRepeater.DataBind();
+            RefreshRepeater();
         }
 
         protected void DeleteButton_Command(object sender, CommandEventArgs e) {
-
             if (e.CommandName == "Delete") {
                 int artistID = Convert.ToInt32(e.CommandArgument);
-                // Delete the artist with the specified ID from your data source
-                ArtistRepo.RemoveByID(artistID);
+                ArtistController.DeleteArtist(artistID);
 
-                // Re-bind the data to the Repeater control
-                Artists = ArtistRepo.Retrieve();
-                ArtistsRepeater.DataSource = Artists;
-                ArtistsRepeater.DataBind();
+                RefreshRepeater();
             }
         }
 
-        protected override void Render(HtmlTextWriter writer) {
-            ClientScript.RegisterForEventValidation(ArtistsRepeater.UniqueID.ToString());
-            base.Render(writer);
+        private void RefreshRepeater() {
+            Artists = HomePageController.Retrieve();
+            ArtistsRepeater.DataSource = Artists;
+            ArtistsRepeater.DataBind();
         }
     }
 }

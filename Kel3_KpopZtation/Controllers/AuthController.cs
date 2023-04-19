@@ -32,17 +32,19 @@ namespace Kel3_KpopZtation.Controllers {
 
             bool ParameterIsValid = EmailValidationResult  && PasswordValidationResult && EmailExistence.doesExist;
             if ( ParameterIsValid ) {
-                AssociatedAccount = CustomerRepo.EmailPasswordMatch(Email, Password);
+                AssociatedAccount = CustomerRepo.Find(Email);
 
-                if (AssociatedAccount != null) { 
+                if (AssociatedAccount != null && AssociatedAccount.CustomerPassword == Password) { 
                     CookieController.AssignSession(AssociatedAccount);
 
                     if (SetCookie) 
                         CookieController.AssignAuthCookie();
+
+                    return (AssociatedAccount, ErrorMsgs);
                 }
             }
 
-            return (AssociatedAccount, ErrorMsgs);
+            return (null, ErrorMsgs);
         }
         public static (Customer CreatedAccount, List<string> ErrorMsgs) Register (string Name, string Email, string Sex, string Address, string Password) {
 
@@ -52,8 +54,8 @@ namespace Kel3_KpopZtation.Controllers {
             bool NameValidationResult = CustomerController.ValidateName(Name, ErrorMsgs);
             bool EmailValidationResult = CustomerController.ValidateEmail(Email, ErrorMsgs);
 
-            var EmailExistenceInDB = EmailExistOnDatabase(Email, "There are already an account ascosiated with that email! Try logging in.");  
-                ErrorMsgs.Add(EmailExistenceInDB.ErrorMsg);
+            var EmailExistenceInDB = EmailExistOnDatabase(Email, "");
+            if (EmailExistenceInDB.doesExist == true) ErrorMsgs.Add("There is already an account associated with that email! Try logging in.");
 
             bool SexValidationResult = CustomerController.ValidateSex(Sex, ErrorMsgs);
             bool AddressValidationResult = CustomerController.ValidateAddress(Address, ErrorMsgs);
@@ -64,7 +66,7 @@ namespace Kel3_KpopZtation.Controllers {
             bool ParameterIsValid = NameValidationResult && EmailValidationResult && EmailExistenceInDB.doesExist == false && SexValidationResult && AddressValidationResult && PasswordValidationResult;
             if ( ParameterIsValid ) {
                 CreatedAccount = CustomerHandler.MakeCustomer(Name, Email, Sex, Address, Password, "Buyer");
-                CustomerHandler.InsertCustomer(CreatedAccount);
+                CustomerRepo.Insert(CreatedAccount);
 
                 if (CreatedAccount != null) {
                     CookieController.AssignSession(CreatedAccount);
@@ -74,7 +76,7 @@ namespace Kel3_KpopZtation.Controllers {
             return (CreatedAccount, ErrorMsgs);
         }
         public static (bool doesExist, string ErrorMsg) EmailExistOnDatabase (string email, string customErrorMsg) {
-            if (CustomerRepo.ExistByEmail(email) != null)
+            if (CustomerRepo.Find(email) != null)
                 return (true, customErrorMsg);
 
             if (FormatController.NullWhitespacesOrEmpty(customErrorMsg) || FormatController.TrimLen(customErrorMsg) <= 0)
@@ -90,7 +92,7 @@ namespace Kel3_KpopZtation.Controllers {
              * Dengan asumsi bahwa segala informasi yang dipegang oleh sebuah Cookie adalah benar. 
              */
             if (AuthCookie != null) {
-                HttpContext.Current.Session["AuthInfo"] = CustomerRepo.ExistByID( Convert.ToInt32(AuthCookie.Values["CustomerID"]) );
+                HttpContext.Current.Session["AuthInfo"] = CustomerRepo.Find( Convert.ToInt32(AuthCookie.Values["CustomerID"]) );
             } 
         }
         public static Customer ExtractCustomer () {

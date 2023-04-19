@@ -34,7 +34,7 @@
                 CssClass="pad25 borrad5" 
                 Style="color: #662135; background: #ffbfd1; line-height: 150%;" runat="server" />
             <div class="flex fullW gap15">
-                <asp:Button ID="AOBTSubmit" runat="server" OnClick="BTSubmit_Click" 
+                <asp:Button ID="_GBTSubmit" runat="server" OnClick="BTSubmit_Click" 
                             CssClass="ptr fullW pad10 borrad5 martop10 nobor greenButton"
                             Text="Update" />
                 <asp:Button  id="BTCancel" text="Cancel" runat="server"

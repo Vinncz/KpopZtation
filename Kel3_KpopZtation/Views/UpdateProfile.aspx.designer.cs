@@ -69,13 +69,13 @@ namespace Kel3_KpopZtation.Views
         protected global::System.Web.UI.WebControls.Label LBMessage;
 
         /// <summary>
-        /// AOBTSubmit control.
+        /// _GBTSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AOBTSubmit;
+        protected global::System.Web.UI.WebControls.Button _GBTSubmit;
 
         /// <summary>
         /// BTCancel control.
