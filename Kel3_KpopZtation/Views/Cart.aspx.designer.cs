@@ -7,21 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kel3_KpopZtation.Views
-{
+namespace Kel3_KpopZtation.Views {
 
 
-    public partial class Cart
-    {
+    public partial class Cart {
 
         /// <summary>
-        /// BOLBEmptyMsgField control.
+        /// DVEmpty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label BOLBEmptyMsgField;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DVEmpty;
 
         /// <summary>
         /// BOREItemsInCart control.

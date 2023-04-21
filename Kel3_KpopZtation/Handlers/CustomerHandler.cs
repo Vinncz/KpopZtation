@@ -9,7 +9,7 @@ using Kel3_KpopZtation.Models;
 namespace Kel3_KpopZtation.Handlers {
     public class CustomerHandler {
         public static Customer MakeCustomer (string name, string email, string sex, string address, string password, string role) {
-            int id = CustomerRepo.GetLatestCustomerID();
+            int id = CustomerRepo.GetLatestID();
 
             if (id <= 0) 
                 return null;

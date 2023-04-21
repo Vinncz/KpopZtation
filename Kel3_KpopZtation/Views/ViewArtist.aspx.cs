@@ -47,7 +47,7 @@ namespace Kel3_KpopZtation.Views {
             if (e.CommandName == "Delete") {
                 int albumID = Convert.ToInt32(e.CommandArgument);
                 // Delete the artist with the specified ID from your data source
-                AlbumRepo.RemoveByID(albumID);
+                AlbumRepo.Delete(albumID);
 
                 // Re-bind the data to the Repeater control
                 Refresh();

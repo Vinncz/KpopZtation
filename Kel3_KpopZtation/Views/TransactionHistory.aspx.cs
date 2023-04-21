@@ -27,7 +27,7 @@ namespace Kel3_KpopZtation.Views {
         }
 
         private void BindData () {
-            TransactionHeaders = TransactionRepo.GetHeaderByCustomerID(AuthController.ExtractCustomer().CustomerID);
+            TransactionHeaders = TransactionRepo.SelectHeader(AuthController.ExtractCustomer().CustomerID);
             BORETransactionList.DataSource = TransactionHeaders;
             BORETransactionList.DataBind();
         }
@@ -39,7 +39,7 @@ namespace Kel3_KpopZtation.Views {
                 TransactionHeader th = (TransactionHeader)e.Item.DataItem;
                 int TransactionID = th.TransactionID;
 
-                TransactionDetails = TransactionRepo.GetDetailByTransactionID(TransactionID);
+                TransactionDetails = TransactionRepo.FindDetail(TransactionID);
                 innerRepeater.DataSource = TransactionDetails;
                 innerRepeater.DataBind();
             }

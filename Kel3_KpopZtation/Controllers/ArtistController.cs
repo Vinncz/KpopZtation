@@ -17,7 +17,7 @@ namespace Kel3_KpopZtation.Controllers {
          */
 
         public static Artist GetArtistByID (string id) {
-            return ArtistRepo.ExistByID( Convert.ToInt32(id) );
+            return ArtistRepo.Find( Convert.ToInt32(id) );
         }
         public static bool MakeArtist (string name, string filename, int filesize, List<string> ErrorMsgs) {
             bool validationResult = ValidateArtist(name, filename, filesize, ErrorMsgs);
@@ -28,15 +28,15 @@ namespace Kel3_KpopZtation.Controllers {
                     return false;
                 }
 
-                bool duplicateName = ArtistRepo.ExistByName(name) != null;
+                bool duplicateName = ArtistRepo.Find(name) != null;
                 if (duplicateName) {
-                    ErrorMsgs.Add("There are already an artist with the same name as this one.");
+                    ErrorMsgs.Add("There is already an artist with the same name as the one you typed");
                     FormatController.RemoveEmptyString(ErrorMsgs);
 
                     return false;
                 }
 
-                ArtistHandler.InsertArtist(ArtistHandler.MakeArtist(name, filename));
+                ArtistRepo.Insert(ArtistHandler.MakeArtist(name, filename));
                 return true;
             }
 
@@ -46,23 +46,24 @@ namespace Kel3_KpopZtation.Controllers {
             bool validationResult = ValidateArtist(name, filename, filesize, ErrorMsgs);
 
             if (validationResult) {
-                bool duplicateName = ArtistRepo.ExistByNameButNotThisOne(name, artistID) != null;
+                Artist ArtistWithTheSameName = ArtistRepo.Find(name);
 
-                if (duplicateName) {
-                    ErrorMsgs.Add("There are already an artist with the same name as this one.");
+                if ( ArtistWithTheSameName.ArtistID != artistID ) {
+                    ErrorMsgs.Add("There is already an artist with the same name as the one you typed.");
                     FormatController.RemoveEmptyString(ErrorMsgs);
 
                     return false;
                 }
 
-                ArtistRepo.UpdateArtist(artistID, name, filename);
+                ArtistRepo.Update(artistID, name, filename);
                 return true;
             }
 
             return false;
         }
         public static void DeleteArtist (int ArtistID) {
-            ArtistRepo.RemoveByID(ArtistID);
+            AlbumHandler.DeleteAssociatedAlbum(ArtistID);
+            ArtistRepo.Delete(ArtistID);
         }
         public static bool ValidateArtist (string name, string filename, int filesize, List<string> ErrorMsgs) {
             bool NameValidationResult = ValidateName(name, ErrorMsgs);

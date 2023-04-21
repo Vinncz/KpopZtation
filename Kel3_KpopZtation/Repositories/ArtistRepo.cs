@@ -8,60 +8,81 @@ using Kel3_KpopZtation.Handlers;
 
 namespace Kel3_KpopZtation.Repositories {
     public static class ArtistRepo {
-
         private static KZDBEntities db = ConnectionMaster.CopyInstance();
 
-        public static void InsertArtist (Artist a) {
+        /* Miscellaneous/Overloaded Operations */
+        public static int GetLatestID () {
+            /* O(log n) algorithm */
+            Artist data = db.Artists.OrderByDescending(a => a.ArtistID).FirstOrDefault();
+            if (data != null)
+                return data.ArtistID;
+
+            return 0;
+        }
+        public static Artist Find (string ArtistName) {
+            return ( from Artist in db.Artists
+                     where Artist.ArtistName == ArtistName
+                     select Artist ).FirstOrDefault();
+        }
+
+        /* CRUD Operations */
+        public static List<Artist> Select () {
+            return ( from Artist in db.Artists 
+                     orderby Artist.ArtistName ascending
+                     select Artist ).ToList();
+        }
+        public static Artist Find (int ArtistID) {
+            return ( from Artist in db.Artists
+                     where Artist.ArtistID == ArtistID
+                     select Artist ).FirstOrDefault();
+        }
+        public static bool Insert (Artist a) {
+            db.Artists.Add(a);
+            return Save();
+        }
+        public static bool Update (int TargetArtistID, string ArtistName, string ArtistImageFileName) {
+            Artist a = Find(TargetArtistID);
+            return RewriteIfChanged(ArtistName, ArtistImageFileName, a);
+        }
+            private static bool RewriteIfChanged (string ArtistName, string ArtistImageFileName, Artist TargetData) {
+                if (TargetData == null) {
+                    return false;
+                }
+
+                if (TargetData.ArtistName != ArtistName) {
+                    TargetData.ArtistName = ArtistName;
+                }
+
+                if ( !FormatController.NullWhitespacesOrEmpty(ArtistImageFileName) && FormatController.TrimLen(ArtistImageFileName) > 0 && TargetData.ArtistImage != ArtistImageFileName ) {
+                    TargetData.ArtistImage = ArtistImageFileName;
+                }
+
+                return Save();
+            }
+        public static bool Delete (int TargetArtistID) {
+            Artist TargetData = Find(TargetArtistID);
+            db.Artists.Remove(TargetData);
+
+            return Save();
+        }
+        public static bool Save () {
             try {
-                db.Artists.Add(a);
                 db.SaveChanges();
-            } catch (System.Data.Entity.Validation.DbEntityValidationException ex) {
-                foreach (var entityValidationErrors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in entityValidationErrors.ValidationErrors)
-                    {
-                        System.Diagnostics.Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
-                    }
+                return true;
+
+            } catch ( System.Data.Entity.Validation.DbEntityValidationException ex ) {
+                PrintError(ex);
+                return false;
+
+            }
+        }
+            private static void PrintError ( System.Data.Entity.Validation.DbEntityValidationException ex ) {
+            foreach ( var entityValidationErrors in ex.EntityValidationErrors ) {
+                foreach ( var validationError in entityValidationErrors.ValidationErrors ) {
+                    System.Diagnostics.Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
                 }
             }
         }
-        public static void UpdateArtist (int ID, string name, string filename) {
-            Artist a = db.Artists.Find(ID);
 
-            if ( !FormatController.NullWhitespacesOrEmpty(name) && FormatController.TrimLen(name) > 0  &&  a.ArtistName != name) 
-                a.ArtistName = name;
-
-            if (!FormatController.NullWhitespacesOrEmpty(filename) && FormatController.TrimLen(filename) > 0 && a.ArtistImage != filename )
-                a.ArtistImage = filename;
-
-            db.SaveChanges();
-        }
-        public static Artist ExistByID (int ID) {
-            return (from Artist in db.Artists
-                    where Artist.ArtistID == ID 
-                    select Artist).FirstOrDefault();
-        }
-        public static Artist ExistByName (string ArtistName) {
-            return (from Artist in db.Artists
-                    where Artist.ArtistName == ArtistName
-                    select Artist).FirstOrDefault();
-        }
-        public static Artist ExistByNameButNotThisOne (string ArtistName, int ArtistID) {
-            return (from Artist in db.Artists
-                    where Artist.ArtistName == ArtistName && Artist.ArtistID != ArtistID
-                    select Artist).FirstOrDefault();
-        }
-        public static List<Artist> Retrieve () {
-            return (from Artist in db.Artists orderby Artist.ArtistName ascending select Artist).ToList();
-        }
-        public static int GetLatestID () {
-            return (from Artist in db.Artists orderby Artist.ArtistID descending select Artist.ArtistID).FirstOrDefault();
-        }
-        public static void RemoveByID (int id) {
-            Artist a = ExistByID(id);
-            AlbumHandler.DeleteAssociatedAlbum(id);
-            db.Artists.Remove(a);
-            db.SaveChanges();
-        }
     }
 }

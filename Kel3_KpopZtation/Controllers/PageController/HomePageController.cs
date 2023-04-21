@@ -9,7 +9,7 @@ namespace Kel3_KpopZtation.Controllers.PageController {
     public static class HomePageController {
 
         public static List<Artist> Retrieve () {
-            return ArtistRepo.Retrieve();
+            return ArtistRepo.Select();
         } 
 
     }

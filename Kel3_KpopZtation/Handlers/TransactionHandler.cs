@@ -15,8 +15,8 @@ namespace Kel3_KpopZtation.Handlers {
             TransactionHeader Header = MakeHeader(CartItems, TransactionID);
             List<TransactionDetail> ExtractedDetails = ExtractCorespondingDetails(CartItems, TransactionID);
             
-            TransactionRepo.InsertHeader(Header);
-            TransactionRepo.BulkInsertDetail(ExtractedDetails);
+            TransactionRepo.Insert(Header);
+            TransactionRepo.Insert(ExtractedDetails);
 
             return true;
         }
@@ -51,6 +51,15 @@ namespace Kel3_KpopZtation.Handlers {
             th.TransactionID = TransactionID;
             th.TransactionDate = DateTime.Now;
             th.CustomerID = CustomerID;
+        }
+        public static bool Delete ( int TargetTransactionID ) {
+            if ( TransactionRepo.DeleteDetail(TargetTransactionID) ) {
+                if ( TransactionRepo.DeleteHeader(TargetTransactionID) ) {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

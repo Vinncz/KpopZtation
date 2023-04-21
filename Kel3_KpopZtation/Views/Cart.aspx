@@ -7,8 +7,10 @@
     <div style="--martop: 100px; --martom: 30px;" class="fullW flex r em2 customMargin" > My Cart </div>
 
     <div class="twothirds gap25 martom30">
-        <asp:Label ID="BOLBEmptyMsgField" CssClass="two flex verti centerHori centerVerti boxedEl1 fullW fullH borrad5 pad25" runat="server" Text="Your cart is empty! Mind picking up an album or two?" />
         <div class="two flex verti gap15">
+            <div runat="server" id="DVEmpty">
+                Your cart is empty!
+            </div>
             <asp:Repeater ID="BOREItemsInCart" runat="server">
                 <ItemTemplate>
                         <div class="boxedEl1 flex borrad5 padleft25 padri25 padtop15 padtom15 centerVerti">

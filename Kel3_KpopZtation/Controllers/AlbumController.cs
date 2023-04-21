@@ -35,7 +35,7 @@ namespace Kel3_KpopZtation.Controllers {
             }
         }
         public static Album ExistByID (int AlbumID) {
-            return AlbumRepo.ExistByID(AlbumID);
+            return AlbumRepo.Find(AlbumID);
         }
         public static (bool CreatedSuccessfully, List<string> ErrorMsgs) MakeAlbum (int ArtistID, string AlbumName, string AlbumDescription, string AlbumPrice, string AlbumStock, string AlbumCoverName, int AlbumCoverSize) {
 
@@ -54,16 +54,11 @@ namespace Kel3_KpopZtation.Controllers {
             return (false, validationResult.ErrorMsgs);
         }
         public static (bool updatedSuccessfully, List<string> ErrorMsgs) UpdateAlbum (int AlbumID, string NewAlbumName, string NewAlbumDescription, string NewAlbumPrice, string NewAlbumStock, string NewAlbumCoverName, int NewAlbumCoverSize) {
-
             var validationResult = ValidateAlbum(NewAlbumName, NewAlbumDescription, NewAlbumPrice, NewAlbumStock, NewAlbumCoverName, NewAlbumCoverSize);
-            bool emptyImage = false;
-            if (FormatController.NullWhitespacesOrEmpty(NewAlbumCoverName) || FormatController.TrimLen(NewAlbumCoverName) <= 0 ) {
-                emptyImage = true;
-            }
 
             if (validationResult.isValid) {
-                AlbumHandler.EditAlbum(AlbumID, NewAlbumName, NewAlbumDescription, int.Parse(NewAlbumPrice), int.Parse(NewAlbumStock), NewAlbumCoverName, emptyImage);
-                return (true, validationResult.ErrorMsgs);
+                bool UpdateResult = AlbumRepo.Update(AlbumID, NewAlbumName, NewAlbumDescription, NewAlbumCoverName, int.Parse(NewAlbumStock), int.Parse(NewAlbumPrice));
+                return (UpdateResult, validationResult.ErrorMsgs);
             }
 
             return (false, validationResult.ErrorMsgs);

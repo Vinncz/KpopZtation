@@ -41,7 +41,7 @@
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
                     Transaction History
                 </asp:HyperLink>
-                <asp:HyperLink ID="AOBTTransactionReport" runat="server" href="Report.aspx" 
+                <asp:HyperLink ID="AOBTTransactionReport" runat="server" href="TransactionReport.aspx" 
                     CssClass="coloredEl pad10 padleft25 padri25 boxedEl1 borrad5">
                     Transaction Report
                 </asp:HyperLink>

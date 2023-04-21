@@ -24,18 +24,11 @@ namespace Kel3_KpopZtation.Views {
             ec.PrepareVisibility(Page, AuthController.ExtractCustomer());
             nc.BlockIfNotBuyer(AuthController.ExtractCustomer(), "Cart.aspx");
             /* END TEMPLATE */
+            
+            ec.Invis(LBMessage, DVEmpty);
 
             Reset();
             BindData();
-
-            ec.Invis(LBMessage, BOLBEmptyMsgField);
-
-            if (CartContent == null || CartContent.Count() <= 0) {
-                //ec.Vis(BODVEmptyCart);
-
-            } else {
-                Recount();
-            }
         }
 
         protected void DeleteButton_Command(object sender, CommandEventArgs e) {
@@ -58,6 +51,13 @@ namespace Kel3_KpopZtation.Views {
             CartContent = CartController.GetContent(AuthController.ExtractCustomer());
             BOREItemsInCart.DataSource = CartContent;
             BOREItemsInCart.DataBind();
+
+            if ( CartContent == null || CartContent.Count() <= 0 ) {
+                ec.Vis(DVEmpty);
+
+            } else {
+                Recount();
+            }
         }
 
         private void Recount () {

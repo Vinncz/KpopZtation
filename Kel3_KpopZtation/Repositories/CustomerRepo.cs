@@ -9,8 +9,8 @@ namespace Kel3_KpopZtation.Repositories {
     public class CustomerRepo {
         private static KZDBEntities db = ConnectionMaster.CopyInstance();
 
-        /* Miscelaneous Operations */
-        public static int GetLatestCustomerID () {
+        /* Miscellaneous/Overloaded Operations */
+        public static int GetLatestID () {
             /* O(log n) algorithm */
             Customer latestCustomer = db.Customers.OrderByDescending(c => c.CustomerID).FirstOrDefault();
             if (latestCustomer != null)
@@ -26,7 +26,9 @@ namespace Kel3_KpopZtation.Repositories {
 
         /* CRUD Operations */
         public static List<Customer> Select () {
-            return (from Customer in db.Customers select Customer).ToList();
+            return (from Customer in db.Customers 
+                    orderby Customer.CustomerName ascending
+                    select Customer).ToList();
         }
         public static Customer Find (int CustomerID) {
             return (from Customer in db.Customers
