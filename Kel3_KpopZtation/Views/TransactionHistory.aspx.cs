@@ -27,19 +27,22 @@ namespace Kel3_KpopZtation.Views {
         }
 
         private void BindData () {
-            TransactionHeaders = TransactionRepo.SelectHeader(AuthController.ExtractCustomer().CustomerID);
+            Customer c = AuthController.ExtractCustomer();
+            if ( c == null ) return;
+
+            TransactionHeaders = TransactionRepo.SelectHeader( c.CustomerID );
             BORETransactionList.DataSource = TransactionHeaders;
             BORETransactionList.DataBind();
         }
 
         protected void OuterRepeater_ItemDataBound(object sender, RepeaterItemEventArgs e) {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem) {
-                Repeater innerRepeater = (Repeater)e.Item.FindControl("BORETransactionListDetail");
+                Repeater innerRepeater = (Repeater) e.Item.FindControl("BORETransactionListDetail");
 
-                TransactionHeader th = (TransactionHeader)e.Item.DataItem;
+                TransactionHeader th = (TransactionHeader) e.Item.DataItem;
                 int TransactionID = th.TransactionID;
 
-                TransactionDetails = TransactionRepo.FindDetail(TransactionID);
+                TransactionDetails = TransactionController.FindDetail(TransactionID);
                 innerRepeater.DataSource = TransactionDetails;
                 innerRepeater.DataBind();
             }

@@ -96,7 +96,12 @@ namespace Kel3_KpopZtation.Controllers {
             } 
         }
         public static Customer ExtractCustomer () {
-            return (Customer) HttpContext.Current.Session["AuthInfo"];
+            Customer c = null;
+            try {
+                c = (Customer) HttpContext.Current.Session["AuthInfo"];
+            } catch { }
+
+            return c;
         }
         public static void SignOut () {
             foreach (string SavedCookie in HttpContext.Current.Request.Cookies.AllKeys) {

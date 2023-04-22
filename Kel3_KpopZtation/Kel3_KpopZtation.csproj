@@ -160,6 +160,7 @@
     <Compile Include="Controllers\PageController\HomePageController.cs" />
     <Compile Include="Controllers\PageController\LoginPageController.cs" />
     <Compile Include="Controllers\PageController\RegisterPageController.cs" />
+    <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\PageController\ViewArtistPageController.cs" />
     <Compile Include="CrystalReport1.cs">
       <AutoGen>True</AutoGen>
