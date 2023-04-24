@@ -6,7 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Kel3_KpopZtation.Controllers;
 using Kel3_KpopZtation.Controllers.PageController;
-using Kel3_KpopZtation.Repositories;
 using Kel3_KpopZtation.Models;
 
 namespace Kel3_KpopZtation.Views {
@@ -47,7 +46,7 @@ namespace Kel3_KpopZtation.Views {
             if (e.CommandName == "Delete") {
                 int albumID = Convert.ToInt32(e.CommandArgument);
                 // Delete the artist with the specified ID from your data source
-                AlbumRepo.Delete(albumID);
+                AlbumController.Delete(albumID);
 
                 // Re-bind the data to the Repeater control
                 Refresh();

@@ -9,7 +9,9 @@ using Kel3_KpopZtation.Repositories;
 
 namespace Kel3_KpopZtation.Controllers {
     public static class AlbumController {
-
+        public static bool Delete (int AlbumID) {
+            return AlbumRepo.Delete(AlbumID);
+        }
         public static (bool SufficientStock, string ErrorMsgs) CheckStock (int AlbumID, string RequestedAmount) {
             if ( FormatController.NullWhitespacesOrEmpty(RequestedAmount) || FormatController.TrimLen(RequestedAmount) <= 0 ) {
                 return (false, "Invalid amount!");
