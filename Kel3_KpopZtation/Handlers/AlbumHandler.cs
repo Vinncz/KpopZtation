@@ -9,12 +9,6 @@ using Kel3_KpopZtation.Models;
 
 namespace Kel3_KpopZtation.Handlers {
     public class AlbumHandler {
-        public static Album ExistByID (int AlbumID) {
-            return AlbumRepo.Find(AlbumID);
-        }
-        public static void InsertAlbum (Album a) {
-            AlbumRepo.Insert(a);
-        }
         public static Album MakeAlbum (string AlbumName, string AlbumDescription, int AlbumPrice, int AlbumStock, string AlbumCoverName, int ArtistID) {
             int LatestID = AlbumRepo.GetLatestID() + 1;
 
@@ -24,9 +18,6 @@ namespace Kel3_KpopZtation.Handlers {
             } catch {}
 
             return a;
-        }
-        public static void DeleteAssociatedAlbum (int ArtistID) {
-            AlbumRepo.DeleteByArtistID(ArtistID);
         }
     }
 }

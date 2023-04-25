@@ -10,12 +10,6 @@ using Kel3_KpopZtation.Handlers;
 
 namespace Kel3_KpopZtation.Controllers {
     public static class ArtistController {
-
-        /* 
-         * THIS FILE CONTAINS [ DUPLICATE CODE ] SMELL -- WHICH SHOULD BE REMOVED AS QUICKLY AS POSSIBLE
-         * @MakeArtist
-         */
-
         public static Artist GetArtistByID (string id) {
             return ArtistRepo.Find( Convert.ToInt32(id) );
         }
@@ -61,10 +55,12 @@ namespace Kel3_KpopZtation.Controllers {
 
             return false;
         }
+        
         public static void DeleteArtist (int ArtistID) {
-            AlbumHandler.DeleteAssociatedAlbum(ArtistID);
+            AlbumRepo.DeleteByArtistID(ArtistID);
             ArtistRepo.Delete(ArtistID);
         }
+        
         public static bool ValidateArtist (string name, string filename, int filesize, List<string> ErrorMsgs) {
             bool NameValidationResult = ValidateName(name, ErrorMsgs);
             bool FileValidationResult = ValidateProfilePicture(filename, filesize, ErrorMsgs);
@@ -109,6 +105,7 @@ namespace Kel3_KpopZtation.Controllers {
 
             return CheckErrorMsg(ErrorMsg, ErrorMsgs);
         }
+        
         private static bool CheckErrorMsg (string ErrorMsg, List<string> ErrorMsgs) {
             if ( FormatController.TrimLen(ErrorMsg) > 0 ) {
                 ErrorMsgs.Add(ErrorMsg);

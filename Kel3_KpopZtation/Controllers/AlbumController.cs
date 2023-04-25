@@ -9,9 +9,13 @@ using Kel3_KpopZtation.Repositories;
 
 namespace Kel3_KpopZtation.Controllers {
     public static class AlbumController {
+        public static Album Find (int AlbumID) {
+            return AlbumRepo.Find(AlbumID);
+        }
         public static bool Delete (int AlbumID) {
             return AlbumRepo.Delete(AlbumID);
         }
+        
         public static (bool SufficientStock, string ErrorMsgs) CheckStock (int AlbumID, string RequestedAmount) {
             if ( FormatController.NullWhitespacesOrEmpty(RequestedAmount) || FormatController.TrimLen(RequestedAmount) <= 0 ) {
                 return (false, "Invalid amount!");
@@ -24,7 +28,7 @@ namespace Kel3_KpopZtation.Controllers {
             
             }
             
-            Album a = AlbumHandler.ExistByID(AlbumID);
+            Album a = Find(AlbumID);
             if (a == null)
                 return (false, "There are no such album!");
 
@@ -36,9 +40,7 @@ namespace Kel3_KpopZtation.Controllers {
 
             }
         }
-        public static Album ExistByID (int AlbumID) {
-            return AlbumRepo.Find(AlbumID);
-        }
+        
         public static (bool CreatedSuccessfully, List<string> ErrorMsgs) MakeAlbum (int ArtistID, string AlbumName, string AlbumDescription, string AlbumPrice, string AlbumStock, string AlbumCoverName, int AlbumCoverSize) {
 
             var validationResult = ValidateAlbum (AlbumName, AlbumDescription, AlbumPrice, AlbumStock, AlbumCoverName, AlbumCoverSize);
@@ -49,7 +51,7 @@ namespace Kel3_KpopZtation.Controllers {
                     return (false, validationResult.ErrorMsgs);
                 }
 
-                AlbumHandler.InsertAlbum(AlbumHandler.MakeAlbum(AlbumName, AlbumDescription, int.Parse(AlbumPrice), int.Parse(AlbumStock), AlbumCoverName, ArtistID));
+                AlbumRepo.Insert(AlbumHandler.MakeAlbum(AlbumName, AlbumDescription, int.Parse(AlbumPrice), int.Parse(AlbumStock), AlbumCoverName, ArtistID));
                 return (true, validationResult.ErrorMsgs);
             }
 
@@ -65,6 +67,7 @@ namespace Kel3_KpopZtation.Controllers {
 
             return (false, validationResult.ErrorMsgs);
         }
+        
         public static (bool isValid, List<string> ErrorMsgs) ValidateAlbum (string AlbumName, string AlbumDescription, string AlbumPrice, string AlbumStock, string AlbumCoverName, int AlbumCoverSize) {
             List<string> ErrorMsgs = new List<string>();
 
