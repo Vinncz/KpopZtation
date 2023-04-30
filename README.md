@@ -76,3 +76,4 @@ _Order of Usage:_
 |	No Restriction			|	`__TB`			|  `__LB`				|	`__BT`				|	`__FU`			|	`____`				|
 
 More sections to come
+Selesai uts, gw jamin bakal nambah.
