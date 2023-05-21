@@ -76,4 +76,8 @@ _Order of Usage:_
 |	No Restriction			|	`__TB`			|  `__LB`				|	`__BT`				|	`__FU`			|	`____`				|
 
 More sections to come
-Selesai uts, gw jamin bakal nambah (i hope, pls trust).
+Sampai dapet materi Crystal Report, ini baru akan nambah progress.
+
+TODO:
+- Handler harusnya megang lebih banyak tanggung jawab, seperti passing the command into the repositories.
+- Mikirnya sih karena tertulis "controller berperan untuk delegasiin tugas ke branch yang lain, makanya semua harus ngomong sama controller, baru lempar ke handler, terakhir masuk ke repository". Ternyata, bisa langsung call si handler.
