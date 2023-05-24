@@ -78,6 +78,9 @@ _Order of Usage:_
 More sections to come
 Sampai dapet materi Crystal Report, ini baru akan nambah progress.
 
+Update:
+Semoga tgl 25 diajarin Crystal Report.
+
 TODO:
 - Handler harusnya megang lebih banyak tanggung jawab, seperti passing the command into the repositories.
 - Mikirnya sih karena tertulis "controller berperan untuk delegasiin tugas ke branch yang lain, makanya semua harus ngomong sama controller, baru lempar ke handler, terakhir masuk ke repository". Ternyata, bisa langsung call si handler.
