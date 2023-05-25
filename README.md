@@ -75,11 +75,10 @@ _Order of Usage:_
 |	Everyone but Guest	|	`_GTB`			|  `_GLB`				|	`_GBT`			|	`_GFU`			|	`_G__`				|
 |	No Restriction			|	`__TB`			|  `__LB`				|	`__BT`				|	`__FU`			|	`____`				|
 
-More sections to come
-Sampai dapet materi Crystal Report, ini baru akan nambah progress.
+More sections to come.
 
 Update:
-Semoga tgl 25 diajarin Crystal Report.
+May 30, 2023 bakal diajarin Crystal Report. Expect update selanjutnya setelah 30 Mei.
 
 TODO:
 - Handler harusnya megang lebih banyak tanggung jawab, seperti passing the command into the repositories.
