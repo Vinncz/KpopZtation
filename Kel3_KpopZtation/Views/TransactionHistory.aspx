@@ -13,18 +13,19 @@
                     <div class="gridH2 gap25">
                         <span class="flex verti gap5"> 
                             <span class="em_75 b"> Transaction ID: </span> 
-                            <%# Eval("TransactionID") %> </span>
+                            <span class="em1_5"> <%# Eval("TransactionID") %> </span> 
+                        </span>
                         <span class="flex verti gap5"> 
                             <span class="em_75 b"> Transaction Date: </span>
-                            <%# ((DateTime) Eval("TransactionDate")).ToString("HH:mm:ss - MMMM dd, yyyy") %> 
+                            <span class="em1_5"> <%# ((DateTime) Eval("TransactionDate")).ToString("HH:mm:ss - MMMM dd, yyyy") %> </span>
                         </span>
                         <span class="flex verti gap5">
                             <span class="em_75 b"> Client: </span>
-                            <%# Eval("Customer.CustomerName") %>
+                            <span class="em1_5"> <%# Eval("Customer.CustomerName") %> </span>
                         </span>
                         <span class="flex verti gap5">
                             <span class="em_75 b"> Courier: </span>
-                            <%# CourierName[(int) Eval("TransactionID") % 12] %>
+                            <span class="em1_5"> <%# CourierName[(int) Eval("TransactionID") % 12] %> </span>
                         </span>
                     </div>
                     <span class="flex verti gap15">

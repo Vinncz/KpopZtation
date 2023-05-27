@@ -26,7 +26,7 @@ namespace Kel3_KpopZtation.Views {
             /* BEGIN TEMPLATE */
             AuthController.MakeSessionFromCookie();
             ec.PrepareVisibility(Page, AuthController.ExtractCustomer());
-            nc.BlockIfNotBuyer(AuthController.ExtractCustomer(), "Cart.aspx");
+            nc.BlockIfNotBuyer(AuthController.ExtractCustomer(), "TransactionHistory.aspx");
             /* END TEMPLATE */
 
             BindData();

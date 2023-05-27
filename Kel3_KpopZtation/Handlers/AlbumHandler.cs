@@ -19,5 +19,22 @@ namespace Kel3_KpopZtation.Handlers {
 
             return a;
         }
+        public static int CountStock (int AlbumID) {
+            Album a = AlbumRepo.Find(AlbumID);
+            int AlbumStock = a.AlbumStock;
+
+            Customer c = AuthController.ExtractCustomer();
+            List<TransactionHeader> headers = TransactionRepo.SelectHeader(c.CustomerID);
+
+            foreach (TransactionHeader header in headers) {
+                foreach (TransactionDetail detail in header.TransactionDetails) {
+                    if (detail.AlbumID == a.AlbumID) {
+                        AlbumStock -= detail.Quantity;
+                    }
+                }
+            }
+
+            return AlbumStock;
+        }
     }
 }

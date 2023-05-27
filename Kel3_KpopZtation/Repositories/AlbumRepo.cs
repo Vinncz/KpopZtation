@@ -24,6 +24,11 @@ namespace Kel3_KpopZtation.Repositories {
                     orderby Album.AlbumName ascending
                     select Album).ToList();
         }
+        public static Album Find (string AlbumName) {
+            return (from Album in db.Albums
+                    where Album.AlbumName == AlbumName
+                    select Album).FirstOrDefault();
+        }
         public static bool DeleteByArtistID (int ArtistID) {
             List<Album> Albums = Select(ArtistID);
             foreach (Album a in Albums) {
