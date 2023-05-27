@@ -110,6 +110,8 @@
     <Content Include="Assets\Artists\638059450808002463.jfif" />
     <Content Include="Assets\Icons\warning-blue.svg" />
     <Content Include="Assets\Icons\warning.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="index.aspx" />
     <Content Include="Models\KZ.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>KZ.edmx</DependentUpon>
@@ -173,11 +175,21 @@
     <Compile Include="Factories\CartFactory.cs" />
     <Compile Include="Factories\CookieFactory.cs" />
     <Compile Include="Factories\CustomerFactory.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Handlers\AlbumHandler.cs" />
     <Compile Include="Handlers\ArtistHandler.cs" />
     <Compile Include="Handlers\CartHandler.cs" />
     <Compile Include="Handlers\CustomerHandler.cs" />
     <Compile Include="Handlers\TransactionHandler.cs" />
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Album.cs">
       <DependentUpon>KZ.tt</DependentUpon>
     </Compile>
@@ -281,6 +293,7 @@
     <Compile Include="Views\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\RouteConfig.cs" />
     <Compile Include="Views\TransactionHistory.aspx.cs">
       <DependentUpon>TransactionHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

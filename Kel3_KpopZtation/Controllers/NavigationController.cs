@@ -51,5 +51,9 @@ namespace Kel3_KpopZtation.Controllers {
 
             }
         }
+
+        public void Redirect (string Destination) {
+            HttpContext.Current.Response.Redirect(Destination);
+        }
     }
 }

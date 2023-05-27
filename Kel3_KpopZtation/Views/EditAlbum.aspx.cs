@@ -69,7 +69,7 @@ namespace Kel3_KpopZtation.Views {
             RefreshPage();
         }
         private void RefreshPage () { 
-            a = AlbumController.ExistByID( AlbumID );
+            a = AlbumController.Find( AlbumID );
             if ( a != null ) {
                 AlbumName = a.AlbumName;
                 AlbumImage = a.AlbumImage;

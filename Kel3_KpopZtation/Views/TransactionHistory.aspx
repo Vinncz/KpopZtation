@@ -21,6 +21,11 @@
                         <span class="em_75 b"> Client: </span>
                         <%# Eval("Customer.CustomerName") %>
                     </span>
+                    <span class="flex verti gap5">
+                        <span class="em_75 b"> Courier: </span>
+                        <%# index = (int) Eval("TransactionID"); %>
+                        <%= CourierName[index % 12]; %>
+                    </span>
                     <span class="flex verti gap15">
                         <span class="em_75 b"> Bought Items: </span>
                         <div class="gridH2 gap10">
