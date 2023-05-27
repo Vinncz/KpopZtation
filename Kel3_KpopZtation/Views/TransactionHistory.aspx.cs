@@ -16,7 +16,7 @@ namespace Kel3_KpopZtation.Views {
         public static List<TransactionHeader> TransactionHeaders = new List<TransactionHeader>();
         public static List<TransactionDetail> TransactionDetails = new List<TransactionDetail>();
 
-        public static string [] CourierName = {"IKIT", "ENJ", "SiLambat", 
+        public static string [] CourierName = {"TUKU", "JENI", "SiLambat", 
                                                "Kirim Aja", "Lempar Aja", "NCS", 
                                                "MoveSend Instant", "MoveSend Sameday", "Pick Express Instant", 
                                                "Pick Express Sameday", "Minim", "LeopardAir Cargo"};

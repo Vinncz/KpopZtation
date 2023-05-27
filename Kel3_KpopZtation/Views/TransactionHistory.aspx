@@ -9,23 +9,24 @@
     <div class="flex verti gap15 r borrad5">
         <asp:Repeater ID="BORETransactionList" runat="server" OnItemDataBound="OuterRepeater_ItemDataBound">
             <ItemTemplate>
-                <div class="pad15 boxedEl1 borrad5 flex verti gap25">
-                    <span class="flex verti gap5"> 
-                        <span class="em_75 b"> Transaction ID: </span> 
-                        <%# Eval("TransactionID") %> </span>
-                    <span class="flex verti gap5"> 
-                        <span class="em_75 b"> Transaction Date: </span>
-                        <%# ((DateTime) Eval("TransactionDate")).ToString("HH:mm:ss - MMMM dd, yyyy") %> 
-                    </span>
-                    <span class="flex verti gap5">
-                        <span class="em_75 b"> Client: </span>
-                        <%# Eval("Customer.CustomerName") %>
-                    </span>
-                    <span class="flex verti gap5">
-                        <span class="em_75 b"> Courier: </span>
-                        <%# index = (int) Eval("TransactionID"); %>
-                        <%= CourierName[index % 12]; %>
-                    </span>
+                <div class="flex verti gap30" style="padding-bottom: 30px; padding-top: 15px; border-bottom: 1px solid var(--border-color)">
+                    <div class="gridH2 gap25">
+                        <span class="flex verti gap5"> 
+                            <span class="em_75 b"> Transaction ID: </span> 
+                            <%# Eval("TransactionID") %> </span>
+                        <span class="flex verti gap5"> 
+                            <span class="em_75 b"> Transaction Date: </span>
+                            <%# ((DateTime) Eval("TransactionDate")).ToString("HH:mm:ss - MMMM dd, yyyy") %> 
+                        </span>
+                        <span class="flex verti gap5">
+                            <span class="em_75 b"> Client: </span>
+                            <%# Eval("Customer.CustomerName") %>
+                        </span>
+                        <span class="flex verti gap5">
+                            <span class="em_75 b"> Courier: </span>
+                            <%# CourierName[(int) Eval("TransactionID") % 12] %>
+                        </span>
+                    </div>
                     <span class="flex verti gap15">
                         <span class="em_75 b"> Bought Items: </span>
                         <div class="gridH2 gap10">
@@ -49,7 +50,7 @@
                             </asp:Repeater>
                         </div>
                     </span>
-                </div>
+                 </div>
             </ItemTemplate>
         </asp:Repeater>
     </div>
