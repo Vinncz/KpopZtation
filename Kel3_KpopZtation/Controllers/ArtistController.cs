@@ -42,7 +42,7 @@ namespace Kel3_KpopZtation.Controllers {
             if (validationResult) {
                 Artist ArtistWithTheSameName = ArtistRepo.Find(name);
 
-                if ( ArtistWithTheSameName.ArtistID != artistID ) {
+                if ( ArtistWithTheSameName != null && ArtistWithTheSameName.ArtistID != artistID ) {
                     ErrorMsgs.Add("There is already an artist with the same name as the one you typed.");
                     FormatController.RemoveEmptyString(ErrorMsgs);
 
