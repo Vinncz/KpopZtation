@@ -83,3 +83,4 @@ May 30, 2023 bakal diajarin Crystal Report. Expect update selanjutnya setelah 30
 TODO:
 - Handler harusnya megang lebih banyak tanggung jawab, seperti passing the command into the repositories.
 - Mikirnya sih karena tertulis "controller berperan untuk delegasiin tugas ke branch yang lain, makanya semua harus ngomong sama controller, baru lempar ke handler, terakhir masuk ke repository". Ternyata, bisa langsung call si handler.
+- Short documentation of KpopZtation is required. Might be expanding this through the coming days.
