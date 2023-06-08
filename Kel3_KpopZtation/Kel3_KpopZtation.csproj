@@ -1292,6 +1292,7 @@
     <Compile Include="Controllers\PageController\HomePageController.cs" />
     <Compile Include="Controllers\PageController\LoginPageController.cs" />
     <Compile Include="Controllers\PageController\RegisterPageController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\PageController\ViewArtistPageController.cs" />
     <Compile Include="Datasets\KpopDataset.Designer.cs">
@@ -1364,7 +1365,6 @@
     <Compile Include="Repositories\CartRepo.cs" />
     <Compile Include="Repositories\ConnectionMaster.cs" />
     <Compile Include="Repositories\CustomerRepo.cs" />
-    <Compile Include="Repositories\ReportRepo.cs" />
     <Compile Include="Repositories\TransactionRepo.cs" />
     <Compile Include="Views\AddAlbum.aspx.cs">
       <DependentUpon>AddAlbum.aspx</DependentUpon>

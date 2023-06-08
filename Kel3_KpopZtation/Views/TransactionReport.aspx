@@ -4,5 +4,5 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="Contents" runat="server">
-    <CR:CrystalReportViewer ID="CrystalReportViewer1" runat="server" AutoDataBind="true" />
+    <CR:CrystalReportViewer ID="CrystalReportViewer1" CssClass="fullW fullH r" runat="server" AutoDataBind="true" />
 </asp:Content>
