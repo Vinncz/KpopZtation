@@ -5,6 +5,7 @@ using System.Web;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Repositories;
 using Kel3_KpopZtation.Datasets;
+using Kel3_KpopZtation.Factories;
 
 namespace Kel3_KpopZtation.Handlers {
     public class TransactionHandler {
@@ -63,9 +64,9 @@ namespace Kel3_KpopZtation.Handlers {
             TransactionHeader Header = MakeHeader(CartItems, TransactionID);
             List<TransactionDetail> ExtractedDetails = ExtractCorespondingDetails(CartItems, TransactionID);
             
+            /* Coba masukkan transaksi ke database */
             TransactionRepo.Insert(Header);
             TransactionRepo.Insert(ExtractedDetails);
-
             bool result = TransactionRepo.Save();
 
             /* Jika tidak ada kendala saat melakukan transaksi */
@@ -77,9 +78,8 @@ namespace Kel3_KpopZtation.Handlers {
             return result;
         }
         private static TransactionHeader MakeHeader (List<Cart> CartItems, int TransactionID) {
-            TransactionHeader th = new TransactionHeader();
             int CustomerID = CartItems.First().CustomerID;
-            HandleHeader(th, TransactionID, CustomerID);
+            TransactionHeader th = TransactionFactory.MakeHeader(TransactionID, CustomerID);
 
             return th;
         }
@@ -87,35 +87,23 @@ namespace Kel3_KpopZtation.Handlers {
             List<TransactionDetail> Details = new List<TransactionDetail>();
 
             foreach (Cart c in CartItems) {
-                TransactionDetail td = new TransactionDetail();
-
                 int AlbumID = c.AlbumID;
                 int Quantity = c.Quantity;
 
-                HandleDetails(td, TransactionID, AlbumID, Quantity);
+                TransactionDetail td = TransactionFactory.MakeDetail(TransactionID, Quantity, AlbumID);
                 Details.Add(td);
             }
 
             return Details;
         }
-        private static void HandleDetails(TransactionDetail td, int TransactionID, int AlbumID, int Quantity) {
-            td.TransactionID = TransactionID;
-            td.Quantity = Quantity;
-            td.AlbumID = AlbumID;
-        }
-        private static void HandleHeader(TransactionHeader th, int TransactionID, int CustomerID) {
-            th.TransactionID = TransactionID;
-            th.TransactionDate = DateTime.Now;
-            th.CustomerID = CustomerID;
-        }
-        public static bool Delete ( int TargetTransactionID ) {
-            if ( TransactionRepo.DeleteDetail(TargetTransactionID) ) {
-                if ( TransactionRepo.DeleteHeader(TargetTransactionID) ) {
-                    return true;
-                }
-            }
-
-            return false;
-        }
+     //   public static bool Delete ( int TargetTransactionID ) {
+     //       if ( TransactionRepo.DeleteDetail(TargetTransactionID) ) {
+     //           if ( TransactionRepo.DeleteHeader(TargetTransactionID) ) {
+     //               return true;
+     //           }
+     //       }
+     //
+     //       return false;
+     //   }
     }
 }

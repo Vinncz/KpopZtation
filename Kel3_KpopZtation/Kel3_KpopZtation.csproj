@@ -1305,6 +1305,7 @@
     <Compile Include="Factories\CartFactory.cs" />
     <Compile Include="Factories\CookieFactory.cs" />
     <Compile Include="Factories\CustomerFactory.cs" />
+    <Compile Include="Factories\TransactionFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
