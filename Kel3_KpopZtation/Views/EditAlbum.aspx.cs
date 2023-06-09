@@ -51,6 +51,16 @@ namespace Kel3_KpopZtation.Views {
             string NewAlbumCover = AOFUAlbumCover.FileName;
             int NewAlbumCoverSize = AOFUAlbumCover.PostedFile.ContentLength;
 
+            int IntNewAlbumStock = Convert.ToInt32(NewAlbumStock);
+            if (IntNewAlbumStock <= 0) {
+                ec.Vis(LBMessage);
+                LBMessage.Text = "<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_635_179)'><rect width='20' height='20' rx='10' fill='#7F2835'/><path d='M10 4.16699V11.2503' stroke='#FFBFD1' stroke-width='1.25'stroke-linecap='round'/><rect x='9.16663' y='13.333' width='1.66667' height='1.66667' rx='0.833333'fill='#FFBFD1'/></g><defs><clipPath id='clip0_635_179'><rect width='20' height='20' fill='white'/></clipPath></defs></svg> <br />";
+                LBMessage.Text += "Cannot update stock to 0. Delete album instead.";
+
+                RefreshPage();
+                return;
+            }
+
             (bool updatedSuccessfully, List<string> ErrorMsgs) = AlbumController.UpdateAlbum(AlbumID, NewAlbumName, NewAlbumDesc, NewAlbumPrice, NewAlbumStock, NewAlbumCover, NewAlbumCoverSize);
 
             ec.Vis(LBMessage);
