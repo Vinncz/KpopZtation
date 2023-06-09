@@ -17,15 +17,16 @@ namespace Kel3_KpopZtation.Views {
         NavigationController nc = new NavigationController();
 
         protected void Page_Load ( object sender, EventArgs e ) {
+            /* BEGIN TEMPLATE */
             AuthController.MakeSessionFromCookie();
             nc.BlockIfNotAdmin(AuthController.ExtractCustomer(), "TransactionReport.aspx");
             ec.PrepareVisibility(Page, AuthController.ExtractCustomer());
+            /* END TEMPLATE */
 
             Reports.FINAL_TRANSACTION_REPORT report = new Reports.FINAL_TRANSACTION_REPORT();
-            CrystalReportViewer1.ReportSource = report;
+            report.SetDataSource(ReportController.TransactionReport.GetReportData());
 
-            KpopDataset dataset = ReportController.TransactionReport.GetDataset();
-            report.SetDataSource(dataset);
+            CrystalReportViewer1.ReportSource = report;
         }
     }
 }

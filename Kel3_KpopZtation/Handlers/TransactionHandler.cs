@@ -4,9 +4,57 @@ using System.Linq;
 using System.Web;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Repositories;
+using Kel3_KpopZtation.Datasets;
 
 namespace Kel3_KpopZtation.Handlers {
     public class TransactionHandler {
+
+        /* REPORT RELATED */
+        public static KpopDataset MakeReportData () {
+            List<TransactionHeader> transactions = TransactionRepo.SelectHeader();
+
+            KpopDataset ds = new KpopDataset();
+            var tHeader = ds.tHeader;
+            var tDetail = ds.tDetail;
+            MakeReportHeader(transactions, tHeader, tDetail);
+
+            return ds;
+        }
+        private static void MakeReportHeader ( List<TransactionHeader> transactions, KpopDataset.tHeaderDataTable tHeader, KpopDataset.tDetailDataTable tDetail ) {
+            foreach ( TransactionHeader th in transactions ) {
+                var h = tHeader.NewRow();
+
+                h["TransactionID"] = th.TransactionID;
+                h["CustomerID"] = th.CustomerID;
+                h["TransactionDate"] = th.TransactionDate;
+
+                int grand_total = MakeDetailRows(tDetail, th, 0);
+                h["GrandPrice"] = grand_total;
+
+                tHeader.Rows.Add(h);
+            }
+        }
+        private static int MakeDetailRows ( KpopDataset.tDetailDataTable tDetail, TransactionHeader th, int grand_total ) {
+            foreach ( TransactionDetail td in th.TransactionDetails ) {
+                var d = tDetail.NewRow();
+
+                d["TransactionID"] = td.TransactionID;
+                d["AlbumName"] = td.Album.AlbumName;
+                d["Quantity"] = td.Quantity;
+                d["AlbumPrice"] = td.Album.AlbumPrice;
+
+                int subtotal = td.Quantity * td.Album.AlbumPrice; ;
+                d["SubTotalPrice"] = subtotal;
+
+                grand_total += subtotal;
+
+                tDetail.Rows.Add(d);
+            }
+
+            return grand_total;
+        }
+        /* END */
+
         public static bool MakeTransaction (List<Cart> CartItems) {
             if (CartItems.Count <= 0) return false;
 
