@@ -33,6 +33,12 @@
                     <button id="incrementButton" type="button" class="noSelect padleft15 padri15 greyOutlineButton borrad5 ptr sb em1_5"> + </button>
                 </div>
             </div>
+            <asp:Label id="GOLBMessage" Text="To buy an album, try logging in first!" 
+                CssClass="pad25 borrad5" 
+                Style="color: #662135; background: #ffbfd1; line-height: 150%;" runat="server" />
+            <asp:Label id="AOLBMessage" Text="Admins are prohibited to buy an album!" 
+                CssClass="pad25 borrad5" 
+                Style="color: #662135; background: #ffbfd1; line-height: 150%;" runat="server" />
             <asp:Label id="LBMessage" Text="" 
                 CssClass="pad25 borrad5" 
                 Style="color: #662135; background: #ffbfd1; line-height: 150%;" runat="server" />

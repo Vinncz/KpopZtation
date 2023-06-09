@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kel3_KpopZtation.Views
-{
+namespace Kel3_KpopZtation.Views {
 
 
-    public partial class ViewAlbum
-    {
+    public partial class ViewAlbum {
 
         /// <summary>
         /// __LBAlbumDescription control.
@@ -67,6 +65,24 @@ namespace Kel3_KpopZtation.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox BOTBAddedAmount;
+
+        /// <summary>
+        /// GOLBMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label GOLBMessage;
+
+        /// <summary>
+        /// AOLBMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label AOLBMessage;
 
         /// <summary>
         /// LBMessage control.
