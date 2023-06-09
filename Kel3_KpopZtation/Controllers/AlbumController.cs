@@ -23,8 +23,8 @@ namespace Kel3_KpopZtation.Controllers {
             }
 
             int IntRequestedAmount = Convert.ToInt32(RequestedAmount);
-            if (IntRequestedAmount < 1) {
-                return (false, "You cannot add negative value to your cart.");
+            if (IntRequestedAmount <= 0) {
+                return (false, "You cannot add zero or negative value to your cart.");
             
             }
             

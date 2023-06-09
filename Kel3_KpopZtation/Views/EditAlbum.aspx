@@ -39,7 +39,7 @@
                 <asp:Button ID="AOBTSubmit" runat="server" OnClick="BTSubmit_Click" 
                             CssClass="ptr fullW pad10 borrad5 martop10 nobor greenButton"
                             Text="Update Album" />
-                <asp:Button  id="BTCancel" text="Cancel" runat="server"
+                <asp:Button UseSubmitBehavior="false" id="BTCancel" text="Cancel" runat="server"
                             CssClass="ptr fullW pad10 borrad5 martop10 redOutlineButton" OnClick="BTCancel_Click" />
             </div>
         </div>

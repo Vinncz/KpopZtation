@@ -11,6 +11,10 @@
             <div runat="server" id="DVEmpty">
                 Your cart is empty!
             </div>
+            <div class="flex verti gap5 boxedEl1 borrad5 pad25 boxedElSoft1" style="color: #662135; background: #ffbfd1">
+                <div class="warning-red"></div>
+                <p> Never refresh this page after doing checkout. </p>
+            </div>
             <asp:Repeater ID="BOREItemsInCart" runat="server">
                 <ItemTemplate>
                         <div class="boxedEl1 flex borrad5 padleft25 padri25 padtop15 padtom15 centerVerti">

@@ -23,12 +23,19 @@ namespace Kel3_KpopZtation.Repositories {
                     orderby TransactionHeader.TransactionDate descending
                     select TransactionHeader).ToList();
         }
-        public static bool Insert ( List<TransactionDetail> Details ) {
+
+        /** Has to manually save */
+//        public static bool Insert ( List<TransactionDetail> Details ) {
+ //           foreach ( TransactionDetail Detail in Details ) {
+ //               db.TransactionDetails.Add(Detail);
+ //           }
+
+ //           return Save();
+ //       }
+        public static void Insert ( List<TransactionDetail> Details ) {
             foreach ( TransactionDetail Detail in Details ) {
                 db.TransactionDetails.Add(Detail);
             }
-
-            return Save();
         }
 
         /* CRUD Operations */
@@ -50,9 +57,13 @@ namespace Kel3_KpopZtation.Repositories {
                     select TransactionDetail).ToList();
         }
 
-        public static bool Insert (TransactionHeader th) {
+        /** Has to manually save */
+ //       public static bool Insert (TransactionHeader th) {
+ //           db.TransactionHeaders.Add(th);
+//            return Save();
+//        }
+        public static void Insert ( TransactionHeader th ) {
             db.TransactionHeaders.Add(th);
-            return Save();
         }
         public static bool Insert (TransactionDetail td) {
             db.TransactionDetails.Add(td);

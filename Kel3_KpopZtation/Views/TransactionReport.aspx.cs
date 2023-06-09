@@ -26,7 +26,7 @@ namespace Kel3_KpopZtation.Views {
             Reports.FINAL_TRANSACTION_REPORT report = new Reports.FINAL_TRANSACTION_REPORT();
             report.SetDataSource(ReportController.TransactionReport.GetReportData());
 
-            CrystalReportViewer1.ReportSource = report;
+            AORVTransactionReport.ReportSource = report;
         }
     }
 }

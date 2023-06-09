@@ -80,8 +80,7 @@ namespace Kel3_KpopZtation.Views {
                 __LBAlbumDescription.Text = AlbumDescription;
                 __LBAlbumPrice.Text = AlbumPrice.ToString();
 
-                int albumstock = AlbumHandler.CountStock(a.AlbumID);
-                __LBAlbumStock.Text = albumstock.ToString();
+                __LBAlbumStock.Text = a.AlbumStock.ToString();
             }
         }
 

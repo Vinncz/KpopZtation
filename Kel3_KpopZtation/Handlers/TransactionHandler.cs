@@ -66,7 +66,15 @@ namespace Kel3_KpopZtation.Handlers {
             TransactionRepo.Insert(Header);
             TransactionRepo.Insert(ExtractedDetails);
 
-            return true;
+            bool result = TransactionRepo.Save();
+
+            /* Jika tidak ada kendala saat melakukan transaksi */
+            if (result) {
+                /* Update stok album yang di checkout */
+                AlbumHandler.RecountStock(TransactionID);
+            }
+
+            return result;
         }
         private static TransactionHeader MakeHeader (List<Cart> CartItems, int TransactionID) {
             TransactionHeader th = new TransactionHeader();
