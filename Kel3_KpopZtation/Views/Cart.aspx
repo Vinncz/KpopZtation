@@ -8,12 +8,13 @@
 
     <div class="twothirds gap25 martom30">
         <div class="two flex verti gap15">
-            <div runat="server" id="DVEmpty">
-                Your cart is empty!
+            <div class="flex verti gap5 boxedEl1 borrad5 pad25 softBg boxedElSoft1" runat="server" id="DVEmpty">
+                <div class="warning-blue"></div>
+                Your cart is empty! Try adding in some album first, shall we?
             </div>
-            <div class="flex verti gap5 boxedEl1 borrad5 pad25 boxedElSoft1" style="color: #662135; background: #ffbfd1">
+            <div id="DVno_refresh" runat="server" class="flex verti gap5 boxedEl1 borrad5 pad25 boxedElSoft1" style="color: #662135; background: #ffbfd1">
                 <div class="warning-red"></div>
-                <p> Never refresh this page after doing checkout. </p>
+                Never refresh this page after doing checkout.
             </div>
             <asp:Repeater ID="BOREItemsInCart" runat="server">
                 <ItemTemplate>

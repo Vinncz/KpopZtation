@@ -22,6 +22,15 @@ namespace Kel3_KpopZtation.Views {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl DVEmpty;
 
         /// <summary>
+        /// DVno_refresh control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DVno_refresh;
+
+        /// <summary>
         /// BOREItemsInCart control.
         /// </summary>
         /// <remarks>

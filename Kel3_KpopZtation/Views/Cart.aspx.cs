@@ -25,10 +25,14 @@ namespace Kel3_KpopZtation.Views {
             nc.BlockIfNotBuyer(AuthController.ExtractCustomer(), "Cart.aspx");
             /* END TEMPLATE */
             
-            ec.Invis(LBMessage, DVEmpty);
+            ec.Invis(LBMessage, DVEmpty, DVno_refresh);
 
             Reset();
             BindData();
+
+            if ( IsPostBack ) {
+                ec.Vis(DVno_refresh);
+            }
         }
 
         protected void DeleteButton_Command(object sender, CommandEventArgs e) {
