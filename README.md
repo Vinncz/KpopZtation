@@ -99,8 +99,8 @@ TODO:
 ### ViewAlbum.aspx
 - Displays album information (cover, title, artist, description, price and available stock)
 - Led to this page by clicking one of the album cards in `ViewArtist.aspx`
-- Buyers can add specified amounts of stock into their cart
-- If buyer attempts to buy more than available stock, an error message becomes visible
+- Customers can add specified amounts of stock into their cart
+- If customer attempts to buy more than available stock, an error message becomes visible
 - If logged in as an Admin, an error message becomes visible (stating that Admins are not allowed to add albums to cart)
 ### Login.aspx
 - Allows users to sign in through email and password
@@ -112,4 +112,43 @@ TODO:
 - Led to this page by clicking the register button in the navigation bar
 - Receives full name, email, sex, address and password
 - If inputted information is wrong or empty, an error message will be visible
-### 
+### Cart.aspx
+- Displays items that customer has added to their cart
+- Led to this page by clicking the `My Cart` button in the navigation bar
+- Subtotal and total items of all items in the cart is displayed
+- Customer can remove items in their cart
+- Customer can check out the items in their cart
+- If cart is empty, a message will be visible
+### TransactionHistory.aspx
+- Displays transaction history
+- Led to this page by clicking `Transaction History` button in the navigation bar
+- Displays transaction ID, date, customer's name and the courier
+- Customers can see the item they bought by clicking on the album card, which will lead to `ViewAlbum.aspx`
+### UpdateProfile.aspx
+- Allows customers and admins to update their profile information
+- Led to this page by clicking `Update Profile` button in the navigation bar
+- If inputted information is wrong or empty, an error message will be visible
+### EditArtist.aspx
+- Allows admins to edit artist information
+- Led to this page by clicking the `Edit` button on an artist card in `Home.aspx`
+- Artist's full name and profile picture can be edited
+- If fields are empty, an error message will be visible
+### AddArtist.aspx
+- Allows admins to add new artists
+- Led to this page by clicking the `Add New Artist` button in `Home.aspx`
+- Artist's full name and profile picture can be edited
+- If fields are empty, an error message will be visible
+### EditAlbum.aspx
+- Allows admins to edit album information
+- Led to this page by clicking the `Edit` button on an album card in `ViewArtist.aspx`
+- Album name, description, price, stock and cover can be edited
+- If fields are empty, an error message will be visible
+### AddAlbum.aspx
+- Allows admins to add new albums
+- Led to this page by clicking the `Add New Album` button on an album card in `ViewArtist.aspx`
+- Album name, description, price, stock and cover can be added
+- If fields are empty, an error message will be visible
+### TransactionReport.aspx
+- Allows admins to generate a Crystal Report of past transaction done on the website
+- Led to this page by clicking the `Transaction Report` button on the navigation bar
+- Transaction ID, Customer ID, Transaction Date, Album Name, Quantity and Album Price are generated
