@@ -56,8 +56,8 @@ namespace Kel3_KpopZtation.Views {
                 LBMessage.Text += ErrorMsg;
 
             } else {
-                CartController.AddOrUpdateCart(AuthController.ExtractCustomer(), AlbumID, Convert.ToInt32(AddedAmount));
-                LBMessage.Text = "Added " + AddedAmount + " albums to your cart!";
+                bool Success = CartController.AddOrUpdateCart(AuthController.ExtractCustomer(), AlbumID, Convert.ToInt32(AddedAmount));
+                LBMessage.Text = Success == true ? "Added " + AddedAmount + " albums to your cart!" : "Something went wrong when adding the item into your cart.";
 
             }
          

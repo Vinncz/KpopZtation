@@ -64,9 +64,7 @@
         <div id='pageWrapper' class="flex verti r gap5">
             <asp:ContentPlaceHolder ID="Contents" runat="server"></asp:ContentPlaceHolder>
         </div>
-        <div class="em_75 martop30 padtop30 noSelect" style="opacity: 25%; transform: scale(75%);">
-            KpopZtation is presented to you by <strong class="sb"> 2501977941 - Kevin Gunawan </strong>
-        </div>
+        
     </form>
 </body>
 </html>
