@@ -83,3 +83,33 @@ June 8th, 2023 - Reporting
 TODO:
 - Handler harusnya megang lebih banyak tanggung jawab, seperti passing the command into the repositories.
 - Short documentation of KpopZtation is required. Might be expanding this through the coming days.
+
+## Page Documentation
+### Home.aspx
+- Entry point of KPopZtation
+- Displays artists whose music are for sale
+- Guests can view an artist or register/sign into an account
+- If logged in as a buyer, options to view their cart, transaction history and update their profile becomes visible in the navigation bar
+- If logged in as an Admin, options to add, delete or edit an artist becomes visible
+### ViewArtist.aspx
+- Displays albums by artists that are for sale
+- Led to this page by clicking one of the artist cards in `Home.aspx`
+- Guests can view the album information by clicking on the card
+- If logged in as an Admin, options to add, delete or edit an album becomes visible
+### ViewAlbum.aspx
+- Displays album information (cover, title, artist, description, price and available stock)
+- Led to this page by clicking one of the album cards in `ViewArtist.aspx`
+- Buyers can add specified amounts of stock into their cart
+- If buyer attempts to buy more than available stock, an error message becomes visible
+- If logged in as an Admin, an error message becomes visible (stating that Admins are not allowed to add albums to cart)
+### Login.aspx
+- Allows users to sign in through email and password
+- Led to this page by clicking the sign in button in the navigation bar
+- If remember me is checked, the website will set a cookie to automatically login for the next 7 days
+- If inputted credentials are wrong or empty, an error message will be visible
+### Register.aspx
+- Allows users to register a new account
+- Led to this page by clicking the register button in the navigation bar
+- Receives full name, email, sex, address and password
+- If inputted information is wrong or empty, an error message will be visible
+### 
