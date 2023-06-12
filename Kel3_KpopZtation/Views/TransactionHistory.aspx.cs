@@ -14,7 +14,7 @@ namespace Kel3_KpopZtation.Views {
         private static NavigationController nc = new NavigationController();
 
         public static List<TransactionHeader> TransactionHeaders = new List<TransactionHeader>();
-        public static List<TransactionDetail> TransactionDetails = new List<TransactionDetail>();
+        public static List<Models.TransactionDetail> TransactionDetails = new List<Models.TransactionDetail>();
 
         public static string [] CourierName = {"TUKU", "JENI", "SiLambat", 
                                                "Kirim Aja", "Lempar Aja", "NCS", 
@@ -29,6 +29,7 @@ namespace Kel3_KpopZtation.Views {
             nc.BlockIfNotBuyer(AuthController.ExtractCustomer(), "TransactionHistory.aspx");
             /* END TEMPLATE */
 
+            ec.Invis(DVEmpty);
             BindData();
         }
 
@@ -37,6 +38,10 @@ namespace Kel3_KpopZtation.Views {
             if ( c == null ) return;
 
             TransactionHeaders = TransactionRepo.SelectHeader( c.CustomerID );
+            if (TransactionHeaders.Count() <= 0) {
+                ec.Vis(DVEmpty);
+                return;
+            }
             BORETransactionList.DataSource = TransactionHeaders;
             BORETransactionList.DataBind();
         }

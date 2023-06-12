@@ -76,7 +76,7 @@ namespace Kel3_KpopZtation.Controllers {
             return (CreatedAccount, ErrorMsgs);
         }
         public static (bool doesExist, string ErrorMsg) EmailExistOnDatabase (string email, string customErrorMsg) {
-            if (CustomerRepo.Find(email) != null)
+            if ( CustomerRepo.Find(email).FirstOrDefault() != null)
                 return (true, customErrorMsg);
 
             if (FormatController.NullWhitespacesOrEmpty(customErrorMsg) || FormatController.TrimLen(customErrorMsg) <= 0)

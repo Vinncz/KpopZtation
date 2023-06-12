@@ -7,12 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kel3_KpopZtation.Views
-{
+namespace Kel3_KpopZtation.Views {
 
 
-    public partial class MasterPage
-    {
+    public partial class MasterPage {
 
         /// <summary>
         /// head control.
@@ -103,6 +101,15 @@ namespace Kel3_KpopZtation.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink _GUpdateProfile;
+
+        /// <summary>
+        /// _GHLDeleteAccount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink _GHLDeleteAccount;
 
         /// <summary>
         /// _GBTLogOut control.

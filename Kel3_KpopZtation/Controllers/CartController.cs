@@ -22,24 +22,6 @@ namespace Kel3_KpopZtation.Controllers {
             }
             return result;
         }
-        private static bool ValidateItem (int CustomerID) {
-            bool valid = true;
-            List<Cart> CustomersCart = CartRepo.Find(CustomerID);
-
-            foreach (Cart CartItem in CustomersCart) {
-                Album a = AlbumRepo.Find(CartItem.AlbumID);
-
-                bool IsPresent = CartItem != null;
-                bool ValidQuantity = CartItem.Quantity <= a.AlbumStock;
-
-                if ( !( IsPresent && ValidQuantity ) ) {
-                    valid = false;
-                    break;
-                }
-            }
-            
-            return valid;
-        }
         private static int CountItem (List<Cart> CartItems, int AlbumID) {
             foreach (Cart c in CartItems) {
                 // kalo ketemu albumnya, return amt yang ada di cart

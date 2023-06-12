@@ -7,12 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Kel3_KpopZtation.Views
-{
+namespace Kel3_KpopZtation.Views {
 
 
-    public partial class TransactionHistory
-    {
+    public partial class TransactionHistory {
+
+        /// <summary>
+        /// DVEmpty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DVEmpty;
 
         /// <summary>
         /// BORETransactionList control.

@@ -46,7 +46,7 @@ namespace Kel3_KpopZtation.Views {
 
             (Object Dump, List<string> ErrorMsgs) = AuthController.Authenticate(email, password, rememberme);
 
-            if (Dump == null && !ErrorMsgs.Contains("Password cannot be empty!")) ErrorMsgs.Add("Incorrect password.");
+            if ( Dump == null && ( !ErrorMsgs.Contains("Password cannot be empty!") && !ErrorMsgs.Contains("There is no account associated with that email!")) ) ErrorMsgs.Add("Incorrect password.");
             if (ErrorMsgs.Count > 0) {
                 LBMessage.Visible = true;
                 LBMessage.Text = "<svg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'><g clip-path='url(#clip0_635_179)'><rect width='20' height='20' rx='10' fill='#7F2835'/><path d='M10 4.16699V11.2503' stroke='#FFBFD1' stroke-width='1.25'stroke-linecap='round'/><rect x='9.16663' y='13.333' width='1.66667' height='1.66667' rx='0.833333'fill='#FFBFD1'/></g><defs><clipPath id='clip0_635_179'><rect width='20' height='20' fill='white'/></clipPath></defs></svg> <br />";

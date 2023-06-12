@@ -1257,6 +1257,7 @@
     <Content Include="Views\AddAlbum.aspx" />
     <Content Include="Views\AddArtist.aspx" />
     <Content Include="Views\Cart.aspx" />
+    <Content Include="Views\DeleteAccount.aspx" />
     <Content Include="Views\EditAlbum.aspx" />
     <Content Include="Views\EditArtist.aspx" />
     <Content Include="Views\Fonts\Satoshi\Fonts\WEB\css\satoshi.css" />
@@ -1273,6 +1274,7 @@
     <Content Include="Views\Styles\positionings.css" />
     <Content Include="Views\Styles\sizes.css" />
     <Content Include="Views\Styles\spacings.css" />
+    <Content Include="Views\TransactionDetail.aspx" />
     <Content Include="Views\TransactionHistory.aspx" />
     <Content Include="Views\TransactionReport.aspx" />
     <Content Include="Views\UpdateProfile.aspx" />
@@ -1390,6 +1392,13 @@
     <Compile Include="Views\Cart.aspx.designer.cs">
       <DependentUpon>Cart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\DeleteAccount.aspx.cs">
+      <DependentUpon>DeleteAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DeleteAccount.aspx.designer.cs">
+      <DependentUpon>DeleteAccount.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\EditAlbum.aspx.cs">
       <DependentUpon>EditAlbum.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1433,6 +1442,13 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\RouteConfig.cs" />
+    <Compile Include="Views\TransactionDetail.aspx.cs">
+      <DependentUpon>TransactionDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\TransactionDetail.aspx.designer.cs">
+      <DependentUpon>TransactionDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\TransactionHistory.aspx.cs">
       <DependentUpon>TransactionHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

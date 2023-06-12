@@ -52,6 +52,18 @@ namespace Kel3_KpopZtation.Controllers {
             }
         }
 
+        public void BlockIfNotTheOwner (Customer c, int ComparingValue, string Destination) {
+            if ( c == null || c.CustomerRole != "Buyer" ) {
+                HttpContext.Current.Response.Redirect("Login.aspx");
+            }
+
+            int CustomerID = c.CustomerID;
+            if ( CustomerID != ComparingValue ) {
+                HttpContext.Current.Response.Redirect(Destination);
+
+            }
+        }
+
         public void Redirect (string Destination) {
             HttpContext.Current.Response.Redirect(Destination);
         }

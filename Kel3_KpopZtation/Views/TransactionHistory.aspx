@@ -7,6 +7,10 @@
     <div style="--martop: 100px; --martom: 30px;" class="fullW flex r em2 customMargin" > My Transactions </div>
 
     <div class="flex verti gap15 r borrad5">
+        <div class="flex verti gap5 boxedEl1 borrad5 pad25 softBg boxedElSoft1" runat="server" id="DVEmpty">
+            <div class="warning-blue"></div>
+            Your transaction history is empty! Purchase some album, shall we?
+        </div>
         <asp:Repeater ID="BORETransactionList" runat="server" OnItemDataBound="OuterRepeater_ItemDataBound">
             <ItemTemplate>
                 <div class="flex verti gap30" style="padding-bottom: 30px; padding-top: 15px; border-bottom: 1px solid var(--border-color)">
@@ -51,6 +55,9 @@
                             </asp:Repeater>
                         </div>
                     </span>
+                    <a class="gap5 pad15 greenButton centerHori borrad5 ptr" href="TransactionDetail.aspx?id=<%# Eval("TransactionID") %>">
+                        View Details →
+                    </a>
                  </div>
             </ItemTemplate>
         </asp:Repeater>

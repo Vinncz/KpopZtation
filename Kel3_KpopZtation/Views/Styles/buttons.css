@@ -60,6 +60,7 @@
     background: none;
     border: 1px solid var(--red);
     color: var(--red);
+    font-weight: 700;
 }
 
     .redOutlineButton:hover {

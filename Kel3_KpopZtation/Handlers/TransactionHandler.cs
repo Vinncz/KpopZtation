@@ -96,6 +96,15 @@ namespace Kel3_KpopZtation.Handlers {
 
             return Details;
         }
+
+        public static void DeleteTransaction (int CustomerID) {
+            List<TransactionHeader> ths = TransactionRepo.SelectHeader(CustomerID);
+            foreach (TransactionHeader th in ths) {
+                TransactionRepo.DeleteDetail(th.TransactionID);
+                TransactionRepo.DeleteHeader(th.TransactionID);
+            }
+
+        }
      //   public static bool Delete ( int TargetTransactionID ) {
      //       if ( TransactionRepo.DeleteDetail(TargetTransactionID) ) {
      //           if ( TransactionRepo.DeleteHeader(TargetTransactionID) ) {

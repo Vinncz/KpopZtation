@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Repositories;
+using Kel3_KpopZtation.Handlers;
 
 namespace Kel3_KpopZtation.Controllers {
     public class CustomerController {
@@ -30,6 +31,9 @@ namespace Kel3_KpopZtation.Controllers {
                 return (false, ErrorMsgs);
             
             }
+        }
+        public static bool Delete (int CustomerID) {
+            return CustomerHandler.DeleteCustomer(CustomerID);
         }
 
         public static bool ValidateName (string Name, List<string> ErrorMsgs) {

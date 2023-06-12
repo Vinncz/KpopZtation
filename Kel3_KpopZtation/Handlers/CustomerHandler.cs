@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Kel3_KpopZtation.Controllers;
 using Kel3_KpopZtation.Factories;
 using Kel3_KpopZtation.Repositories;
 using Kel3_KpopZtation.Models;
@@ -24,5 +25,14 @@ namespace Kel3_KpopZtation.Handlers {
             return c;
         }
 
+        public static bool DeleteCustomer (int customer_id) {
+            TransactionHandler.DeleteTransaction(customer_id);
+
+            CustomerRepo.Delete(customer_id);
+            AuthController.SignOut();
+
+
+            return true;
+        }
     }
 }
