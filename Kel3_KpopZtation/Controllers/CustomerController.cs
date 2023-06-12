@@ -18,10 +18,18 @@ namespace Kel3_KpopZtation.Controllers {
 
             FormatController.RemoveEmptyString(ErrorMsgs);
 
-            if (ValidArgument)
+            if ( ValidArgument ) {
+                bool GaadaAccountLain = EmailOnlyUsedOnce( CustomerID, Email, ErrorMsgs);
+                if ( GaadaAccountLain == false ) {
+                    return (false, ErrorMsgs);
+                }
+
                 return (CustomerRepo.Update(CustomerID, Name, Email, Sex, Address, Password), ErrorMsgs);
-            else
+
+            } else {
                 return (false, ErrorMsgs);
+            
+            }
         }
 
         public static bool ValidateName (string Name, List<string> ErrorMsgs) {
@@ -54,6 +62,35 @@ namespace Kel3_KpopZtation.Controllers {
 
             }
 
+            return CheckErrorMsg(ErrorMsg, ErrorMsgs);
+        }
+        public static bool EmailOnlyUsedOnce ( int CustomerID, string Email, List<string> ErrorMsgs) {
+
+            string ErrorMsg = "";
+            List<Customer> CustomersWithMatchingEmail = CustomerRepo.Find(Email);
+
+            if ( FormatController.NullWhitespacesOrEmpty(Email) ) {
+                ErrorMsg = "Email cannot be empty or all whitespaces!";
+
+            }
+
+            if ( !FormatController.InEmailFormat(Email) ) {
+                ErrorMsg = "Email is not in a correct format!";
+
+            }
+
+            if ( CustomersWithMatchingEmail != null ) {
+                foreach( Customer c in CustomersWithMatchingEmail ) {
+                    System.Diagnostics.Debug.WriteLine(c.CustomerName);
+                    if (c.CustomerID != CustomerID) {
+                        ErrorMsg = "There is an existing account using that email. Try to use a different email.";
+                        break;
+                    }
+
+                }
+            }
+
+            System.Diagnostics.Debug.WriteLine("ErrorMsg = " + ErrorMsg);
             return CheckErrorMsg(ErrorMsg, ErrorMsgs);
         }
         public static bool ValidatePassword (string Password, List<string> ErrorMsgs) {

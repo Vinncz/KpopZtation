@@ -18,10 +18,10 @@ namespace Kel3_KpopZtation.Repositories {
 
             return 0;
         }
-        public static Customer Find (string CustomerEmail) {
+        public static List<Customer> Find (string CustomerEmail) {
             return (from Customer in db.Customers
                     where Customer.CustomerEmail == CustomerEmail
-                    select Customer).FirstOrDefault();
+                    select Customer).ToList();
         }
 
         /* CRUD Operations */

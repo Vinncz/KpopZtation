@@ -32,7 +32,7 @@ namespace Kel3_KpopZtation.Controllers {
 
             bool ParameterIsValid = EmailValidationResult  && PasswordValidationResult && EmailExistence.doesExist;
             if ( ParameterIsValid ) {
-                AssociatedAccount = CustomerRepo.Find(Email);
+                AssociatedAccount = CustomerRepo.Find(Email).FirstOrDefault();
 
                 if (AssociatedAccount != null && AssociatedAccount.CustomerPassword == Password) { 
                     CookieController.AssignSession(AssociatedAccount);
