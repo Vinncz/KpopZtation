@@ -100,7 +100,7 @@ namespace Kel3_KpopZtation.Controllers {
             
             /* Cek apakah panjang string parameter berada diantara 5-50 karakter */
             if ( FormatController.TrimLen(name) > 50 ) {
-                return (false, "That is such a long name! Try using aliases.");
+                return (false, "That is such a long name! Try using aliases, to keep it under 50 characters");
             
             }
 
@@ -114,7 +114,7 @@ namespace Kel3_KpopZtation.Controllers {
             } 
             
             if ( FormatController.TrimLen(description) >= 255 ) {
-                return (false, "That is such a long description! Try to keep it minimal under 255 characters.");
+                return (false, "That is such a long description! Try to keep it minimal, under 255 characters.");
             
             }
 
