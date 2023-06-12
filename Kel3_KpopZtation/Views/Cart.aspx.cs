@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Kel3_KpopZtation.Repositories;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Controllers;
 

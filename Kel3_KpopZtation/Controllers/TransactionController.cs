@@ -10,5 +10,9 @@ namespace Kel3_KpopZtation.Controllers {
         public static List<TransactionDetail> FindDetail ( int TransactionID ) {
             return TransactionRepo.FindDetail(TransactionID);
         }
+
+        public static  TransactionHeader FindHeader (int TransactionID) {
+            return TransactionRepo.FindHeader(TransactionID);
+        }
     }
 }

@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.UI;
 using Kel3_KpopZtation.Models;
 using Kel3_KpopZtation.Controllers;
-using Kel3_KpopZtation.Repositories;
 using System.Web.UI.WebControls;
 
 namespace Kel3_KpopZtation.Views {
@@ -46,8 +45,7 @@ namespace Kel3_KpopZtation.Views {
         }
 
         private void Initialize() {
-            
-            th = TransactionRepo.FindHeader(TransactionID);
+            th = TransactionController.FindHeader(TransactionID);
 
             if ( th != null )
                 nc.BlockIfNotTheOwner(AuthController.ExtractCustomer(), th.CustomerID, "TransactionHistory.aspx");
@@ -60,7 +58,7 @@ namespace Kel3_KpopZtation.Views {
         }
 
         private static int CalculateGrandTotal () {
-            List<Models.TransactionDetail> details = TransactionRepo.FindDetail(th.TransactionID);
+            List<Models.TransactionDetail> details = TransactionController.FindDetail(th.TransactionID);
             int GrandTotal = 0;
             foreach (Models.TransactionDetail td in details) {
                 GrandTotal += td.Quantity * td.Album.AlbumPrice;
