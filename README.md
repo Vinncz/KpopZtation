@@ -9,8 +9,11 @@ __Made for:__
 
 __Composed by:__
 > 2501977941 - Kevin Gunawan
+> 
 > 2501968451 – Matthew Maximillian Tane
+> 
 > 2501967575 – Stevans Calvin Chandra
+> 
 > 2501977430 - Yofadha Chandra Berliano
 
 
