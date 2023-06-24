@@ -2,11 +2,14 @@
 ㅤ
 # Documentation of `KpopZtation`
 
+ㅤ
 
 __Made for:__
 > _Pattern Software Design_,
 > LAB -  Assesment of Learning
 > 2023 Even Term
+
+ㅤ
 
 __Composed by:__
 > 2501977941 - Kevin Gunawan
@@ -17,6 +20,7 @@ __Composed by:__
 > 
 > 2501977430 - Yofadha Chandra Berliano
 
+ㅤ
 
 __Notice board:__
 This project has fulfilled its purpose per June 15th, 2023, and may never be updated again in the future. It may be kinda sad just leaving KpopZtation to rot, but it may serve as a reference to which DDD pattern can be applied in this sort of application.  
