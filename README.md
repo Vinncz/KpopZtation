@@ -91,14 +91,7 @@ _Order of Usage:_
 |	Everyone but Guest	|	`_GTB`			|  `_GLB`				|	`_GBT`			|	`_GFU`			|	`_G__`				|
 |	No Restriction			|	`__TB`			|  `__LB`				|	`__BT`				|	`__FU`			|	`____`				|
 
-More sections to come.
-
-Announcement:
-June 8th, 2023 - Reporting 
-
-TODO:
-- Handler harusnya megang lebih banyak tanggung jawab, seperti passing the command into the repositories.
-- Short documentation of KpopZtation is required. Might be expanding this through the coming days.
+ㅤ
 
 ## Page Documentation
 ### Home.aspx
