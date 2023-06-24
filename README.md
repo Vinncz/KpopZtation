@@ -2,6 +2,7 @@
 ㅤ
 # Documentation of `KpopZtation`
 
+
 __Made for:__
 > _Pattern Software Design_,
 > LAB -  Assesment of Learning
@@ -16,6 +17,9 @@ __Composed by:__
 > 
 > 2501977430 - Yofadha Chandra Berliano
 
+
+__Notice board:__
+This project has fulfilled its purpose per June 15th, 2023, and may never be updated again in the future. It may be kinda sad just leaving KpopZtation to rot, but it may serve as a reference to which DDD pattern can be applied in this sort of application.  
 
 ㅤ
 
