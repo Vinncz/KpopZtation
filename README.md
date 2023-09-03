@@ -6,7 +6,9 @@
 
 __Made for:__
 > _Pattern Software Design_,
+> 
 > LAB -  Assesment of Learning
+> 
 > 2023 Even Term
 
 ㅤ
